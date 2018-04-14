@@ -34,7 +34,7 @@ def main(argv):
         for filename in files:
             if os.path.splitext(filename)[1].lower() == '.bin':
                 filesize = os.path.getsize(path+os.sep+filename)
-                if filesize > 100000000 or filesize < 4000000:
+                if filesize < 100000000 or filesize > 4000000:
                     size += filesize
 
     print('Total filesize to process: ' + humanize_bytes(size))
