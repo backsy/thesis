@@ -218,7 +218,7 @@ Hakkan Ri importima saadut datat. Toon alustuseks ühe logi.
 library(DBI)
 
 # Connect/create to/a database
-con <- dbConnect(RSQLite::SQLite(), 'test.db')
+con <- dbConnect(RSQLite::SQLite(), 'quadLogs.db')
 
 # List tables
 dbListTables(con)
@@ -262,6 +262,116 @@ dm_f <- dm_add_references(
 graph <- dm_create_graph(dm_f, rankdir = "BT", col_attr = c("column", "type"))
 dm_render_graph(graph)
 ```
+
+
+
+## 14.04
+
+```{r, warning=FALSE, message=FALSE}
+library('RSQLite')
+library('dplyr')
+
+# get connections to all tables
+my_db <- src_sqlite(path="quadLogs.db", create = FALSE)
+flights <- tbl(my_db, "flight")
+timestamps <- tbl(my_db, 'timestamp')
+parameters <- tbl(my_db, 'parameter')
+messages <- tbl(my_db, 'message')
+values <- tbl(my_db, 'value')
+
+# join all tables and drop the ID's
+joined_table <- values %>%
+  left_join(messages, by = c("message" = "id")) %>%
+  left_join(parameters, by = c('parameter' = 'id')) %>%
+  left_join(timestamps, by = c('timestamp' = 'id'))# %>%
+  #select(id, flight, message.y, timestamp.y, parameter.y, value) #%>%
+  #glimpse
+
+#Lets get all current and voltage from each flight
+joined_table %>%
+  group_by(flight) %>%
+  filter(message.x == 5) %>%
+  glimpse
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

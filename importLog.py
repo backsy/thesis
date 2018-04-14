@@ -33,7 +33,9 @@ def main(argv):
     for path, dirs, files in os.walk(folder_path):
         for filename in files:
             if os.path.splitext(filename)[1].lower() == '.bin':
-                size += os.path.getsize(path+os.sep+filename)
+                filesize = os.path.getsize(path+os.sep+filename)
+                if filesize > 100000000 or filesize < 4000000:
+                    size += filesize
 
     print('Total filesize to process: ' + humanize_bytes(size))
     todo_size = size
@@ -42,6 +44,9 @@ def main(argv):
         for filename in files:
             if os.path.splitext(filename)[1].lower() == '.bin':
                 filesize = os.path.getsize(path+os.sep+filename)
+                if filesize > 100000000 or filesize < 4000000:
+                    continue
+
                 print('Processing file: ' + filename + ' in folder: ' + path)
                 print('File size is: ' + humanize_bytes(filesize))
 
@@ -63,7 +68,7 @@ def main(argv):
 def process_tlog(filename):
     '''convert a ardupilot BIN file to SQLite database'''
     mlog = mavutil.mavlink_connection(filename, dialect='ardupilotmega', zero_time_base=True)
-    connection = create_connection('quadLogs.db')
+    connection = create_connection('quadLogs2.db')
     # conn = create_connection(args.database)
     database = {}
     try:
@@ -221,7 +226,7 @@ def create_database(connection):
 def bulk_write_values(database, connection):
     # write buffered values to database
     cursor = connection.cursor()
-    sql = get_sql('value',['id', 'flight', 'message', 'timestamp', 'parameter', 'value'])
+    sql = get_sql('value',['id', 'flight', 'timestamp', 'message', 'parameter', 'value'])
     cursor.executemany(sql, database['buffer']['values'])
     database['buffer']['values'] = []
 
