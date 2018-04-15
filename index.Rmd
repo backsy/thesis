@@ -1,0 +1,67 @@
+---
+author: 'Karl Uibo'
+date: 'May 2018'
+institution: 'Tallinn University of Technology'
+division: 'Information Technologies'
+advisor: 'Olev Märtens'
+#altadvisor: 'Your Other Advisor'
+# Delete line 7 if you only have one advisor
+department: 'Thomas Johann Seebeck Department of Electronics'
+degree: 'Master of Arts'
+title: 'Wind estimation for fuel management'
+knit: "bookdown::render_book"
+site: bookdown::bookdown_site
+output: 
+  thesisdown::thesis_pdf: default
+#  thesisdown::thesis_gitbook: default
+#  thesisdown::thesis_word: default
+#  thesisdown::thesis_epub: default
+originality: |
+  `r if(knitr:::is_latex_output()) paste(readLines("pre/00-originality.Rmd", encoding = "UTF-8"), collapse = '\n  ')`
+abstract: |
+  `r if(knitr:::is_latex_output()) paste(readLines("pre/00-abstract.Rmd", encoding = "UTF-8"), collapse = '\n  ')`
+annotatsioon: |
+  `r if(knitr:::is_latex_output()) paste(readLines("pre/00-annotatsioon.Rmd", encoding = "UTF-8"), collapse = '\n  ')`
+abbrvs: |
+  `r if(knitr:::is_latex_output()) paste(readLines("pre/00-abbrvs.Rmd", encoding = "UTF-8"), collapse = '\n  ')`
+# If you'd rather include the preliminary content in files instead of inline
+# like below, use a command like that for the abstract above.  Note that a tab is 
+# needed on the line after the |.
+bibliography: bib/thesis.bib
+# Download your specific bibliography database file and refer to it in the line above.
+csl: csl/apa.csl
+# Download your specific csl file and refer to it in the line above.
+lot: true
+lof: true
+#space_between_paragraphs: true
+# Delete the # at the beginning of the previous line if you'd like
+# to have a blank new line between each paragraph
+#header-includes:
+#- \usepackage{tikz}
+---
+
+<!--
+Above is the YAML (YAML Ain't Markup Language) header that includes a lot of metadata used to produce the document.  Be careful with spacing in this header!
+
+If you'd like to include a comment that won't be produced in your resulting file enclose it in a block like this.
+-->
+
+```{r include_packages, include = FALSE}
+# This chunk ensures that the thesisdown package is
+# installed and loaded. This thesisdown package includes
+# the template files for the thesis.
+if(!require(devtools))
+  install.packages("devtools", repos = "http://cran.rstudio.com")
+# Probably should install this from my own repo!!
+if(!require(thesisdown))
+  devtools::install_github("ismayc/thesisdown")
+library(thesisdown)
+```
+
+<!-- The {.unnumbered} option here means that the introduction will be "Chapter 0." You can also use {-} for no numbers
+on chapters.
+-->
+
+# Introduction {.unnumbered}
+
+The following thesis looks at the flight logs of Eli Ltd. to assess the fuel economy and the information given to the user. To be written when rest of the paper is finished.
