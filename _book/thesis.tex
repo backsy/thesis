@@ -253,6 +253,11 @@ PTZ camera\strut
 \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
 Point-Tilt-Zoom camera\strut
 \end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+RTL\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Return To Launch\strut
+\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 }
@@ -377,6 +382,11 @@ Point-Tilt-Zoom camera\strut
     PTZ camera\strut
     \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
     Point-Tilt-Zoom camera\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    RTL\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Return To Launch\strut
     \end{minipage}\tabularnewline
     \bottomrule
     \end{longtable}
@@ -569,7 +579,9 @@ at a few of them.
 When the aircraft is stationary above ground the wind causes it to tilt
 into the wind. In the reference frame of air, the multirotor is flying
 at the speed of the wind and in opposite direction, to, in the reference
-frame of the ground, remain stationary.
+frame of the ground, remain stationary. Looking at the angles there is
+no difference between standing still in 5 m/s wind and flying in some
+direction with the speed of 5 m/s in windless weather.
 \begin{figure}
 \centering
 \includegraphics{./figure/wind.PNG}
@@ -583,7 +595,9 @@ wind.\footnotemark{}}
   www.flaticon.com}
 
 Secondly, when flying against the wind, the current draw increases to
-match the increased power required to stay airborne.
+match the increased power required to stay airborne. From the power
+consumption point of view there is no difference in flying 5 m/s in some
+direction to standing still in 5 m/s wind.
 
 Thirdly the vibrations aboard the aircraft increase. This can cause
 trouble for the flight controller as the output of the IMU's becomes
@@ -591,10 +605,63 @@ noisy. Since the flight controller calculates the outputs of the motors
 using various sensors and among them IMU's, high vibration may cause the
 flight controller to be unable to determine its attitude and as a result
 cause the aircraft to loose control and crash. In this thesis we will
-look at the first two effects more closely and the third in relation to
-maximum flight speed.
+look mainly at the first two effects.
 
-So far we have talked about
+To operate a multirotor manually the pilot needs to take those effects
+into account and keep their eyes on the readings of those parameters.
+The simplified flight modes such as \emph{loiter} take most of the skill
+needed to pilot by implementing features on the autopilot. Several
+control algorithms have been developed, such as the widely used
+\emph{proportional} \emph{integral} \emph{derivative} algorithm,
+\emph{cascaded} \emph{linear} \emph{proportional} \emph{integral}
+\emph{derivative}\footnote{Yu, Yang, Wang, Li, \& Li (2015)} algorithm
+or the newer \emph{incremental} \emph{nonlinear} \emph{dynamic}
+\emph{inversion}\footnote{Smeur, Croon, \& Chu (2018)} algorithm. These
+algorithms optimize for the stability of the flight reducing the need
+for the pilot to do it by hand but higher level algorithms are still at
+the level of naive implementations for features such as optimizing for
+flight time or distance or speed, optimizing for safe return to start.
+These features are of critical importance for achieving full autonomity
+in some scenarios.
+
+For safety both \emph{arducopter} and \emph{DJI} use failsafe modes to
+guarantee that the multirotor has enough power left to reach the
+take-off location. A naive aproach that \emph{arducopter} employs is to
+look at the battery voltage and at a fixed point start flying back. This
+safety behaviour can be triggered in both manual control mode and
+automatic mission mode. This aproach has to take into account the worst
+case scenario of flying against the wind a long distance to make sure
+the multirotor makes it back. This leave a portion of the available
+power in the battery as a buffer reserve. A smarter failsafe would also
+take into account the distance from the starting location to scale the
+value where the failsafe is triggered. This helps reduce the buffer
+energy requirement. To further reduce the energy left in the buffer the
+failsafe would also need to adjust for the weather conditions. If the
+starting location is down wind then much less energy is needed than when
+the return home trip is taken against the wind. To achive this type of
+smart failsafe functionality the autopilot needs to be aware of two
+things:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The wind parameteres - strength and direction.
+\item
+  The battery state - how much energy is left in the battery.
+\end{enumerate}
+To find the wind parameters a fusion of an onboard wind sensor and
+magnetometer could be used. An on board wind sensor has been used to
+measure winds in wind farms to model airflow\footnote{Palomaki, Rose,
+  Bossche, Sherman, \& Wekker (2017)}. The multirotors that Eli Ltd
+produces do not have onboard wind sensors. As there is no difference
+between a multirotor flying at a fixed speed in windless conditions or
+staying stationary when the wind is equal to that of the previous
+example. Therefore a model of behaviour could be created given flight
+data where wind is minimal or zero. In the next chapter creating a
+database to use in modelling is discussed and the code to do so is
+created.
+
+Given a database of flight logs the behaviour of batteries can be
+analized. This is done later in this thesis.
 
 \chapter{Database generation}\label{dbs}
 
@@ -630,13 +697,12 @@ normal flight can be expected to be between 4 to 100 MB's. An average
 \hypertarget{choosing-the-output-data-type}{\section{Choosing the output
 data type}\label{choosing-the-output-data-type}}
 
-In this thesis \emph{R}\footnote{R-project homepage:
-  \url{https://WWW.r-project.org/}} programming language is used for
-data analysis. \emph{R} is a language and environment for statistical
-computing and graphics. As it is open source no licences are required to
-set it up and use. This brings statistical computing and data science to
-the hands of everyone interested in the topic and avoids expensive
-mathematics suites.
+In this thesis \emph{R}\footnote{R Development Core Team (2004)}
+programming language is used for data analysis. \emph{R} is a language
+and environment for statistical computing and graphics. As it is open
+source no licences are required to set it up and use. This brings
+statistical computing and data science to the hands of everyone
+interested in the topic and avoids expensive mathematics suites.
 
 The binary data in the log files is not readily accessible from
 \emph{R}. As a result it is necessary to convert the data to some other
@@ -1494,13 +1560,226 @@ relevant in the context of this thesis.
 The code for creating the database is written in \emph{python} and is
 added to the appendix.
 
-\chapter{Modelling stuff}\label{modelling-stuff}
+\chapter{Initial analysis of the
+data}\label{initial-analysis-of-the-data}
 
-After building the database
+As mentioned in the second chapter for the multirotor there is no
+difference wether it is flying at a given direction at a set speed and
+staying stationary in winds oposite to the flying direction of the
+previous example and with the same speed as the multirotor was flying.
+The following equation can be written:
 
-\chapter{The results of it all}\label{the-results-of-it-all}
+\[w = v + u\]
 
-The stuff i wanted to do and did.
+where \(w\) is the ground speed of the multirotor, \(v\) is the wind
+speed of the multirotor and \(u\) is the wind speed. If we increase the
+wind speed \(u\) the multirotor autopilot finds the angles and motor
+power that allow it to fulfill the desired groundspeed \(w\). When \(w\)
+stays constant and \(u\) increases \(v\) changes to account for the
+change in wind speed. The change in \(v\) is dependant on the flight
+direction and wind direction. When flying against the wind \(w = v - u\)
+as the multirotor has to compensate for the increased wind speed. When
+flying down wind the speeds add up - the multirotor has to do less work
+to fly at the desired speed \(w\). To find the wind speed a model of the
+multirotor behavior is needed. Another way of looking at it is to
+instead look for wind speed of the multirotor. This itself is the model
+of the multirotor flight. The user gives the desired ground speed \(w\),
+the wind is \(u\) and what we are after is the resultant behavior \(v\).
+To find the flight model \(v\) we can take the afore mentioned equation
+and substitute the wind speed \(u\) with 0.
+
+\[w = v\]
+
+This way the desired speed equals the wind speed. With this in mind it
+is nessecery to extract from the database the data of the flights where
+wind speed is close to zero to create the model. The chapter
+\protect\hyperlink{extracting-windless-flight-data}{Extracting windless
+flight data} does just that.
+
+Another important factor to consider is the state of the battery. To
+acurately model the multirotor behavior in diverse flight conditions the
+information about how much energy is left is tantamount. In the chapter
+\protect\hyperlink{analysis-of-battery-performance}{Analysis of battery
+performance} the data available is analyzed.
+
+\hypertarget{extracting-windless-flight-data}{\section{Extracting
+windless flight data}\label{extracting-windless-flight-data}}
+
+To find the flights where the wind is minimal we could look at the
+levels of vibration aboard the multirotor but that is not the easiest
+way nor is it very accurate due to its non-linear nature. Further more
+the vibration levels stay relatively low for normal flight conditions.
+As such it is more useful for estimating the upper limits of air speed
+the multirotor is able to achieve.
+
+A better option is to note that when wind speed is zero the multirotor
+moves at the desired ground speed. If the desired ground speed is also
+zero then the behaviour of the multirotor should be stable as well.
+Without wind the angles of the multirotor should fluctuate around zero
+degrees and by looking at the average angles when the multirotor is
+commanded to hold its position in \emph{loiter} or \emph{position}
+\emph{hold} mode we can detect the logs that have nearly no wind. There
+will be some fluctuation in the angles due to GPS inaccuracy and
+barometric drift and drift of the IMU's and other sensors. This should
+amount to white noise and average out given time. By taking the average
+angles over the time of remaining stationary we will get the average
+angle and direction of the wind as the multirotor will effectively be
+flying to counteract the wind. Any sufficiently large angle constitutes
+wind. For training the model only the windless flights are needed, but
+since some wind is expected the level of cutoff where a flight is
+considered to have been in windless condition. Various levels of
+``windless'' data could be used as diffirent cutoff values result in
+different amounts of training data.
+\begin{figure}
+\centering
+\includegraphics{./figure/latlng.PNG}
+\caption{\label{fig:latlng}Latitude and longitude data points of a flight.}
+\end{figure}
+In figure \ref{fig:latlng} we can see a flight that consists of segments
+of noisy data. This flight was mostly flown in manual \emph{loiter} mode
+and as a result is this noisy.
+\begin{figure}
+\centering
+\includegraphics{./figure/latlng3.PNG}
+\caption{\label{fig:latlngclean}Latitude and longitude data points of a
+flight.}
+\end{figure}
+In figure \ref{fig:latlngclean} a flight using \emph{auto} mode is used.
+In this mode the autopilot does its best to directly fly to the points
+specified in the mission. While this information is useful for getting
+an idea of the flight trajectory it does not help us with finding
+windless flights as the information we are looking for is missing.
+Namely the sections that the multirotor is stationary. Since the graph
+does not contain any data about time, only individual points, we are
+unable to see where the multirotor stands still. A guess would be that
+at the turning points of the straight segments the multirotor could
+potentially stand still.
+\begin{figure}
+\centering
+\includegraphics{./figure/lng.PNG}
+\caption{\label{fig:lng}Longitude data points in timeseries of a flight.}
+\end{figure}
+Looking at the longitude timeseries graph of the same flight on figure
+\ref{fig:lng} we can clearly see where the multirotor stands still in
+the longtitude axis. However this is not sufficent to tell where the
+multirotor is truely stationary as motion could be had on the latitude
+axis.
+\begin{figure}
+\centering
+\includegraphics{./figure/latlngSamegraph.PNG}
+\caption{\label{fig:lnglat}Longitude and latitude on the same timeseries
+graph of a flight.}
+\end{figure}
+Figure \ref{fig:lnglat} has time on the x axis and latitud/longitude
+point value changes on the y axis. The figure is made by taking both
+latitud and longitude axes and merging them into a single one. Then the
+data is shifted to very nearly zero so that both graphs can be seen.
+This helps us see where the multirotor is actually stationary. Where the
+value of both latitude and longitude stays unchanged for a period of
+time the multirotor is stationary. Graphically we can see where this is
+so but as a function of data we still need an aditional function to find
+the segments where the multirotor stays still. To find the segments
+various aproaches could be attempted. One of them would be to construct
+lines through points in the timeseries and looking for where the slope
+of the line changes compared to the last one. Filtering would be needed
+to account for the noise present. After that line segments where the
+graph moves perpendicular to either latitude/longitude axis are taken
+into consideration. From there latitude and longitude segments have to
+be compared to find the segments where both are perpendicular to the
+axis. This is to remove segments where motion is recorded as
+perpendicular to either axis. This can be seen on the end of the
+latitude longitude graphs on figure \ref{fig:lnglat}. There we can see
+motion on the longtitude graph but not on the latitude graph. Where both
+graphs are paralell to time the multirotor is truely stationary. However
+the aforementioned aproach is not the best on as it ignores corner cases
+such as when the multirotor has turned to face the direction of future
+motion and taken some angle to start moving but from inertia has not yet
+started moving. Luckily we have more parameters than latitude and
+longtitude coordinates in the logs. We also have information about what
+mode the multirotor was in.
+\begin{figure}
+\centering
+\includegraphics{./figure/longWithMode.PNG}
+\caption{\label{fig:lngmode}Longitude data points in timeseries of a flight
+augmented with mode information.}
+\end{figure}
+On figure \ref{fig:lngmode} the longitude timeseries graph is augmented
+with information about which mode the multirotor was in during the
+flight. The take off sequence starts with brief entry to
+\emph{stabilize} mode which we will ignore. After that \emph{auto} mode
+with the setting to stay still until a non-empty mission is uploaded.
+Soon after \emph{loiter} mode is entered. From figure \ref{fig:lnglat}
+we can see that the multirotor remained stationary for the duration of
+\emph{loiter} mode. After entering \emph{guided} mode, which is also an
+automatic mission mode, the multirotor starts moving. In this flight
+each time the multirotor is statinary the mode is \emph{loiter},
+excepting take off sequence and landing procedure. In the landing
+procedure the \emph{RTL} mode returns the multirotor to the launch
+location and lands. During the landing the multirotor remains
+stationary. Before fully landing the \emph{RTL} mode is interrupted by
+the pilot by issuing \emph{loiter} command. We can assume that here we
+had a skilled pilot who wanted to see how long the battery would last
+until being truely empty and thus estimating the overal health of the
+battery. After that an automatic landing failsafe is executed by the
+autopilot only to be interrupted again with the \emph{loiter} command by
+the pilot. From this graph we can see that to find the windless flights
+we need to find all flight segments where:
+\begin{itemize}
+\item
+  The mode is \emph{loiter} and both latitude and longitude coordinates
+  are stationary.
+\item
+  The segment after launch where the initial mission is empty and both
+  latitude and longitude caardinates are stationary.
+\end{itemize}
+We could also use mode \emph{land} to check for wind conditions but it
+needs to be taken into account that the latitude is changing and
+\emph{land} and \emph{loiter} are not comparable. Also in \emph{land}
+mode the multirotor can be manipulated manually so latitude and
+longitude coordinates need to be checked for changes. \emph{RTL} mode
+should be split in two parts since it internaly contains both
+\emph{guided} segment and \emph{land} segment. For the \emph{land} part
+in \emph{RTL} same considerations need to be made.
+
+Once the segments have been filtered out the average angle of the
+multirotor needs to be calculated. Since the multirotor operates in
+three dimensional space there are three angle parameters. As the vehicle
+is capable of moving in any direction the orientation of the front is
+not important for our purposes. The parameter for that is yaw. Instead
+we average over the pitch and roll parameters.
+
+The previous analysis is suffisent to filter help filter out relevant
+information from the database. From there the relevant data may be
+separated into training and verification data to test the model. Further
+decimation of data is needed as the data is collected at a high
+frequency. The exact details for the model creation are left for the
+model creator.
+
+After the model is created the direction of the wind needs to be
+calculated. The direction of wind helps us optimize our battery use in
+the case of automated missions. Flying against the wind takes more power
+than flying by the wind. As we wentioned \(w = v + u\) which means that
+the angle difference between \(w\) and \(u\) have to be compensated by
+\(v\). Since all elements in the equation are vectors where the
+magnitude is the speed of motion and the angle is the angle. By
+subtracting from the desired ground speed \(w\) the model of the air
+speed \(v\) we get the calculated wind speed \(u\). From here we can
+extract the wind direction. The calculated wind speed can be compared to
+real measurements to assess the accuracy of the model. An experiment may
+be conducted by flying to multirotors with 10 to 100 meters apart from
+each other where one of the multirotors is the multirotor from which the
+model is built from. The other multirotor should carry an accurate wind
+measurment device such as the one mentioned in (Palomaki et al., 2017).
+Both multirotors should fly at the same height and at the same time to
+reduce variance of measurements in time. The missions should be
+identical except for the spatial displacement to avoid unwanted
+collisions.
+
+\hypertarget{analysis-of-battery-performance}{\section{Analysis of
+battery performance}\label{analysis-of-battery-performance}}
+
+Vaatan graafikuid ja utlen kuidas aku kaitub ja miks nii vaga on vaja
+kasutada akukontrollerit.
 
 \chapter*{Conclusion}\label{conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
@@ -1890,17 +2169,29 @@ chunk tag) to help with readibility and/or setup.
 Angel, E. (2000). \emph{Interactive computer graphics : A top-down
 approach with opengl}. Boston, MA: Addison Wesley Longman.
 
-\hypertarget{ref-angel2001}{}
-Angel, E. (2001a). \emph{Batch-file computer graphics : A bottom-up
-approach with quicktime}. Boston, MA: Wesley Addison Longman.
+\hypertarget{ref-wind}{}
+Palomaki, R. T., Rose, N. T., Bossche, M. van den, Sherman, T. J., \&
+Wekker, S. F. J. D. (2017). Wind estimation in the lower atmosphere
+using multirotor aircraft. \emph{Journal of Atmospheric and Oceanic
+Technology}, \emph{34}(5), 1183--1191.
+\url{http://doi.org/10.1175/JTECH-D-16-0177.1}
 
-\hypertarget{ref-angel2002a}{}
-Angel, E. (2001b). \emph{Test second book by angel}. Boston, MA: Wesley
-Addison Longman.
+\hypertarget{ref-r}{}
+R Development Core Team. (2004). \emph{R: A language and environment for
+statistical computing}. Vienna, Austria: R Foundation for Statistical
+Computing. Retrieved from \url{http://www.R-project.org}
 
-\hypertarget{ref-deussen2000}{}
-Deussen, O., \& Strothotte, T. (2000). Computer-generated pen-and-ink
-illustration of trees. \emph{``Proceedings of'' SIGGRAPH 2000}, 13--18.
+\hypertarget{ref-indi}{}
+Smeur, E., Croon, G. de, \& Chu, Q. (2018). Cascaded incremental
+nonlinear dynamic inversion for mav disturbance rejection. \emph{Control
+Engineering Practice}, \emph{73}, 79--90.
+\url{http://doi.org/https://doi.org/10.1016/j.conengprac.2018.01.003}
+
+\hypertarget{ref-pid}{}
+Yu, Y., Yang, S., Wang, M., Li, C., \& Li, Z. (2015). High performance
+full attitude control of a quadrotor on so(3). In \emph{2015 ieee
+international conference on robotics and automation (icra)} (pp.
+1698--1703). \url{http://doi.org/10.1109/ICRA.2015.7139416}
 
 
 % Index?

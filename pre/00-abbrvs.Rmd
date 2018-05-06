@@ -26,5 +26,7 @@ SQL                 Structured Query Language
 DBMS                Database Management Systems
 
 PTZ camera          Point-Tilt-Zoom camera
+
+RTL                 Return To Launch
 -------------------------------------------------
 

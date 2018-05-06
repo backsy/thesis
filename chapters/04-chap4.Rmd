@@ -1,3 +1,65 @@
-# Modelling stuff
+# Initial analysis of the data
 
-After building the database 
+As mentioned in the second chapter for the multirotor there is no difference wether it is flying at a given direction at a set speed and staying stationary in winds oposite to the flying direction of the previous example and with the same speed as the multirotor was flying. The following equation can be written:
+
+$$w = v + u$$
+
+where $w$ is the ground speed of the multirotor, $v$ is the wind speed of the multirotor and $u$ is the wind speed. If we increase the wind speed $u$ the multirotor autopilot finds the angles and motor power that allow it to fulfill the desired groundspeed $w$. When $w$ stays constant and $u$ increases $v$ changes to account for the change in wind speed. The change in $v$ is dependant on the flight direction and wind direction. When flying against the wind $w = v - u$ as the multirotor has to compensate for the increased wind speed. When flying down wind the speeds add up - the multirotor has to do less work to fly at the desired speed $w$. To find the wind speed a model of the multirotor behavior is needed. Another way of looking at it is to instead look for wind speed of the multirotor. This itself is the model of the multirotor flight. The user gives the desired ground speed $w$, the wind is $u$ and what we are after is the resultant behavior $v$. To find the flight model $v$ we can take the afore mentioned equation and substitute the wind speed $u$ with 0.
+
+$$w = v$$
+
+This way the desired speed equals the wind speed. With this in mind it is nessecery to extract from the database the data of the flights where wind speed is close to zero to create the model. The chapter [Extracting windless flight data] does just that.
+
+Another important factor to consider is the state of the battery. To acurately model the multirotor behavior in diverse flight conditions the information about how much energy is left is tantamount. In the chapter [Analysis of battery performance] the data available is analyzed.
+
+## Extracting windless flight data
+
+To find the flights where the wind is minimal we could look at the levels of vibration aboard the multirotor but that is not the easiest way nor is it very accurate due to its non-linear nature. Further more the vibration levels stay relatively low for normal flight conditions. As such it is more useful for estimating the upper limits of air speed the multirotor is able to achieve.
+
+A better option is to note that when wind speed is zero the multirotor moves at the desired ground speed. If the desired ground speed is also zero then the behaviour of the multirotor should be stable as well. Without wind the angles of the multirotor should fluctuate around zero degrees and by looking at the average angles when the multirotor is commanded to hold its position in _loiter_ or _position_ _hold_ mode we can detect the logs that have nearly no wind. There will be some fluctuation in the angles due to GPS inaccuracy and barometric drift and drift of the IMU's and other sensors. This should amount to white noise and average out given time. By taking the average angles over the time of remaining stationary we will get the average angle and direction of the wind as the multirotor will effectively be flying to counteract the wind. Any sufficiently large angle constitutes wind. For training the model only the windless flights are needed, but since some wind is expected the level of cutoff where a flight is considered to have been in windless condition. Various levels of "windless" data could be used as diffirent cutoff values result in different amounts of training data.
+
+```{r latlng, fig.cap="Latitude and longitude data points of a flight.", echo=FALSE}
+include_graphics(path = "./figure/latlng.PNG")
+```
+
+In figure \@ref(fig:latlng) we can see a flight that consists of segments of noisy data. This flight was mostly flown in manual _loiter_ mode and as a result is this noisy.
+
+```{r latlngclean, fig.cap="Latitude and longitude data points of a flight.", echo=FALSE}
+include_graphics(path = "./figure/latlng3.PNG")
+```
+
+In figure \@ref(fig:latlngclean) a flight using _auto_ mode is used. In this mode the autopilot does its best to directly fly to the points specified in the mission. While this information is useful for getting an idea of the flight trajectory it does not help us with finding windless flights as the information we are looking for is missing. Namely the sections that the multirotor is stationary. Since the graph does not contain any data about time, only individual points, we are unable to see where the multirotor stands still. A guess would be that at the turning points of the straight segments the multirotor could potentially stand still.
+
+```{r lng, fig.cap="Longitude data points in timeseries of a flight.", echo=FALSE}
+include_graphics(path = "./figure/lng.PNG")
+```
+
+Looking at the longitude timeseries graph of the same flight on figure \@ref(fig:lng) we can clearly see where the multirotor stands still in the longtitude axis. However this is not sufficent to tell where the multirotor is truely stationary as motion could be had on the latitude axis.
+
+```{r lnglat, fig.cap="Longitude and latitude on the same timeseries graph of a flight.", echo=FALSE}
+include_graphics(path = "./figure/latlngSamegraph.PNG")
+```
+
+Figure \@ref(fig:lnglat) has time on the x axis and latitud/longitude point value changes on the y axis. The figure is made by taking both latitud and longitude axes and merging them into a single one. Then the data is shifted to very nearly zero so that both graphs can be seen. This helps us see where the multirotor is actually stationary. Where the value of both latitude and longitude stays unchanged for a period of time the multirotor is stationary. Graphically we can see where this is so but as a function of data we still need an aditional function to find the segments where the multirotor stays still. To find the segments various aproaches could be attempted. One of them would be to construct lines through points in the timeseries and looking for where the slope of the line changes compared to the last one. Filtering would be needed to account for the noise present. After that line segments where the graph moves perpendicular to either latitude/longitude axis are taken into consideration. From there latitude and longitude segments have to be compared to find the segments where both are perpendicular to the axis. This is to remove segments where motion is recorded as perpendicular to either axis. This can be seen on the end of the latitude longitude graphs on figure \@ref(fig:lnglat). There we can see motion on the longtitude graph but not on the latitude graph. Where both graphs are paralell to time the multirotor is truely stationary. However the aforementioned aproach is not the best on as it ignores corner cases such as when the multirotor has turned to face the direction of future motion and taken some angle to start moving but from inertia has not yet started moving. Luckily we have more parameters than latitude and longtitude coordinates in the logs. We also have information about what mode the multirotor was in.
+
+```{r lngmode, fig.cap="Longitude data points in timeseries of a flight augmented with mode information.", echo=FALSE}
+include_graphics(path = "./figure/longWithMode.PNG")
+```
+
+On figure \@ref(fig:lngmode) the longitude timeseries graph is augmented with information about which mode the multirotor was in during the flight. The take off sequence starts with brief entry to _stabilize_ mode which we will ignore. After that _auto_ mode with the setting to stay still until a non-empty mission is uploaded. Soon after *loiter* mode is entered. From figure \@ref(fig:lnglat) we can see that the multirotor remained stationary for the duration of *loiter* mode. After entering *guided* mode, which is also an automatic mission mode, the multirotor starts moving. In this flight each time the multirotor is statinary the mode is *loiter*, excepting take off sequence and landing procedure. In the landing procedure the *RTL* mode returns the multirotor to the launch location and lands. During the landing the multirotor remains stationary. Before fully landing the *RTL* mode is interrupted by the pilot by issuing *loiter* command. We can assume that here we had a skilled pilot who wanted to see how long the battery would last until being truely empty and thus estimating the overal health of the battery. After that an automatic landing failsafe is executed by the autopilot only to be interrupted again with the *loiter* command by the pilot. From this graph we can see that to find the windless flights we need to find all flight segments where: 
+
+* The mode is *loiter* and both latitude and longitude coordinates are stationary.
+
+* The segment after launch where the initial mission is empty and both latitude and longitude caardinates are stationary.
+
+We could also use mode *land* to check for wind conditions but it needs to be taken into account that the latitude is changing and *land* and *loiter* are not comparable. Also in *land* mode the multirotor can be manipulated manually so latitude and longitude coordinates need to be checked for changes. *RTL* mode should be split in two parts since it internaly contains both *guided* segment and *land* segment. For the *land* part in *RTL* same considerations need to be made.
+
+Once the segments have been filtered out the average angle of the multirotor needs to be calculated. Since the multirotor operates in three dimensional space there are three angle parameters. As the vehicle is capable of moving in any direction the orientation of the front is not important for our purposes. The parameter for that is yaw. Instead we average over the pitch and roll parameters.
+
+The previous analysis is suffisent to filter help filter out relevant information from the database. From there the relevant data may be separated into training and verification data to test the model. Further decimation of data is needed as the data is collected at a high frequency. The exact details for the model creation are left for the model creator.
+
+After the model is created the direction of the wind needs to be calculated. The direction of wind helps us optimize our battery use in the case of automated missions. Flying against the wind takes more power than flying by the wind. As we wentioned $w = v + u$ which means that the angle difference between $w$ and $u$ have to be compensated by $v$. Since all elements in the equation are vectors where the magnitude is the speed of motion and the angle is the angle. By subtracting from the desired ground speed $w$ the model of the air speed $v$ we get the calculated wind speed $u$. From here we can extract the wind direction. The calculated wind speed can be compared to real measurements to assess the accuracy of the model. An experiment may be conducted by flying to multirotors with 10 to 100 meters apart from each other where one of the multirotors is the multirotor from which the model is built from. The other multirotor should carry an accurate wind measurment device such as the one mentioned in [@wind]. Both multirotors should fly at the same height and at the same time to reduce variance of measurements in time. The missions should be identical except for the spatial displacement to avoid unwanted collisions.
+
+## Analysis of battery performance
+
+Vaatan graafikuid ja utlen kuidas aku kaitub ja miks nii vaga on vaja kasutada akukontrollerit.

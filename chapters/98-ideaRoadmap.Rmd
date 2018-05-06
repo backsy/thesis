@@ -65,7 +65,7 @@ chapter 3 database
 
 
 
-chapter 4 moddelling
+chapter 4 analysis
 
 * aku graafikud ja nende analüüs
 
@@ -74,11 +74,26 @@ chapter 4 moddelling
 * tõstetud probleemide lahendamine
 
 
-??
+todo
 
-* Tools?
+* bibliograpy
+
+* Work with formating
+
+* Chapter 4 formulas to be mathematically legit
+
+* Mission mode has fixed flight speed - mention that
 
 
+Outputs, value
+
+* database
+
+* database generation code
+
+* 2 thesis proposals and how to do them
+
+* 1 experiment outline
 
 
 

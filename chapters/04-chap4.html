@@ -121,54 +121,21 @@ $(document).ready(function () {
 </div>
 
 
-<p>chapter 1 State of the art</p>
-<ul>
-<li><p>Auto pilots</p></li>
-<li><p>Regular pilots</p></li>
-<li><p>Different missons</p></li>
-<li><p>Direction of the industry</p></li>
-<li><p>Program flight path once with camera angles and you have a new type of camera</p></li>
-<li><p>Counting animals in woods</p></li>
-<li><p>Inspecting gas/power lines</p></li>
-<li><p>Finding missing people</p></li>
-<li><p>Fully autonomous missions</p></li>
-</ul>
-<p>chapter 2 Why are regular pilots needed</p>
-<ul>
-<li><p>kaamera drooni tegelik eesmärk - video saamine, muu on sekundaarne</p></li>
-<li><p>guided ja rc juhtimine</p></li>
-<li><p>tuule mõju lendamisel</p></li>
-<li><p>kiiruse valimine</p></li>
-<li><p>aku tühjenemise jälgimine, koju lendamine</p></li>
-<li><p>lennu kauguse/missiooni kauguse hindamine</p></li>
-<li><p>tuult tuleb jälgida, et valida sobiv lennu kiirus</p></li>
-<li><p>aku tegelikku olukorda tuleb jälgida, et optimaalselt lennata</p></li>
-<li><p>puudu on teadmine, kui pikka missiooni saab teha mis ilma oludes</p></li>
-<li><p>kui palju mõjutab tuule kiirus lennu aega/kestvust/kaugust</p></li>
-<li><p>automaatmissiooni tegemine</p></li>
-<li><p>lahenduseks on andmeid koguda ja analüüsida lünki</p></li>
-<li><p>rtl, fs</p></li>
-</ul>
-<p>chapter 3 database</p>
-<ul>
-<li><p>andmete kuju</p></li>
-<li><p>faili tüüpide valik</p></li>
-<li><p>wide/long/tidy data</p></li>
-<li><p>database normalization</p></li>
-<li><p>the results and improvements to be made</p></li>
-</ul>
-<p>chapter 4 analysis</p>
-<ul>
-<li><p>aku graafikud ja nende analüüs</p></li>
-<li><p>lennu modede ja lendamise analüüs</p></li>
-<li><p>tõstetud probleemide lahendamine</p></li>
-</ul>
-<p>todo</p>
-<ul>
-<li><p>bibliograpy</p></li>
-<li><p>Work with formating</p></li>
-<li><p>Chapter 4 formulas to be mathematically legit</p></li>
-</ul>
+<div id="initial-analysis-of-the-data" class="section level1">
+<h1>Initial analysis of the data</h1>
+<p>As mentioned in the second chapter for the multirotor there is no difference wether it is flying at a given direction at a set speed and staying stationary in winds oposite to the flying direction of the previous example and with the same speed as the multirotor was flying. The following equation can be written:</p>
+<p><span class="math display">\[w = v + u\]</span></p>
+<p>where <span class="math inline">\(w\)</span> is the ground speed of the multirotor, <span class="math inline">\(v\)</span> is the wind speed of the multirotor and <span class="math inline">\(u\)</span> is the wind speed. If we increase the wind speed <span class="math inline">\(u\)</span> the multirotor autopilot finds the angles and motor power that allow it to fulfill the desired groundspeed <span class="math inline">\(w\)</span>. When <span class="math inline">\(w\)</span> stays constant and <span class="math inline">\(u\)</span> increases <span class="math inline">\(v\)</span> changes to account for the change in wind speed. The change in <span class="math inline">\(v\)</span> is dependant on the flight direction and wind direction. When flying against the wind <span class="math inline">\(w = v - u\)</span> as the multirotor has to compensate for the increased wind speed. When flying down wind the speeds add up - the multirotor has to do less work to fly at the desired speed <span class="math inline">\(w\)</span>. To find the wind speed a model of the multirotor behavior is needed. Another way of looking at it is to instead look for wind speed of the multirotor. This itself is the model of the multirotor flight. The user gives the desired ground speed <span class="math inline">\(w\)</span>, the wind is <span class="math inline">\(u\)</span> and what we are after is the resultant behavior <span class="math inline">\(v\)</span>. To find the flight model <span class="math inline">\(v\)</span> we can take the afore mentioned equation and substitute the wind speed <span class="math inline">\(u\)</span> with 0. This way <span class="math inline">\(w = v\)</span> - the desired speed equals the wind speed. With this in mind it is nessecery to extract from the database the data of the flights where windspeed is close to zero to create the model. The chapter <a href="#extracting-windless-flight-data">Extracting windless flight data</a> does just that.</p>
+<p>Another important factor to consider is the state of the battery. To acurately model the multirotor behavior in diverse flight conditions the information about how much energy is left is tantamount. In the chapter <a href="#analysis-of-battery-performance">Analysis of battery performance</a> the data available is analyzed.</p>
+<div id="extracting-windless-flight-data" class="section level2">
+<h2>Extracting windless flight data</h2>
+<p>Tuuletute ilmadega tehtud lendude valja soelumine kogu andmebaasist</p>
+</div>
+<div id="analysis-of-battery-performance" class="section level2">
+<h2>Analysis of battery performance</h2>
+<p>Vaatan graafikuid ja utlen kuidas aku kaitub ja miks nii vaga on vaja kasutada akukontrollerit.</p>
+</div>
+</div>
 
 
 

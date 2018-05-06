@@ -11,7 +11,7 @@ Not all possible messages that the autopilot generates are sent to the GCS. It i
 
 ## Choosing the output data type
 
-In this thesis _R_^[R-project homepage: https://WWW.r-project.org/] programming language is used for data analysis. _R_ is a language and environment for statistical computing and graphics. As it is open source no licences are required to set it up and use. This brings statistical computing and data science to the hands of everyone interested in the topic and avoids expensive mathematics suites.
+In this thesis _R_^[@r] programming language is used for data analysis. _R_ is a language and environment for statistical computing and graphics. As it is open source no licences are required to set it up and use. This brings statistical computing and data science to the hands of everyone interested in the topic and avoids expensive mathematics suites.
 
 The binary data in the log files is not readily accessible from _R_. As a result it is necessary to convert the data to some other format. The _pymavlink_ project^[Python implementation of MAVLink protocol. Web page: https://github.com/ArduPilot/pymavlink] has a few tools that do just that. First of the options is to convert the log into a CSV^[Comma separated values file is a text file where a comma is used to separate values.] file. _Mavlogdump.py_^[Github repository: https://github.com/ArduPilot/pymavlink/blob/master/tools/mavlogdump.py] is the tool available for conversion. With CSV files comes a caveat - you may only export one message type at a time. This is to be expected since the the CSV files separate table columns with commas and the log files have message types with different lengths of columns. Example lines of CSV file taken from a flight log containing NTUN packets.
 
