@@ -24,5 +24,7 @@ JSON                JavaScript Object Notation
 SQL                 Structured Query Language
 
 DBMS                Database Management Systems
+
+PTZ camera          Point-Tilt-Zoom camera
 -------------------------------------------------
 

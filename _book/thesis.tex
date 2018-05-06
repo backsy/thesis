@@ -248,6 +248,11 @@ DBMS\strut
 \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
 Database Management Systems\strut
 \end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+PTZ camera\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Point-Tilt-Zoom camera\strut
+\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 }
@@ -368,6 +373,11 @@ Database Management Systems\strut
     \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
     Database Management Systems\strut
     \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    PTZ camera\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Point-Tilt-Zoom camera\strut
+    \end{minipage}\tabularnewline
     \bottomrule
     \end{longtable}
   \end{abbrvs}
@@ -389,7 +399,7 @@ The following thesis looks at the flight logs of Eli Ltd. to assess the
 fuel economy and the information given to the user. To be written when
 rest of the paper is finished.
 
-\chapter{Piloting a multirotor UAV}\label{piloting}
+\chapter{State of the art}\label{state}
 
 A multirotor UAV may carry different payloads for different use cases
 but predominantly the payload is a video or photo camera. The video and
@@ -402,6 +412,99 @@ A pilot needs to have certain skills and training to be able to safely
 operate an airial vehicle. The cost of hiring a pilot can be much higher
 than the operational costs of the UAV and payload combined. Thus
 companies across the globe look to simplify the piloting.
+
+In movie industry camera drones are used with two people. One person to
+pilot the multirotor and one person to manipulate the camera. This has
+the overhead of hiring two people and the multirotor and the expencive
+payload. For the high-end movie industry this is fine. Where this
+overhead becomes prohibitive is in the industrial applications. To
+inspect powerlines atleast one person is needed to do the piloting and
+directing of the camera. The video analysis can be done during the
+flight or later. To keep the needs of man power to a minimum the
+operator needs to be able to operate the multirotor aswell as the camera
+and know enough of the powerlines to analyse the video feed. Another
+option is to have two people - one to pilot and film and a second one to
+do the analysis. The operator however might not film the correct parts
+for the analyst to do his job. Thus introducing the risk that the
+collected data is unusable. In the case of powerlines not only a single
+pylon needs to be inspected, rather several hundred kilometers worth
+need to be assessed at a time. Having a single person drive to each
+location to fly a multirotor would take a very long time for a single
+person and as the person needs to be highly trained the process would
+become prohibitively expencive. This problem is smaller when it comes to
+tele-communications companies as they have single cell towers which
+allways need to be inspected one at a time. For the energy sector a
+multirotor is prohibitively expencive and not because of the device
+costs but rather the manpower costs.
+
+The energy sector could use multirotors, but they have a more cost
+effective way of detecting faults. The method involves renting a full
+size helicopter with a pilot and fitting it with a expencive camera and
+camera operator to fly over the powerlines at the right angles to later
+analyse the photos or video taken. This has a higher chanche of missing
+faults but compared to multirotors is cheaper alternative.
+
+Automating the missions to inspect powerlines or cell towers requires
+high intelligence on the part of the autopilot and will not be assesed
+in this thesis. Instead search and resque missions and surveilance
+missions are assesed. These missions have the potential to be simplified
+to the point where additional training on the part of the pilot is not
+needed.
+\begin{figure}
+\centering
+\includegraphics{./figure/scanningMission.PNG}
+\caption[\label{fig:scanning}Search and rescue
+mission.]{\label{fig:scanning}Search and rescue mission.\footnotemark{}}
+\end{figure}
+\footnotetext{Image captured from Elix software made by Eli Ltd.}
+
+To find a person lost in woods a mission such as seen on figure
+\ref{fig:scanning} is used. To execute such a mission the pilot needs to
+take into account several variables such as wind speed and battery
+condition. A naive simplification to piloting can be made by limiting
+the maximum disturbance (wind) allowed by forcibly landing when such
+disturbance is detected. This sets a hard limit to the conditions an
+unskilled pilot can fly in. By enforcing such a limit the risk of
+failure can be minimized and the producer of the multirotor would feel
+alot better about their product. A skilled pilot however would be able
+to fly and potentially save someones life in that situation. A better
+aproach is needed.
+\begin{figure}
+\centering
+\includegraphics{./figure/twoDeer.PNG}
+\caption[\label{fig:twoDeer}Heat signals of two deer in the
+woods.]{\label{fig:twoDeer}Heat signals of two deer in the
+woods.\footnotemark{}}
+\end{figure}
+\footnotetext{Source: Eli Ltd photo repository.}
+\begin{figure}
+\centering
+\includegraphics{./figure/deer.PNG}
+\caption[\label{fig:deer}A deer in the woods.]{\label{fig:deer}A deer in the
+woods.\footnotemark{}}
+\end{figure}
+\footnotetext{Source: Eli Ltd photo repository.}
+
+Area surveilance requires an automated mission that allows for
+specification of the camera direction and angle. A mission to survey the
+fences of a military compound would have to include waypoints that
+specify the locations the multirotor flies to and the locations or
+directions the multirotor camera is turned to while flying. While
+building such a mission takes some knowledge of the software the actual
+mission takes no input from a pilot (unless desired) and can be used the
+same way a regular camera video is used. When the viewer of the video
+feed spots that something is wrong, the multirotor could be set to
+manual control mode to be used as flying camera in a similar fashion to
+PTZ cameras. Such systems could be used instead of stationary cameras in
+cases where the areas are to big to have stationary camera
+infrastructure or change rapidly. Given the naive solution to dealing
+with different weather conditions outlined above would leave the area
+vulnerable every time the weather conditions exceed the piloting
+abilities of an untrained pilot. To remedy this the autopilot needs to
+be able to adjust to the weather conditions in the same way an
+experienced pilot would.
+
+\chapter{Piloting a multirotor UAV}\label{piloting}
 
 During the flight of a multirotor UAV several things happen at once.
 Firstly the UAV fights against gravity to keep itself at the desired
@@ -433,11 +536,13 @@ Phantom 4\footnote{A Chinese producer of multirotor UAV's. Phantom 4 is
   a successful commercially available multirotor platform.} there are
 modes such as \emph{Position Mode} which uses GPS and GLONASS satellite
 positioning where releasing the controls results in the platform
-remaining stationary in air. A similar mode exists in arducopter called
-\emph{loiter}. In this some simplification of piloting can be seen. The
-autopilot is there to remove a component of skills needed for succesful
-piloting. In these modes the pilot is in control of the speed of flight
-and is in effect compensating for the effects of wind.
+remaining stationary in air even in windy conditions. A similar mode
+exists in arducopter called \emph{loiter}. In this some simplification
+of piloting can be seen. The autopilot is there to remove a component of
+skills needed for succesful piloting. In these modes the pilot is in
+control of the speed of flight and is in effect compensating for the
+effects of wind when flying in some direction. While staying still the
+GPS location is used to stay still.
 
 Both \emph{arducopter} and \emph{DJI} have automatic flight modes where
 the multirotor flies according to a pre-programmed mission. The missions
@@ -450,13 +555,36 @@ warning at 9 m/s. \emph{Arducopter} does not report the wind and leaves
 everything to the pilot.
 
 The complications of piloting due to wind are numerous and we will look
-at a few of them. Firstly the angles of the quad-rotor will reflect wind
-direction and to some extent strength. When the aircraft is stationary
-above ground the wind causes it to tilt into the wind. In the reference
-frame of air, the multirotor is flying at the speed of the wind and in
-opposite direction, to, in the reference frame of the ground, remain
-stationary. Secondly, when flying against the wind, the current draw
-increases to match the increased power required to stay airborne.
+at a few of them.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Angles of the multirotor when stationary (\emph{loiter} mode) reflect
+  wind direction.
+\item
+  Current draw from the battery increases.
+\item
+  Vibrations aboard the multirotor inrcease.
+\end{enumerate}
+When the aircraft is stationary above ground the wind causes it to tilt
+into the wind. In the reference frame of air, the multirotor is flying
+at the speed of the wind and in opposite direction, to, in the reference
+frame of the ground, remain stationary.
+\begin{figure}
+\centering
+\includegraphics{./figure/wind.PNG}
+\caption[\label{fig:wind}Stationary multirotor without and with
+wind.]{\label{fig:wind}Stationary multirotor without and with
+wind.\footnotemark{}}
+\end{figure}
+\footnotetext{Arrow icon made by
+  \url{https://www.flaticon.com/authors/lyolya}, multirotor and tree
+  icon made by \url{https://www.flaticon.com/authors/freepik} from
+  www.flaticon.com}
+
+Secondly, when flying against the wind, the current draw increases to
+match the increased power required to stay airborne.
+
 Thirdly the vibrations aboard the aircraft increase. This can cause
 trouble for the flight controller as the output of the IMU's becomes
 noisy. Since the flight controller calculates the outputs of the motors
@@ -467,11 +595,6 @@ look at the first two effects more closely and the third in relation to
 maximum flight speed.
 
 So far we have talked about
-
-\chapter{State of the art}\label{state}
-
-Not much state to talk about. DJI does their thing and its proprietory
-and arducopter is open-source which is what we use.
 
 \chapter{Database generation}\label{dbs}
 
@@ -497,7 +620,7 @@ a bigger subset is recorded. For the logs present most important
 messages and communications are saved but extremely high resolution data
 is not saved. As such over a thousand logs have been collected. The
 total number of binary logs available is 1363 and amount to 57.2 GB of
-data. This would average 41966 kB per log. Among them are logs that are
+data. This would average 41966 KB per log. Among them are logs that are
 not actual flights but rather tests on the bench. These logs inflate the
 number of logs available. Some logs do contain the highest amounts of
 data and can be several hundred MB large and thus inflate the average. A
@@ -508,15 +631,15 @@ normal flight can be expected to be between 4 to 100 MB's. An average
 data type}\label{choosing-the-output-data-type}}
 
 In this thesis \emph{R}\footnote{R-project homepage:
-  \url{https://www.r-project.org/}} programming language is used for
+  \url{https://WWW.r-project.org/}} programming language is used for
 data analysis. \emph{R} is a language and environment for statistical
 computing and graphics. As it is open source no licences are required to
 set it up and use. This brings statistical computing and data science to
-the hands of everyone interested in the topic and avoids expencive
+the hands of everyone interested in the topic and avoids expensive
 mathematics suites.
 
 The binary data in the log files is not readily accessible from
-\emph{R}. As a result it is nessecary to convert the data to some other
+\emph{R}. As a result it is necessary to convert the data to some other
 format. The \emph{pymavlink} project\footnote{Python implementation of
   MAVLink protocol. Web page:
   \url{https://github.com/ArduPilot/pymavlink}} has a few tools that do
@@ -547,7 +670,7 @@ analysis time would be negatively impacted as the data import poses an
 overhead.
 
 Another option is to use JSON\footnote{Web page:
-  \url{https://www.json.org}}. JSON is a data-interchange format
+  \url{https://WWW.json.org}}. JSON is a data-interchange format
 designed to be easily read and written by humans as well as to be easily
 parsed and generated by machines. There are two structures in JSON:
 \begin{itemize}
@@ -573,7 +696,7 @@ Both can be seen in the following example:
 \FunctionTok{\}\}}
 \end{Highlighting}
 \end{Shaded}
-Two concecutive entries from the binary log converted to json format
+Two consecutive entries from the binary log converted to json format
 using \emph{mavlogdump.py} look like this:
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -617,11 +740,11 @@ thirteen times! The library of logs that is 57.2 GB becomes 743.6 GB of
 JSON data as a result. At least there are an order of magnitude lower
 amount of files.
 
-The final option to consider is \emph{SQLite}\footnote{\url{https://www.sqlite.org/about.html}}.
+The final option to consider is \emph{SQLite}\footnote{\url{https://WWW.sqlite.org/about.html}}.
 \emph{SQLite} is a \emph{SQL} database engine that is self-contained and
 serverless. It is designed to be \emph{SQL} database, but without
 concerning itself with a server process and user management and other
-common \emph{SQL} atributes. As such its designed to be a competitor to
+common \emph{SQL} attributes. As such its designed to be a competitor to
 both JSON and CSV. The benefit of \emph{SQLite} is that it can be used
 by various third party programs and programming languages. \emph{Python}
 and \emph{Tcl} have \emph{SQLite} built in. Raw data can be imported
@@ -631,7 +754,7 @@ written to a USB memory stick or with smaller databases emailed to a
 colleague directly. Given some understanding of \emph{SQL} \emph{SQLite}
 offers an easy to use database.
 
-\emph{R} language has adaptors to connect to \emph{SQL} databases such
+\emph{R} language has adapters to connect to \emph{SQL} databases such
 as \emph{RODBC}\footnote{\url{https://cran.r-project.org/web/packages/RODBC/index.html}},
 \emph{rsqlserver}\footnote{\url{https://github.com/agstudy/rsqlserver}},
 \emph{RJDBC}\footnote{\url{https://cran.r-project.org/web/packages/RJDBC/index.html}},
@@ -646,12 +769,12 @@ manipulate data in \emph{SQLite} database.
 
 \section{Tidy data}\label{tidy-data}
 
-Tidy data is a set of principles that help organize data in datasets.
+Tidy data is a set of principles that help organize data in data sets.
 This helps make data cleaning easier and faster by not having to start
 from scratch every time. Another benefit of tidy data is that it is
 easier to design data analysis tools which can assume that the data
 input is always tidy. Both benefits help the data analyser to focus on
-the underlying problem rather than manageing data half the time.
+the underlying problem rather than managing data half the time.
 \begin{longtable}[]{@{}ccccccccc@{}}
 \caption{Tidy data.}\tabularnewline
 \toprule
@@ -855,7 +978,7 @@ carb\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
-Here we are looking at the \emph{mtcars} dataset that is inbuilt in
+Here we are looking at the \emph{mtcars} data set that is inbuilt in
 \emph{R}. In tidy data:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -867,15 +990,15 @@ Here we are looking at the \emph{mtcars} dataset that is inbuilt in
 \item
   Each type of observational unit forms a table.
 \end{enumerate}
-This dataset is already tidy. Each row is an \emph{observation} and each
-column represents a \emph{variable}. Every element in the table is a
-\emph{value}. Any other arrangement of data is considered \emph{messy}.
-By having tidy data it is easy to manipulate data such as group by
-column info and tie break on another column. Tidy data is particularly
-well suited for vectorised programming languages like \emph{R} where
-each observation of each variable is always paired.
+This data set is already tidy. Each row is an \emph{observation} and
+each column represents a \emph{variable}. Every element in the table is
+a \emph{value}. Any other arrangement of data is considered
+\emph{messy}. By having tidy data it is easy to manipulate data such as
+group by column info and tie break on another column. Tidy data is
+particularly well suited for vectored programming languages like
+\emph{R} where each observation of each variable is always paired.
 
-The five most common problems with messy datasets are:
+The five most common problems with messy data sets are:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
@@ -1106,17 +1229,17 @@ needs exactly but those tools can be used as a source of information for
 building our own tools.
 
 The data storage format was decided to be \emph{SQLite} database. To
-increase the efficency of working with the data the dataset should be
+increase the efficiency of working with the data the data set should be
 tidy. By taking that into account when designing the \emph{SQLite}
-database, time can be saved by not having to separately tidy up the
-dataset before analysis. Further more Edgar F. Codd\footnote{Computer
+database, time can be saved by not having to separately tidy up the data
+set before analysis. Further more Edgar F. Codd\footnote{Computer
   scientist who invented relational database management systems
   \url{https://en.wikipedia.org/wiki/Edgar_F._Codd}} defined
 \emph{normal} \emph{forms} to permit querying and manipulation by a
 universal data language\footnote{One such language is \emph{SQL}}. The
 third normal form (3NF)\footnote{\url{https://en.wikipedia.org/wiki/Third_normal_form}}
 is considered as being tidy data. Simply by designing the database using
-the normal forms, ecpecially the third nomal form allows us to reach
+the normal forms, especially the third normal form allows us to reach
 tidy data.
 
 By instructing \emph{mavlogdump.py} to dump the logs from binary form to
@@ -1304,8 +1427,8 @@ moved to a dedicated table.
 
 The code starts off with taking as an input the folder in which the
 binary files is stored in. The folder is searched recursively so that
-subfolders containing log files are also searched through. The files are
-counted and the sizes saved. A filtering is done by file size. Files
+sub folders containing log files are also searched through. The files
+are counted and the sizes saved. A filtering is done by file size. Files
 larger than 100 MB and smaller than 4 MB are skipped. After the first
 log file is processed the time taken is used to calculate an estimation
 as to how long the whole process will take. Further more the total time
@@ -1332,7 +1455,7 @@ filtering in the analysis stage.
 Timestamps are allowed to repeat as searching through the whole table
 means more processing needed while creating the database. This leaves a
 possibility to create a secondary script that would look through the
-\emph{Timestamp} table and removing tuplicates and substituting the
+\emph{Timestamp} table and removing duplicates and substituting the
 \emph{Id} in the \emph{Value} table.
 
 There is an overhead to writing into the \emph{SQLite} database. A
@@ -1347,7 +1470,7 @@ processing down. There is a possibility that further optimization can be
 done.
 
 In case where the script crashes or some error happens or new logs are
-to be added to the database the code first checks the existance of the
+to be added to the database the code first checks the existence of the
 database. If the database exists the supporting tables are read into
 memory to be tested against so that new messages and parameters get
 added to the database.
@@ -1355,14 +1478,25 @@ added to the database.
 While \emph{SQLite} is a good option for an on disk storage of the
 database, other databases are available and have some useful features.
 One of which is the ability to use window functions on the database.
-This means that \ldots{}
+This means that it is possible to use filter kernels on the data while
+still in database. Such functions using \emph{SQLite} require loading
+the relevant segment of data (such as a single flight) into \emph{R}. An
+attempt was made to port the working \emph{python} code to instead of
+\emph{SQLite} to use \emph{PostgreSQL}\footnote{Open source relational
+  database. \url{https://WWW.postgresql.org}}. The code does work but is
+orders of magnitude slower. Heavy optimization is needed to streamline
+the process and as \emph{SQLite} interface is simpler in nature this
+idea was left as something to be done later given more time. Moving to a
+full featured relational database management system would allow easier
+porting of the analysis to a web based service later, but that is not
+relevant in the context of this thesis.
 
 The code for creating the database is written in \emph{python} and is
 added to the appendix.
 
 \chapter{Modelling stuff}\label{modelling-stuff}
 
-Eeem.
+After building the database
 
 \chapter{The results of it all}\label{the-results-of-it-all}
 
@@ -1763,6 +1897,10 @@ approach with quicktime}. Boston, MA: Wesley Addison Longman.
 \hypertarget{ref-angel2002a}{}
 Angel, E. (2001b). \emph{Test second book by angel}. Boston, MA: Wesley
 Addison Longman.
+
+\hypertarget{ref-deussen2000}{}
+Deussen, O., \& Strothotte, T. (2000). Computer-generated pen-and-ink
+illustration of trees. \emph{``Proceedings of'' SIGGRAPH 2000}, 13--18.
 
 
 % Index?

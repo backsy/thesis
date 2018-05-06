@@ -1,3 +1,32 @@
-# State of the art {#state}
+# Piloting a multirotor UAV {#piloting}
 
-Not much state to talk about. DJI does their thing and its proprietory and arducopter is open-source which is what we use.
+During the flight of a multirotor UAV several things happen at once. Firstly the UAV fights against gravity to keep itself at the desired height. Secondly it has to follow the orders of the pilot - fly as desired. Thirdly the UAV also fights against the wind. This combination of three forces means that the system is highly dynamic. While the gravity is constant, the desires of the pilot change as well as the wind. 
+
+The pilot can be in control largely by two ways:
+
+1. Manual control via analog controllers
+2. Automatic flight mode via commands
+
+During manual mode the UAV is directed by analog controllers that give it some sort of continuous input signal to adjust the throttle of the four motors. Changing the throttle results in either tilting of the aircraft or changing of its altitude or both. Different vendors offer differing levels of control. In *arducopter*^[A full-featured, open-source multicopter UAV controller firmware.] firmware there is _stabilize_ mode that allows the pilot to fly manually, but the platform self-levels the roll and pitch axis. If the pilot releases the controls the UAV falls to the ground. In *DJI* Phantom 4^[A Chinese producer of multirotor UAV's. Phantom 4 is a successful commercially available multirotor platform.] there are modes such as _Position Mode_ which uses GPS and GLONASS satellite positioning where releasing the controls results in the platform remaining stationary in air even in windy conditions. A similar mode exists in arducopter called _loiter_. In this some simplification of piloting can be seen. The autopilot is there to remove a component of skills needed for succesful piloting. In these modes the pilot is in control of the speed of flight and is in effect compensating for the effects of wind when flying in some direction. While staying still the GPS location is used to stay still.
+
+Both *arducopter* and *DJI* have automatic flight modes where the multirotor flies according to a pre-programmed mission. The missions are user specified by global x/y coordinates, height values and the speed of flight between points. The multirotor autonomously attempts to fly through given mission points at the given height and speed. During such a flight the multirotor automatically compensates for wind. In the case of *DJI* a wind warning is given at 6 m/s winds and high wind warning at 9 m/s.<!-- citation needed --> *Arducopter* does not report the wind and leaves everything to the pilot.
+
+The complications of piloting due to wind are numerous and we will look at a few of them. 
+
+1. Angles of the multirotor when stationary (_loiter_ mode) reflect wind direction.
+
+2. Current draw from the battery increases.
+
+3. Vibrations aboard the multirotor inrcease.
+
+When the aircraft is stationary above ground the wind causes it to tilt into the wind. In the reference frame of air, the multirotor is flying at the speed of the wind and in opposite direction, to, in the reference frame of the ground, remain stationary. Looking at the angles there is no difference between standing still in 5 m/s wind and flying in some direction with the speed of 5 m/s in windless weather.
+
+```{r wind, fig.cap="Stationary multirotor without and with wind.^[Arrow icon made by https://www.flaticon.com/authors/lyolya, multirotor and tree icon made by https://www.flaticon.com/authors/freepik from www.flaticon.com]", echo=FALSE}
+include_graphics(path = "./figure/wind.PNG")
+```
+
+Secondly, when flying against the wind, the current draw increases to match the increased power required to stay airborne. From the power consumption point of view there is no difference in flying 5 m/s in some direction to standing still in 5 m/s wind.
+
+Thirdly the vibrations aboard the aircraft increase. This can cause trouble for the flight controller as the output of the IMU's becomes noisy. Since the flight controller calculates the outputs of the motors using various sensors and among them IMU's, high vibration may cause the flight controller to be unable to determine its attitude and as a result cause the aircraft to loose control and crash. In this thesis we will look mainly at the first two effects.
+
+To operate a multirotor manually the pilot needs to take those effects into account and keep their eyes on the readings of those parameters. The simplified flight modes such as _loiter_ take most of the skill needed to pilot by implementing features on the autopilot. For safety both *arducopter* and *DJI* use failsafe modes to guarantee that the multirotor has enough power left to reach the take-off location. A naive aproach that *arducopter* employs is to look at the battery voltage and at a fixed point start flying back. This safety behaviour can be triggered in both manual control mode and automatic mission mode. A smarter failsafe would also take into account the distance from the starting location to scale the value where the failsafe is triggered. 

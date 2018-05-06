@@ -1,6 +1,27 @@
 
 
-chapter 1 How to fly, what goes on, general idea
+chapter 1 State of the art
+
+* Auto pilots
+
+* Regular pilots
+
+* Different missons
+
+* Direction of the industry
+
+* Program flight path once with camera angles and you have a new type of camera
+
+* Counting animals in woods
+
+* Inspecting gas/power lines
+
+* Finding missing people
+
+* Fully autonomous missions
+
+
+chapter 2 Why are regular pilots needed
 
 * kaamera drooni tegelik eesmärk - video saamine, muu on sekundaarne
 
@@ -14,11 +35,6 @@ chapter 1 How to fly, what goes on, general idea
 
 * lennu kauguse/missiooni kauguse hindamine
 
-
-
-
-chapter 2 What are the problems
-
 * tuult tuleb jälgida, et valida sobiv lennu kiirus
 
 * aku tegelikku olukorda tuleb jälgida, et optimaalselt lennata
@@ -30,6 +46,8 @@ chapter 2 What are the problems
 * automaatmissiooni tegemine
 
 * lahenduseks on andmeid koguda ja analüüsida lünki
+
+* rtl, fs
 
 
 
