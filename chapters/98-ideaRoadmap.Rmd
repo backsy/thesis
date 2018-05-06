@@ -1,0 +1,69 @@
+
+
+chapter 1 How to fly, what goes on, general idea
+
+* kaamera drooni tegelik eesmärk - video saamine, muu on sekundaarne
+
+* guided ja rc juhtimine
+
+* tuule mõju lendamisel
+
+* kiiruse valimine
+
+* aku tühjenemise jälgimine, koju lendamine
+
+* lennu kauguse/missiooni kauguse hindamine
+
+
+
+
+chapter 2 What are the problems
+
+* tuult tuleb jälgida, et valida sobiv lennu kiirus
+
+* aku tegelikku olukorda tuleb jälgida, et optimaalselt lennata
+
+* puudu on teadmine, kui pikka missiooni saab teha mis ilma oludes
+
+* kui palju mõjutab tuule kiirus lennu aega/kestvust/kaugust
+
+* automaatmissiooni tegemine
+
+* lahenduseks on andmeid koguda ja analüüsida lünki
+
+
+
+chapter 3 database 
+
+* andmete kuju
+
+* faili tüüpide valik
+
+* wide/long/tidy data
+
+* database normalization
+
+* the results and improvements to be made
+
+
+
+chapter 4 moddelling
+
+* aku graafikud ja nende analüüs
+
+* lennu modede ja lendamise analüüs
+
+* tõstetud probleemide lahendamine
+
+
+??
+
+* Tools?
+
+
+
+
+
+
+
+

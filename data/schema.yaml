@@ -1,0 +1,30 @@
+# Tables and columns
+
+- table: Flight
+  columns:
+    Id: {key: yes}
+    Path:
+
+- table: Message
+  columns:
+    Id: {key: yes}
+    Message:
+
+- table: Parameter
+  columns:
+    Id: {key: yes}
+    Parameter:
+
+- table: Timestamp
+  columns:
+    Id: {key: yes}
+    Timestamp:
+
+- table: Value
+  columns:
+    Id: {key: yes}
+    Flight: {ref: Flight}
+    Message: {ref: Message}
+    Timestamp: {ref: Timestamp}
+    Parameter: {ref: Parameter}
+    Value:

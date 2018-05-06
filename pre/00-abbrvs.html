@@ -121,26 +121,68 @@ $(document).ready(function () {
 </div>
 
 
-<div id="piloting" class="section level1">
-<h1>Piloting a multirotor UAV</h1>
-<p>A multirotor UAV may carry different payloads for different use cases but predominantly the payload is a video or photo camera. The video and photos can be used for 3D mapping, search and rescue operations, inspecting powerlines, surveilance, inspecting wind turbine structural integrity, counting deer in woods or simply capturing cinematic footage to name a few. However the act of piloting itself is secondary to the goal. The act of piloting is nessecary to gather data with the payload. A pilot needs to have certain skills and training to be able to safely operate an airial vehicle. The cost of hiring a pilot can be much higher than the operational costs of the UAV and payload combined. Thus companies across the globe look to simplify the piloting.</p>
-<p>During the flight of a multirotor UAV several things happen at once. Firstly the UAV fights against gravity to keep itself at the desired height. Secondly it has to follow the orders of the pilot - fly as desired. Thirdly the UAV also fights against the wind. This combination of three forces means that the system is highly dynamic. While the gravity is constant, the desires of the pilot change as well as the wind.</p>
-<p>The pilot can be in control largely by two ways:</p>
-<ol style="list-style-type: decimal">
-<li>Manual control via analog controllers</li>
-<li>Automatic flight mode via commands</li>
-</ol>
-<p>During manual mode the UAV is directed by analog controllers that give it some sort of continuous input signal to adjust the throttle of the four motors. Changing the throttle results in either tilting of the aircraft or changing of its altitude or both. Different vendors offer differing levels of control. In <em>arducopter</em><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> firmware there is <em>stabilize</em> mode that allows the pilot to fly manually, but the platform self-levels the roll and pitch axis. If the pilot releases the controls the UAV falls to the ground. In <em>DJI</em> Phantom 4<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> there are modes such as <em>Position Mode</em> which uses GPS and GLONASS satellite positioning where releasing the controls results in the platform remaining stationary in air. A similar mode exists in arducopter called <em>loiter</em>. In these modes the pilot is in control of the speed of flight and in effect is compensating for the effects of wind.</p>
-<p>Both <em>arducopter</em> and <em>DJI</em> have automatic flight modes where the multirotor flies according to a pre-programmed mission. The missions are user specified by global x/y coordinates, height values and the speed of flight between points. The multirotor autonomously attempts to fly through given mission points at the given height and speed. During such a flight the multirotor automatically compensates for wind. In the case of <em>DJI</em> a wind warning is given at 6 m/s winds and high wind warning at 9 m/s.<!-- citation needed --> <em>Arducopter</em> does not report the wind and leaves everything to the pilot.</p>
-<p>The complications of piloting due to wind are numerous and we will look at a few of them. Firstly the angles of the quad-rotor will reflect wind direction and to some extent strength. When the aircraft is stationary above ground the wind causes it to tilt into the wind. In the reference frame of air, the multirotor is flying at the speed of the wind and in opposite direction, to, in the reference frame of the ground, remain stationary. Secondly, when flying against the wind, the current draw increases to match the increased power required to stay airborne. Thirdly the vibrations aboard the aircraft increase. This can cause trouble for the flight controller as the output of the IMU’s becomes noisy. Since the flight controller calculates the outputs of the motors using various sensors and among them IMU’s, high vibration may cause the flight controller to be unable to determine its attitude and as a result cause the aircraft to loose control and crash. In this thesis we will look at the first two effects more closely and the third in relation to maximum flight speed.</p>
-</div>
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>A full-featured, open-source multicopter UAV controller firmware.<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>A Chinese producer of multirotor UAV’s. Phantom 4 is a successful commercially available multirotor platform.<a href="#fnref2">↩</a></p></li>
-</ol>
-</div>
+<table style="width:71%;">
+<colgroup>
+<col width="27%"></col>
+<col width="43%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Abbreviation</em></th>
+<th align="left"><em>Meaning</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>UAV</td>
+<td align="left">Unmanned Aerial Vehicle</td>
+</tr>
+<tr class="even">
+<td>GPS</td>
+<td align="left">Global Positioning System</td>
+</tr>
+<tr class="odd">
+<td>GLONASS</td>
+<td align="left">Global Navigation Satellite System</td>
+</tr>
+<tr class="even">
+<td>IMU</td>
+<td align="left">Inertial Measurement Unit</td>
+</tr>
+<tr class="odd">
+<td>GB</td>
+<td align="left">GigaByte - 1000<sup>3</sup> bytes</td>
+</tr>
+<tr class="even">
+<td>kB</td>
+<td align="left">kiloByte - 1000<sup>1</sup> bytes</td>
+</tr>
+<tr class="odd">
+<td>MB</td>
+<td align="left">MegaByte - 1000<sup>2</sup> bytes</td>
+</tr>
+<tr class="even">
+<td>GCS</td>
+<td align="left">Ground Control Station</td>
+</tr>
+<tr class="odd">
+<td>CSV</td>
+<td align="left">Comma-Sepparated Values</td>
+</tr>
+<tr class="even">
+<td>JSON</td>
+<td align="left">JavaScript Object Notation</td>
+</tr>
+<tr class="odd">
+<td>SQL</td>
+<td align="left">Structured Query Language</td>
+</tr>
+<tr class="even">
+<td>DBMS</td>
+<td align="left">Database Management Systems</td>
+</tr>
+</tbody>
+</table>
 
 
 

@@ -1,0 +1,21 @@
+# Tables and columns
+
+- table: ATT
+  columns:
+    Id: {key: yes}
+    TimeUS:
+    DesRoll:
+    Roll:
+    DesPitch:
+    Pitch:
+    DesYaw:
+    Yaw:
+    ErrRP:
+    ErrYaw:
+
+- table: Message
+  columns:
+    Id: {key: yes}
+    Time:
+    Message:
+    Data: {ref: ATT}

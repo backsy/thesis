@@ -24,7 +24,7 @@
 %% Preamble
 %%
 % \documentclass{<something>} must begin each LaTeX document
-\documentclass[12pt,twoside]{reedthesis}
+\documentclass[12pt,oneside]{reedthesis}
 % Packages are extensions to the basic LaTeX functions. Whatever you
 % want to typeset, there is probably a package out there for it.
 % Chemistry (chemtex), screenplays, you name it.
@@ -43,7 +43,7 @@
 \floatplacement{figure}{H}
 % End of CII addition
 \usepackage{rotating}
-
+\linespread{1.25}
 % Next line commented out by CII
 %%% \usepackage{natbib}
 % Comment out the natbib line above and uncomment the following two lines to use the new
@@ -179,7 +179,77 @@ and tables.
 }
 
 \Abbrvs{
-Abbreviations of stuff and such. Kable it i guess.
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.26\columnwidth}\raggedright\strut
+\emph{Abbreviation}\strut
+\end{minipage} & \begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+\emph{Meaning}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+UAV\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Unmanned Aerial Vehicle\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+GPS\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Global Positioning System\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+GLONASS\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Global Navigation Satellite System\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+IMU\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Inertial Measurement Unit\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+GB\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+GigaByte - 1000\textsuperscript{3} bytes\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+kB\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+kiloByte - 1000\textsuperscript{1} bytes\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+MB\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+MegaByte - 1000\textsuperscript{2} bytes\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+GCS\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Ground Control Station\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+CSV\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Comma-Sepparated Values\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+JSON\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+JavaScript Object Notation\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+SQL\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Structured Query Language\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+DBMS\strut
+\end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+Database Management Systems\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 }
 
 % End of CII addition
@@ -229,7 +299,77 @@ Abbreviations of stuff and such. Kable it i guess.
     xx peatükki, xx joonist, xx tabelit.
   \end{annotatsioon}
   \begin{abbrvs}
-    Abbreviations of stuff and such. Kable it i guess.
+    \begin{longtable}[]{@{}ll@{}}
+    \toprule
+    \begin{minipage}[b]{0.26\columnwidth}\raggedright\strut
+    \emph{Abbreviation}\strut
+    \end{minipage} & \begin{minipage}[b]{0.41\columnwidth}\raggedright\strut
+    \emph{Meaning}\strut
+    \end{minipage}\tabularnewline
+    \midrule
+    \endhead
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    UAV\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Unmanned Aerial Vehicle\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    GPS\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Global Positioning System\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    GLONASS\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Global Navigation Satellite System\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    IMU\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Inertial Measurement Unit\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    GB\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    GigaByte - 1000\textsuperscript{3} bytes\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    kB\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    kiloByte - 1000\textsuperscript{1} bytes\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    MB\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    MegaByte - 1000\textsuperscript{2} bytes\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    GCS\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Ground Control Station\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    CSV\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Comma-Sepparated Values\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    JSON\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    JavaScript Object Notation\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    SQL\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Structured Query Language\strut
+    \end{minipage}\tabularnewline
+    \begin{minipage}[t]{0.26\columnwidth}\raggedright\strut
+    DBMS\strut
+    \end{minipage} & \begin{minipage}[t]{0.41\columnwidth}\raggedright\strut
+    Database Management Systems\strut
+    \end{minipage}\tabularnewline
+    \bottomrule
+    \end{longtable}
   \end{abbrvs}
   \hypersetup{linkcolor=black}
   \setcounter{tocdepth}{2}
@@ -249,92 +389,976 @@ The following thesis looks at the flight logs of Eli Ltd. to assess the
 fuel economy and the information given to the user. To be written when
 rest of the paper is finished.
 
-\chapter{Problem}\label{problem}
+\chapter{Piloting a multirotor UAV}\label{piloting}
 
-First chapters contents.
+A multirotor UAV may carry different payloads for different use cases
+but predominantly the payload is a video or photo camera. The video and
+photos can be used for 3D mapping, search and rescue operations,
+inspecting powerlines, surveilance, inspecting wind turbine structural
+integrity, counting deer in woods or simply capturing cinematic footage
+to name a few. However the act of piloting itself is secondary to the
+goal. The act of piloting is nessecary to gather data with the payload.
+A pilot needs to have certain skills and training to be able to safely
+operate an airial vehicle. The cost of hiring a pilot can be much higher
+than the operational costs of the UAV and payload combined. Thus
+companies across the globe look to simplify the piloting.
+
+During the flight of a multirotor UAV several things happen at once.
+Firstly the UAV fights against gravity to keep itself at the desired
+height. Secondly it has to follow the orders of the pilot - fly as
+desired. Thirdly the UAV also fights against the wind. This combination
+of three forces means that the system is highly dynamic. While the
+gravity is constant, the desires of the pilot change as well as the
+wind.
+
+The pilot can be in control largely by two ways:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Manual control via analog controllers
+\item
+  Automatic flight mode via commands
+\end{enumerate}
+During manual mode the UAV is directed by analog controllers that give
+it some sort of continuous input signal to adjust the throttle of the
+four motors. Changing the throttle results in either tilting of the
+aircraft or changing of its altitude or both. Different vendors offer
+differing levels of control. In \emph{arducopter}\footnote{A
+  full-featured, open-source multicopter UAV controller firmware.}
+firmware there is \emph{stabilize} mode that allows the pilot to fly
+manually, but the platform self-levels the roll and pitch axis. If the
+pilot releases the controls the UAV falls to the ground. In \emph{DJI}
+Phantom 4\footnote{A Chinese producer of multirotor UAV's. Phantom 4 is
+  a successful commercially available multirotor platform.} there are
+modes such as \emph{Position Mode} which uses GPS and GLONASS satellite
+positioning where releasing the controls results in the platform
+remaining stationary in air. A similar mode exists in arducopter called
+\emph{loiter}. In this some simplification of piloting can be seen. The
+autopilot is there to remove a component of skills needed for succesful
+piloting. In these modes the pilot is in control of the speed of flight
+and is in effect compensating for the effects of wind.
+
+Both \emph{arducopter} and \emph{DJI} have automatic flight modes where
+the multirotor flies according to a pre-programmed mission. The missions
+are user specified by global x/y coordinates, height values and the
+speed of flight between points. The multirotor autonomously attempts to
+fly through given mission points at the given height and speed. During
+such a flight the multirotor automatically compensates for wind. In the
+case of \emph{DJI} a wind warning is given at 6 m/s winds and high wind
+warning at 9 m/s. \emph{Arducopter} does not report the wind and leaves
+everything to the pilot.
+
+The complications of piloting due to wind are numerous and we will look
+at a few of them. Firstly the angles of the quad-rotor will reflect wind
+direction and to some extent strength. When the aircraft is stationary
+above ground the wind causes it to tilt into the wind. In the reference
+frame of air, the multirotor is flying at the speed of the wind and in
+opposite direction, to, in the reference frame of the ground, remain
+stationary. Secondly, when flying against the wind, the current draw
+increases to match the increased power required to stay airborne.
+Thirdly the vibrations aboard the aircraft increase. This can cause
+trouble for the flight controller as the output of the IMU's becomes
+noisy. Since the flight controller calculates the outputs of the motors
+using various sensors and among them IMU's, high vibration may cause the
+flight controller to be unable to determine its attitude and as a result
+cause the aircraft to loose control and crash. In this thesis we will
+look at the first two effects more closely and the third in relation to
+maximum flight speed.
+
+So far we have talked about
 
 \chapter{State of the art}\label{state}
 
-\section{Math}\label{math}
-
-\TeX~is the best way to typeset mathematics. Donald Knuth designed
-\TeX~when he got frustrated at how long it was taking the typesetters to
-finish his book, which contained a lot of mathematics. One nice feature
-of \emph{R Markdown} is its ability to read LaTeX code directly.
-
-If you are doing a thesis that will involve lots of math, you will want
-to read the following section which has been commented out. If you're
-not going to use math, skip over or delete this next commented section.
-
-\section{Chemistry 101: Symbols}\label{chemistry-101-symbols}
-
-Chemical formulas will look best if they are not italicized. Get around
-math mode's automatic italicizing in LaTeX by using the argument
-\texttt{\$\textbackslash{}mathrm\{formula\ here\}\$}, with your formula
-inside the curly brackets. (Notice the use of the backticks here which
-enclose text that acts as code.)
-
-So, \(\mathrm{Fe_2^{2+}Cr_2O_4}\) is written
-\texttt{\$\textbackslash{}mathrm\{Fe\_2\^{}\{2+\}Cr\_2O\_4\}\$}.
-
-\noindent Exponent or Superscript: \(\mathrm{O^-}\)
-
-\noindent Subscript: \(\mathrm{CH_4}\)
-
-To stack numbers or letters as in \(\mathrm{Fe_2^{2+}}\), the subscript
-is defined first, and then the superscript is defined.
-
-\noindent Bullet: CuCl \(\bullet\) \(\mathrm{7H_{2}O}\)
-
-\noindent Delta: \(\Delta\)
-
-\noindent Reaction Arrows: \(\longrightarrow\) or
-\(\xrightarrow{solution}\)
-
-\noindent Resonance Arrows: \(\leftrightarrow\)
-
-\noindent Reversible Reaction Arrows: \(\rightleftharpoons\)
-
-\subsection{Typesetting reactions}\label{typesetting-reactions}
-
-You may wish to put your reaction in an equation environment, which
-means that LaTeX will place the reaction where it fits and will number
-the equations for you.
-\begin{equation}
-  \mathrm{C_6H_{12}O_6  + 6O_2} \longrightarrow \mathrm{6CO_2 + 6H_2O}
-  \label{eq:reaction}
-\end{equation}
-We can reference this combustion of glucose reaction via Equation
-\eqref{eq:reaction}.
-
-\subsection{Other examples of
-reactions}\label{other-examples-of-reactions}
-
-\(\mathrm{NH_4Cl_{(s)}}\) \(\rightleftharpoons\)
-\(\mathrm{NH_{3(g)}+HCl_{(g)}}\)
-
-\noindent \(\mathrm{MeCH_2Br + Mg}\) \(\xrightarrow[below]{above}\)
-\(\mathrm{MeCH_2\bullet Mg \bullet Br}\)
-
-\section{Physics}\label{physics}
-
-Many of the symbols you will need can be found on the math page
-\url{http://web.reed.edu/cis/help/latex/math.html} and the Comprehensive
-LaTeX Symbol Guide
-(\url{http://mirror.utexas.edu/ctan/info/symbols/comprehensive/symbols-letter.pdf}).
-
-\section{Biology}\label{biology}
-
-You will probably find the resources at
-\url{http://www.lecb.ncifcrf.gov/~toms/latex.html} helpful, particularly
-the links to bsts for various journals. You may also be interested in
-TeXShade for nucleotide typesetting
-(\url{http://homepages.uni-tuebingen.de/beitz/txe.html}). Be sure to
-read the proceeding chapter on graphics and tables.
+Not much state to talk about. DJI does their thing and its proprietory
+and arducopter is open-source which is what we use.
 
 \chapter{Database generation}\label{dbs}
 
-How i made the database i did and why.
+\section{Inital data}\label{inital-data}
+
+Eli Ltd collects the binary flight logs that are saved by arducopter
+firmware aboard the multirotor platform. The binary files contain
+\emph{MAVLink} protocol packets. \emph{MAVLink} stands for \emph{Micro
+Air Vehicle Message Marshalling Library}.
+\begin{quote}
+\emph{MAVLink is a very lightweight, header-only message library for
+communication between drones and/or ground control stations. It consists
+primarily of message-set specifications for different systems
+(``dialects'') defined in XML files, and Python tools that convert these
+into appropriate source code for supported languages.}\footnote{Mavlink
+  github page: \url{https://github.com/mavlink/mavlink}}
+\end{quote}
+Not all possible messages that the autopilot generates are sent to the
+GCS. It is configurable which packets are saved, which are sent to the
+GCS and which are dropped. In general the GCS receives some subset of
+all messages that is important for operating the multirotor. In the logs
+a bigger subset is recorded. For the logs present most important
+messages and communications are saved but extremely high resolution data
+is not saved. As such over a thousand logs have been collected. The
+total number of binary logs available is 1363 and amount to 57.2 GB of
+data. This would average 41966 kB per log. Among them are logs that are
+not actual flights but rather tests on the bench. These logs inflate the
+number of logs available. Some logs do contain the highest amounts of
+data and can be several hundred MB large and thus inflate the average. A
+normal flight can be expected to be between 4 to 100 MB's. An average
+40+ minute flight is expected to be over 40 MB.
+
+\hypertarget{choosing-the-output-data-type}{\section{Choosing the output
+data type}\label{choosing-the-output-data-type}}
+
+In this thesis \emph{R}\footnote{R-project homepage:
+  \url{https://www.r-project.org/}} programming language is used for
+data analysis. \emph{R} is a language and environment for statistical
+computing and graphics. As it is open source no licences are required to
+set it up and use. This brings statistical computing and data science to
+the hands of everyone interested in the topic and avoids expencive
+mathematics suites.
+
+The binary data in the log files is not readily accessible from
+\emph{R}. As a result it is nessecary to convert the data to some other
+format. The \emph{pymavlink} project\footnote{Python implementation of
+  MAVLink protocol. Web page:
+  \url{https://github.com/ArduPilot/pymavlink}} has a few tools that do
+just that. First of the options is to convert the log into a
+CSV\footnote{Comma separated values file is a text file where a comma is
+  used to separate values.} file. \emph{Mavlogdump.py}\footnote{Github
+  repository:
+  \url{https://github.com/ArduPilot/pymavlink/blob/master/tools/mavlogdump.py}}
+is the tool available for conversion. With CSV files comes a caveat -
+you may only export one message type at a time. This is to be expected
+since the the CSV files separate table columns with commas and the log
+files have message types with different lengths of columns. Example
+lines of CSV file taken from a flight log containing NTUN packets.
+\begin{verbatim}
+timestamp,TimeUS,DPosX,DPosY,PosX,PosY,DVelX,DVelY,VelX,VelY,DAccX,DAccY
+1521817093.27547407,688646373,-489.633148193,86.0853424072,-237.143630981...
+1521817093.37760210,688748501,-489.633148193,86.0853424072,-235.895751953...
+1521817093.47829199,688849191,-489.633148193,86.0853424072,-234.620544434...
+...
+\end{verbatim}
+In \emph{R} it is very simple to import CSV files and this at first
+seemed a viable candidate file type for storage. However since there are
+many different types of messages, each log would in turn be converted to
+as many CSV files. Potentially leaving us with tens of thousands of
+files. This means \emph{R} would have to import the relevant files one
+by one and processing them. With thousands of files to import the
+analysis time would be negatively impacted as the data import poses an
+overhead.
+
+Another option is to use JSON\footnote{Web page:
+  \url{https://www.json.org}}. JSON is a data-interchange format
+designed to be easily read and written by humans as well as to be easily
+parsed and generated by machines. There are two structures in JSON:
+\begin{itemize}
+\item
+  A collection of name/value pairs.
+\item
+  An ordered list of values.
+\end{itemize}
+Both are familiar to programmers using the \emph{C}-family languages.
+Both can be seen in the following example:
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}\DataTypeTok{"menu"}\FunctionTok{:} \FunctionTok{\{}
+  \DataTypeTok{"id"}\FunctionTok{:} \StringTok{"file"}\FunctionTok{,}
+  \DataTypeTok{"value"}\FunctionTok{:} \StringTok{"File"}\FunctionTok{,}
+  \DataTypeTok{"popup"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"menuitem"}\FunctionTok{:} \OtherTok{[}
+      \FunctionTok{\{}\DataTypeTok{"value"}\FunctionTok{:} \StringTok{"New"}\FunctionTok{,} \DataTypeTok{"onclick"}\FunctionTok{:} \StringTok{"CreateNewDoc()"}\FunctionTok{\}}\OtherTok{,}
+      \FunctionTok{\{}\DataTypeTok{"value"}\FunctionTok{:} \StringTok{"Open"}\FunctionTok{,} \DataTypeTok{"onclick"}\FunctionTok{:} \StringTok{"OpenDoc()"}\FunctionTok{\}}\OtherTok{,}
+      \FunctionTok{\{}\DataTypeTok{"value"}\FunctionTok{:} \StringTok{"Close"}\FunctionTok{,} \DataTypeTok{"onclick"}\FunctionTok{:} \StringTok{"CloseDoc()"}\FunctionTok{\}}
+    \OtherTok{]}
+  \FunctionTok{\}}
+\FunctionTok{\}\}}
+\end{Highlighting}
+\end{Shaded}
+Two concecutive entries from the binary log converted to json format
+using \emph{mavlogdump.py} look like this:
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}\DataTypeTok{"meta"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"timestamp"}\FunctionTok{:} \FloatTok{1521817579.039407}\FunctionTok{,} 
+    \DataTypeTok{"type"}\FunctionTok{:} \StringTok{"PIDP"}
+  \FunctionTok{\},} 
+  \DataTypeTok{"data"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"D"}\FunctionTok{:} \FloatTok{-0.0005177092389203608}\FunctionTok{,} 
+    \DataTypeTok{"TimeUS"}\FunctionTok{:} \DecValTok{1174410306}\FunctionTok{,} 
+    \DataTypeTok{"I"}\FunctionTok{:} \FloatTok{0.0324220173060894}\FunctionTok{,} 
+    \DataTypeTok{"AFF"}\FunctionTok{:} \FloatTok{0.0}\FunctionTok{,} 
+    \DataTypeTok{"Des"}\FunctionTok{:} \FloatTok{-0.012198338285088539}\FunctionTok{,} 
+    \DataTypeTok{"P"}\FunctionTok{:} \FloatTok{-0.005622388795018196}\FunctionTok{,} 
+    \DataTypeTok{"FF"}\FunctionTok{:} \FloatTok{-0.0}
+  \FunctionTok{\}}
+\FunctionTok{\}}
+\FunctionTok{\{}\DataTypeTok{"meta"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"timestamp"}\FunctionTok{:} \FloatTok{1521817579.039419}\FunctionTok{,} 
+    \DataTypeTok{"type"}\FunctionTok{:} \StringTok{"PIDY"}
+  \FunctionTok{\},} 
+  \DataTypeTok{"data"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"D"}\FunctionTok{:} \FloatTok{-0.0}\FunctionTok{,} 
+    \DataTypeTok{"TimeUS"}\FunctionTok{:} \DecValTok{1174410318}\FunctionTok{,} 
+    \DataTypeTok{"I"}\FunctionTok{:} \FloatTok{-0.08129391074180603}\FunctionTok{,} 
+    \DataTypeTok{"AFF"}\FunctionTok{:} \FloatTok{0.0}\FunctionTok{,} 
+    \DataTypeTok{"Des"}\FunctionTok{:} \FloatTok{0.006200382951647043}\FunctionTok{,} 
+    \DataTypeTok{"P"}\FunctionTok{:} \FloatTok{0.008107485249638557}\FunctionTok{,} 
+    \DataTypeTok{"FF"}\FunctionTok{:} \FloatTok{0.0}
+  \FunctionTok{\}}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\emph{R} has libraries to deal with JSON data. Such as \emph{jsonlite}
+by Jeroen Ooms, Duncan Temple Lang and Lloyd Hilaiel\footnote{\url{https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf}}
+and \emph{rjson} by Alex Couture-Beil\footnote{\url{https://cran.r-project.org/web/packages/rjson/rjson.pdf}}.
+As with CSV, JSON files need to be imported one by one, analyzed and
+unloaded. This has considerable overhead. Further more an output file
+from a 47.6 MB log file becomes 649.8 MB. That is an increase of size of
+thirteen times! The library of logs that is 57.2 GB becomes 743.6 GB of
+JSON data as a result. At least there are an order of magnitude lower
+amount of files.
+
+The final option to consider is \emph{SQLite}\footnote{\url{https://www.sqlite.org/about.html}}.
+\emph{SQLite} is a \emph{SQL} database engine that is self-contained and
+serverless. It is designed to be \emph{SQL} database, but without
+concerning itself with a server process and user management and other
+common \emph{SQL} atributes. As such its designed to be a competitor to
+both JSON and CSV. The benefit of \emph{SQLite} is that it can be used
+by various third party programs and programming languages. \emph{Python}
+and \emph{Tcl} have \emph{SQLite} built in. Raw data can be imported
+from CSV files and the data can be compressed to similar sizes to
+\emph{Zip} files. Since the database is a single file it can easily be
+written to a USB memory stick or with smaller databases emailed to a
+colleague directly. Given some understanding of \emph{SQL} \emph{SQLite}
+offers an easy to use database.
+
+\emph{R} language has adaptors to connect to \emph{SQL} databases such
+as \emph{RODBC}\footnote{\url{https://cran.r-project.org/web/packages/RODBC/index.html}},
+\emph{rsqlserver}\footnote{\url{https://github.com/agstudy/rsqlserver}},
+\emph{RJDBC}\footnote{\url{https://cran.r-project.org/web/packages/RJDBC/index.html}},
+\emph{bigrquery}\footnote{\url{https://github.com/r-dbi/bigrquery}} and
+many others among which is \emph{RSQLite}\footnote{\url{https://github.com/r-dbi/RSQLite}}.
+\emph{RSQLite} embeds the \emph{SQLite} database engine in \emph{R},
+providing a \emph{DBI}\footnote{\url{https://cran.r-project.org/web/packages/DBI/README.html}}-compliant
+interface. \emph{DBI} is an \emph{R} package that defines a common
+interface between \emph{R} and database management systems
+(\emph{DBMS}). With \emph{RSQLite} package it is possible to directly
+manipulate data in \emph{SQLite} database.
+
+\section{Tidy data}\label{tidy-data}
+
+Tidy data is a set of principles that help organize data in datasets.
+This helps make data cleaning easier and faster by not having to start
+from scratch every time. Another benefit of tidy data is that it is
+easier to design data analysis tools which can assume that the data
+input is always tidy. Both benefits help the data analyser to focus on
+the underlying problem rather than manageing data half the time.
+\begin{longtable}[]{@{}ccccccccc@{}}
+\caption{Tidy data.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.24\columnwidth}\centering\strut
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+mpg\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+cyl\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+disp\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+hp\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+drat\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+wt\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+qsec\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+vs\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.24\columnwidth}\centering\strut
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+mpg\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+cyl\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+disp\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+hp\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+drat\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+wt\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+qsec\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+vs\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.24\columnwidth}\centering\strut
+\textbf{Mazda RX4}\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+21\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+160\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+110\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+3.9\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+2.62\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+16.46\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\centering\strut
+\textbf{Mazda RX4 Wag}\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+21\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+160\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+110\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+3.9\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+2.875\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+17.02\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\centering\strut
+\textbf{Datsun 710}\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+22.8\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+108\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+93\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+3.85\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+2.32\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+18.61\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\centering\strut
+\textbf{Hornet 4 Drive}\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+21.4\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+258\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+110\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+3.08\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+3.215\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+19.44\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.24\columnwidth}\centering\strut
+\textbf{Hornet Sportabout}\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+18.7\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+360\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+175\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+3.15\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+3.44\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+17.02\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\begin{minipage}[b]{0.30\columnwidth}\centering\strut
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+am\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+gear\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+carb\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{Mazda RX4}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{Mazda RX4 Wag}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{Datsun 710}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{Hornet 4 Drive}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{Hornet Sportabout}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+2\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+Here we are looking at the \emph{mtcars} dataset that is inbuilt in
+\emph{R}. In tidy data:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Each variable forms a column.
+\item
+  Each observation forms a row.
+\item
+  Each type of observational unit forms a table.
+\end{enumerate}
+This dataset is already tidy. Each row is an \emph{observation} and each
+column represents a \emph{variable}. Every element in the table is a
+\emph{value}. Any other arrangement of data is considered \emph{messy}.
+By having tidy data it is easy to manipulate data such as group by
+column info and tie break on another column. Tidy data is particularly
+well suited for vectorised programming languages like \emph{R} where
+each observation of each variable is always paired.
+
+The five most common problems with messy datasets are:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Column headers are values, not variable names.
+\item
+  Multiple variables are stored in one column.
+\item
+  Variables are stored in both rows and columns.
+\item
+  Multiple types of observational units are stored in the same table.
+\item
+  A single observational unit is stored in multiple tables.
+\end{enumerate}
+\begin{longtable}[]{@{}lllllll@{}}
+\caption{Column headers as variables.}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.16\columnwidth}\raggedright\strut
+religion\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+\texttt{\textless{}\$10k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$10-20k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$20-30k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$30-40k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$40-50k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$50-75k}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.16\columnwidth}\raggedright\strut
+religion\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+\texttt{\textless{}\$10k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$10-20k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$20-30k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$30-40k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$40-50k}\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\texttt{\$50-75k}\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Agnostic\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+27\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+34\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+60\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+81\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+76\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+137\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Atheist\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+12\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+27\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+37\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+52\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+35\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+70\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Buddhist\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+27\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+21\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+30\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+34\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+33\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+58\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Catholic\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+418\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+617\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+732\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+670\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+638\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+1116\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Don`t know\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+15\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+14\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+15\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+11\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+10\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+35\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Evangelical\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+575\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+869\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+1064\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+982\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+881\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+1486\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Hindu\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+11\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+34\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Historically\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+228\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+244\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+236\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+238\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+197\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+223\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Jehovah's\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+20\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+27\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+24\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+24\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+21\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+30\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+Jewish\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+19\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+19\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+25\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+25\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+30\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+95\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+Here we can see a table of data where the column header - the variable
+itself is a value. This can help make very dense and informative tables
+but for working with the data it is not tidy. If we wish to separate the
+data into segments of 5000 dollars then we can say that this table also
+has multiple variables in a single column. Rest of the problems we will
+not look at.\footnote{Tidy data paper:
+  \url{http://vita.had.co.nz/papers/tidy-data.pdf}, more relaxed essay:
+  \url{https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html}}
+
+\section{Database normalization}\label{database-normalization}
+
+\emph{ArduPilot}\footnote{\url{http://ardupilot.org},
+  \url{https://github.com/ArduPilot}} development team hosts an
+organization of projects on \emph{GitHub}\footnote{An online platform
+  for version controlling software development} that contains several
+useful projects such as the \emph{ardupilot}\footnote{\url{https://github.com/ArduPilot/ardupilot}}
+autopilot firmware codebase for multirotors, planes, rovers and much
+more. Among the project is \emph{pymavlink}\footnote{\url{https://github.com/ArduPilot/pymavlink}}
+project which provides a \emph{python} \emph{MAVLink} interface and
+utilities. Among those utilities are tools mentioned in chapter
+\protect\hyperlink{choosing-the-output-data-type}{Choosing the output
+data type}. With these tools we determined that none of them fit our
+needs exactly but those tools can be used as a source of information for
+building our own tools.
+
+The data storage format was decided to be \emph{SQLite} database. To
+increase the efficency of working with the data the dataset should be
+tidy. By taking that into account when designing the \emph{SQLite}
+database, time can be saved by not having to separately tidy up the
+dataset before analysis. Further more Edgar F. Codd\footnote{Computer
+  scientist who invented relational database management systems
+  \url{https://en.wikipedia.org/wiki/Edgar_F._Codd}} defined
+\emph{normal} \emph{forms} to permit querying and manipulation by a
+universal data language\footnote{One such language is \emph{SQL}}. The
+third normal form (3NF)\footnote{\url{https://en.wikipedia.org/wiki/Third_normal_form}}
+is considered as being tidy data. Simply by designing the database using
+the normal forms, ecpecially the third nomal form allows us to reach
+tidy data.
+
+By instructing \emph{mavlogdump.py} to dump the logs from binary form to
+a readable text file we can see the general shape of the data in the
+binary logs.
+
+\texttt{mavlogdump.py\ log.BIN\ \textgreater{}\ dump.txt}
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:dump} Excerpt from \emph{dump.txt}.}\tabularnewline
+\toprule
+Time & Message & Data\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Time & Message & Data\tabularnewline
+\midrule
+\endhead
+2018-03-23 17:26:57.12: & ATT & Inner Table\tabularnewline
+2018-03-23 17:26:57.12: & RATE & Inner Table\tabularnewline
+2018-03-23 17:26:57.12: & PIDR & Inner Table\tabularnewline
+\bottomrule
+\end{longtable}
+\begin{longtable}[]{@{}lr@{}}
+\caption{\label{tab:att} Message ATT.}\tabularnewline
+\toprule
+Message & Data\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Message & Data\tabularnewline
+\midrule
+\endhead
+TimeUS & 2412496394\tabularnewline
+DesRoll & -2.41\tabularnewline
+Roll & -2.26\tabularnewline
+DesPitch & 2.64\tabularnewline
+Pitch & 2.8\tabularnewline
+DesYaw & 96.07\tabularnewline
+Yaw & 96.28\tabularnewline
+ErrRP & 0.01\tabularnewline
+ErrYaw & 0.02\tabularnewline
+\bottomrule
+\end{longtable}
+\begin{longtable}[]{@{}lr@{}}
+\caption{\label{tab:rate} Message RATE.}\tabularnewline
+\toprule
+Message & Data\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Message & Data\tabularnewline
+\midrule
+\endhead
+TimeUS & 2412496408\tabularnewline
+RDes & -0.977470874786\tabularnewline
+R & 0.30203345418\tabularnewline
+ROut & -0.0680121853948\tabularnewline
+PDes & -1.36304438114\tabularnewline
+P & -1.30311119556\tabularnewline
+POut & 0.0843362286687\tabularnewline
+YDes & -1.62430250645\tabularnewline
+Y & -0.70737850666\tabularnewline
+YOut & -0.1534512043\tabularnewline
+ADes & 1.88155674934\tabularnewline
+A & -2.99711227417\tabularnewline
+AOut & 0.368027120829\tabularnewline
+\bottomrule
+\end{longtable}
+\begin{longtable}[]{@{}lr@{}}
+\caption{\label{tab:pidr} Message PIDR.}\tabularnewline
+\toprule
+Message & Data\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Message & Data\tabularnewline
+\midrule
+\endhead
+TimeUS & 2412496431\tabularnewline
+Des & -0.0153276510537\tabularnewline
+P & -0.00370784359984\tabularnewline
+I & -0.0374843552709\tabularnewline
+D & -0.0268199834973\tabularnewline
+FF & -0.0\tabularnewline
+AFF & 0.0\tabularnewline
+\bottomrule
+\end{longtable}
+First normal form is a property of a relation where each attribute of
+the domain contains only indivisible values and the value of each
+attribute contains only a single value from that domain\footnote{\url{https://en.wikipedia.org/wiki/First_normal_form}}.
+In table \ref{tab:dump} we see that there are inner tables in the
+message. This is in violation of the requirement of atomic values. The
+inner tables need to be removed from the message and separated into
+another table.
+\begin{figure}
+\centering
+\includegraphics{./figure/1fn.PNG}
+\caption{\label{fig:1fn}Message and ATT relationship.}
+\end{figure}
+Figure \ref{fig:1fn} has two tables where \emph{Message} table
+represents all the different messages and table \emph{ATT} represents
+any single \emph{data} table of a message - here the \emph{ATT} message.
+From tables \ref{tab:att}, \ref{tab:rate} and \ref{tab:pidr} we can see
+that the inner tables are of different shape. This means that each
+message requires a separate table. The current \emph{Message} structure
+does not permit more than one \emph{data} table to be used.
+
+Another option would be to unwrap the inner \emph{data} table to be a
+part of the outer \emph{Message} table. Here we run into a similar
+problem. Since the inner \emph{data} tables are of different shape, the
+single \emph{Message} table would have to contain each possible variable
+in the logs and be empty most of the time. This table is realizable in a
+database.
+\begin{longtable}[]{@{}llllllllllll@{}}
+\caption{\label{tab:message} \emph{Message} table.}\tabularnewline
+\toprule
+Id & Time & Message & TimeUS & DesRoll & Roll & .. & RDes & R & .. & Des
+& P\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Id & Time & Message & TimeUS & DesRoll & Roll & .. & RDes & R & .. & Des
+& P\tabularnewline
+\midrule
+\endhead
+123 & time & ATT & value & value & value & .. & NA & NA & .. & NA &
+NA\tabularnewline
+124 & time & RATE & value & NA & NA & .. & value & value & .. & NA &
+NA\tabularnewline
+125 & time & PIDR & value & NA & NA & .. & NA & NA & .. & value &
+value\tabularnewline
+\bottomrule
+\end{longtable}
+This table contains mostly \emph{NA} values as for every message only a
+subset of variables is relevant. When working with this table, the
+\emph{NA} values need to be removed. We can solve this problem by
+converting this table from wide form to long form. Since we are storing
+several flights into the same database we need to add a flight
+identificator.
+\begin{longtable}[]{@{}lclllr@{}}
+\caption{\label{tab:longtable} Long table.}\tabularnewline
+\toprule
+Id & Flight & Message & Timestamp & Parameter & Value\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Id & Flight & Message & Timestamp & Parameter & Value\tabularnewline
+\midrule
+\endhead
+125 & 4 & ATT & 2018-03-23 17:26:57.12 & TimeUS &
+2412496394\tabularnewline
+126 & 4 & ATT & 2018-03-23 17:26:57.12 & DesRoll & -2.41\tabularnewline
+127 & 4 & ATT & 2018-03-23 17:26:57.12 & Roll & -2.26\tabularnewline
+\ldots{} & \ldots{} & \ldots{} & \ldots{} & \ldots{} &
+\ldots{}\tabularnewline
+134 & 4 & RATE & 2018-03-23 17:26:57.12 & TimeUS &
+2412496408\tabularnewline
+135 & 4 & RATE & 2018-03-23 17:26:57.12 & RDes &
+-0.977470874786\tabularnewline
+136 & 4 & RATE & 2018-03-23 17:26:57.12 & R &
+0.30203345418\tabularnewline
+\ldots{} & \ldots{} & \ldots{} & \ldots{} & \ldots{} &
+\ldots{}\tabularnewline
+145 & 4 & PIDR & 2018-03-23 17:26:57.12 & TimeUS &
+2412496431\tabularnewline
+146 & 4 & PIDR & 2018-03-23 17:26:57.12 & Des &
+-0.0153276510537\tabularnewline
+147 & 4 & PIDR & 2018-03-23 17:26:57.12 & P &
+-0.00370784359984\tabularnewline
+\bottomrule
+\end{longtable}
+In table \ref{tab:longtable} we added flight identificator but we would
+like to have more information on the flights. To reduce metadata
+repetition another table is needed. There is also quite alot of
+repetition in other values in the table. The message type and timestamp
+repeat for each parameter in the inner table. The parameters also repeat
+each time the message is repeated. Each of the repeating elements can be
+moved to a dedicated table.
+\begin{figure}
+\centering
+\includegraphics{./figure/databaseSchema.PNG}
+\caption{\label{fig:database}Final database schema.}
+\end{figure}
+\section{The code}\label{the-code}
+
+The code starts off with taking as an input the folder in which the
+binary files is stored in. The folder is searched recursively so that
+subfolders containing log files are also searched through. The files are
+counted and the sizes saved. A filtering is done by file size. Files
+larger than 100 MB and smaller than 4 MB are skipped. After the first
+log file is processed the time taken is used to calculate an estimation
+as to how long the whole process will take. Further more the total time
+elapsed is also displayed.
+
+\emph{Mavutil.py} from \emph{pymavlink} project is used for translating
+the binary data to in memory representation. From there the data is
+buffered and written to the \emph{SQLite} database. Each new message
+type adds its parameter types to \emph{Parameter} table as seen in
+figure \ref{fig:database} and each new message type is added to the
+messages table. This allows for the specification for messages to change
+and several versions of the specification to be used in different logs.
+The message name and the parameter names are decoupled from each other.
+An assumption that the message specification does not change in a single
+log is made.
+
+After processing a log a new entry to the \emph{Flight} table is made.
+The metadata that is added is the path where the file was stored. As the
+logs are separated into folders by which multirotor it was obtained from
+or from which period in time or which version of the multirotor was used
+then the path gives some sort of information that could be used for
+filtering in the analysis stage.
+
+Timestamps are allowed to repeat as searching through the whole table
+means more processing needed while creating the database. This leaves a
+possibility to create a secondary script that would look through the
+\emph{Timestamp} table and removing tuplicates and substituting the
+\emph{Id} in the \emph{Value} table.
+
+There is an overhead to writing into the \emph{SQLite} database. A
+single write entails opening the database connection, writing to the
+database and closing the connection. The opening and closing operation
+adds an overhead that over hundreds of thousands of writes becomes
+significant. To remedy this a bulk insert operation is available. Every
+10 000 lines of the binary log a bulk write is done. That number is
+experimental in nature as in testing making the number bigger did not
+seem to save any processing time. Making it smaller however slows the
+processing down. There is a possibility that further optimization can be
+done.
+
+In case where the script crashes or some error happens or new logs are
+to be added to the database the code first checks the existance of the
+database. If the database exists the supporting tables are read into
+memory to be tested against so that new messages and parameters get
+added to the database.
+
+While \emph{SQLite} is a good option for an on disk storage of the
+database, other databases are available and have some useful features.
+One of which is the ability to use window functions on the database.
+This means that \ldots{}
+
+The code for creating the database is written in \emph{python} and is
+added to the appendix.
 
 \chapter{Modelling stuff}\label{modelling-stuff}
 
@@ -351,7 +1375,349 @@ Welp, thats it.
 
 \appendix
 
-\chapter{The First Appendix}\label{the-first-appendix}
+\chapter{Python database creation
+code}\label{python-database-creation-code}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#!c:\textbackslash{}python27\textbackslash{}python.exe}
+\CommentTok{# -*- coding: utf-8 -*-}
+\CommentTok{'''}
+\CommentTok{read a mavlink binary file into SQLite database}
+\CommentTok{'''}
+\ImportTok{from}\NormalTok{ __future__ }\ImportTok{import}\NormalTok{ print_function}
+\ImportTok{from}\NormalTok{ __future__ }\ImportTok{import}\NormalTok{ division}
+\ImportTok{from}\NormalTok{ builtins   }\ImportTok{import} \BuiltInTok{range}
+\ImportTok{from}\NormalTok{ argparse   }\ImportTok{import}\NormalTok{ ArgumentParser}
+\ImportTok{from}\NormalTok{ pymavlink  }\ImportTok{import}\NormalTok{ mavutil}
+\ImportTok{from}\NormalTok{ timeit     }\ImportTok{import}\NormalTok{ default_timer }\ImportTok{as}\NormalTok{ timer}
+\ImportTok{import}\NormalTok{ os}
+\ImportTok{import}\NormalTok{ sys}
+\ImportTok{import}\NormalTok{ re}
+\ImportTok{import}\NormalTok{ sqlite3}
+\ImportTok{import}\NormalTok{ collections}
+\ImportTok{import}\NormalTok{ datetime}
+\ImportTok{import}\NormalTok{ math}
+\NormalTok{extensions }\OperatorTok{=}\NormalTok{ collections.defaultdict(}\BuiltInTok{int}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ main(argv):}
+    \CommentTok{# parser = ArgumentParser(description=__doc__)}
+    \CommentTok{# parser.add_argument("database", help='Path to SQLite Database')}
+    \CommentTok{# parser.add_argument("logs", metavar="LOG", nargs="+", }
+      \CommentTok{# help='List of logs to process')}
+    \CommentTok{# args = parser.parse_args(argv)}
+    \CommentTok{# for filename in args.logs:}
+    \CommentTok{#     process_tlog(filename)}
+\NormalTok{    size }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    folder_path }\OperatorTok{=}\NormalTok{ argv[}\DecValTok{1}\NormalTok{]}
+    \ControlFlowTok{for}\NormalTok{ path, dirs, files }\KeywordTok{in}\NormalTok{ os.walk(folder_path):}
+        \ControlFlowTok{for}\NormalTok{ filename }\KeywordTok{in}\NormalTok{ files:}
+            \ControlFlowTok{if}\NormalTok{ os.path.splitext(filename)[}\DecValTok{1}\NormalTok{].lower() }\OperatorTok{==} \StringTok{'.bin'}\NormalTok{:}
+\NormalTok{                filesize }\OperatorTok{=}\NormalTok{ os.path.getsize(path}\OperatorTok{+}\NormalTok{os.sep}\OperatorTok{+}\NormalTok{filename)}
+                \ControlFlowTok{if}\NormalTok{ filesize }\OperatorTok{<} \DecValTok{100000000} \KeywordTok{and}\NormalTok{ filesize }\OperatorTok{>} \DecValTok{4000000}\NormalTok{:}
+\NormalTok{                    size }\OperatorTok{+=}\NormalTok{ filesize}
+    \BuiltInTok{print}\NormalTok{(}\StringTok{'Total filesize to process: '} \OperatorTok{+}\NormalTok{ humanize_bytes(size))}
+\NormalTok{    todo_size }\OperatorTok{=}\NormalTok{ size}
+\NormalTok{    time_elapsed }\OperatorTok{=} \DecValTok{0}
+    \ControlFlowTok{for}\NormalTok{ path, dirs, files }\KeywordTok{in}\NormalTok{ os.walk(folder_path):}
+        \ControlFlowTok{for}\NormalTok{ filename }\KeywordTok{in}\NormalTok{ files:}
+            \ControlFlowTok{if}\NormalTok{ os.path.splitext(filename)[}\DecValTok{1}\NormalTok{].lower() }\OperatorTok{==} \StringTok{'.bin'}\NormalTok{:}
+\NormalTok{                filesize }\OperatorTok{=}\NormalTok{ os.path.getsize(path}\OperatorTok{+}\NormalTok{os.sep}\OperatorTok{+}\NormalTok{filename)}
+                \ControlFlowTok{if}\NormalTok{ filesize }\OperatorTok{>} \DecValTok{100000000} \KeywordTok{or}\NormalTok{ filesize }\OperatorTok{<} \DecValTok{4000000}\NormalTok{:}
+                    \ControlFlowTok{continue}
+                \BuiltInTok{print}\NormalTok{(}\StringTok{'Processing file}\CharTok{\textbackslash{}t}\StringTok{File size}\CharTok{\textbackslash{}t}\StringTok{Folder'}\NormalTok{)}
+                \BuiltInTok{print}\NormalTok{(}\StringTok{'}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}t}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}t\textbackslash{}t}\SpecialCharTok{\{\}}\StringTok{'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(filename, }
+\NormalTok{                  humanize_bytes(filesize), path))}
+\NormalTok{                start }\OperatorTok{=}\NormalTok{ timer()}
+\NormalTok{                process_tlog(path}\OperatorTok{+}\NormalTok{os.sep}\OperatorTok{+}\NormalTok{filename)    }
+\NormalTok{                end }\OperatorTok{=}\NormalTok{ timer()}
+\NormalTok{                diff }\OperatorTok{=}\NormalTok{ end}\OperatorTok{-}\NormalTok{start}
+\NormalTok{                time_elapsed }\OperatorTok{+=}\NormalTok{ diff}
+\NormalTok{                time_spent }\OperatorTok{=} \BuiltInTok{str}\NormalTok{(datetime.timedelta(}
+\NormalTok{                  seconds}\OperatorTok{=}\NormalTok{math.floor(time_elapsed)))}
+\NormalTok{                processing_time }\OperatorTok{=} \BuiltInTok{str}\NormalTok{(datetime.timedelta(}
+\NormalTok{                  seconds}\OperatorTok{=}\NormalTok{math.floor(diff)))}
+\NormalTok{                todo_size }\OperatorTok{-=}\NormalTok{ filesize}
+\NormalTok{                processed }\OperatorTok{=}\NormalTok{ ((}\BuiltInTok{float}\NormalTok{(size) }\OperatorTok{-} \BuiltInTok{float}\NormalTok{(todo_size)) }\OperatorTok{/} 
+                  \BuiltInTok{float}\NormalTok{(size)) }\OperatorTok{*} \BuiltInTok{float}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{                bit_time }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(diff) }\OperatorTok{/} \BuiltInTok{float}\NormalTok{(filesize)}
+\NormalTok{                time_left }\OperatorTok{=} \BuiltInTok{str}\NormalTok{(datetime.timedelta(seconds}\OperatorTok{=}
+\NormalTok{                  math.floor(}\BuiltInTok{float}\NormalTok{(bit_time) }\OperatorTok{*} \BuiltInTok{float}\NormalTok{(todo_size))))}
+                \BuiltInTok{print}\NormalTok{(}\StringTok{"""File}\CharTok{\textbackslash{}t\textbackslash{}t}\StringTok{Processing Time}\CharTok{\textbackslash{}t}\StringTok{Time Elapsed}\CharTok{\textbackslash{}t}
+\StringTok{                  Time Left}\CharTok{\textbackslash{}t}\StringTok{Percentage done"""}\NormalTok{)}
+                \BuiltInTok{print}\NormalTok{(}\StringTok{'}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}t}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}t\textbackslash{}t}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}t\textbackslash{}t}\SpecialCharTok{\{\}}\CharTok{\textbackslash{}t\textbackslash{}t}\SpecialCharTok{\{:2.2f\}}\StringTok{%'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(filename, }
+\NormalTok{                  processing_time, time_spent, time_left, processed))}
+\KeywordTok{def}\NormalTok{ process_tlog(filename):}
+    \CommentTok{'''convert a ardupilot BIN file to SQLite database'''}
+\NormalTok{    mlog }\OperatorTok{=}\NormalTok{ mavutil.mavlink_connection(filename, dialect}\OperatorTok{=}\StringTok{'ardupilotmega'}\NormalTok{, }
+\NormalTok{      zero_time_base}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{    connection }\OperatorTok{=}\NormalTok{ create_connection(}\StringTok{'rmkRoheline.db'}\NormalTok{)}
+    \CommentTok{# conn = create_connection(args.database)}
+\NormalTok{    database }\OperatorTok{=}\NormalTok{ \{\}}
+    \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{        database }\OperatorTok{=}\NormalTok{ load_database_to_ram(connection)}
+    \ControlFlowTok{except}\NormalTok{:}
+\NormalTok{        database }\OperatorTok{=}\NormalTok{ create_database(connection)}
+\NormalTok{    add_flight(database, filename, connection)}
+\NormalTok{    counter }\OperatorTok{=} \DecValTok{0}
+    \ControlFlowTok{while} \VariableTok{True}\NormalTok{:}
+\NormalTok{        line }\OperatorTok{=}\NormalTok{ mlog.recv_match()}
+        \CommentTok{# Exit on file end}
+        \ControlFlowTok{if}\NormalTok{ line }\KeywordTok{is} \VariableTok{None}\NormalTok{:}
+            \ControlFlowTok{break}
+\NormalTok{        message }\OperatorTok{=}\NormalTok{ line.get_type()}
+        \CommentTok{# Remove bad packets}
+        \ControlFlowTok{if}\NormalTok{ message }\OperatorTok{==} \StringTok{'BAD_DATA'}\NormalTok{:}
+            \ControlFlowTok{continue}
+        \CommentTok{# FMT defines the format and PARM is params... }
+        \CommentTok{# not sure if i need em or not}
+        \ControlFlowTok{if}\NormalTok{ message }\KeywordTok{in}\NormalTok{ [}\StringTok{'FMT'}\NormalTok{, }\StringTok{'PARM'}\NormalTok{]:}
+            \ControlFlowTok{continue}
+\NormalTok{        process_header(line, database, connection)}
+\NormalTok{        process_data(line, database)}
+\NormalTok{        counter}\OperatorTok{+=}\DecValTok{1}
+        \ControlFlowTok{if}\NormalTok{ counter }\OperatorTok{%} \DecValTok{10000} \OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{            bulk_write_values(database, connection)}
+\NormalTok{            bulk_write_timestamps(database, connection)}
+\NormalTok{    bulk_write_values(database, connection)}
+\NormalTok{    bulk_write_timestamps(database, connection)}
+\NormalTok{    connection.commit()}
+\NormalTok{    connection.close()}
+\KeywordTok{def}\NormalTok{ process_header(line, database, connection):}
+\NormalTok{    message }\OperatorTok{=}\NormalTok{ line.get_type()}
+    \ControlFlowTok{if}\NormalTok{ message }\KeywordTok{not} \KeywordTok{in}\NormalTok{ database[}\StringTok{'messages'}\NormalTok{]:}
+\NormalTok{        add_message(message, database, connection)}
+\NormalTok{    fieldnames }\OperatorTok{=}\NormalTok{ line._fieldnames}
+\NormalTok{    parameters }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{for}\NormalTok{ field }\KeywordTok{in}\NormalTok{ fieldnames:}
+\NormalTok{        val }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(line, field)}
+        \ControlFlowTok{if} \KeywordTok{not} \BuiltInTok{isinstance}\NormalTok{(val, }\BuiltInTok{str}\NormalTok{):}
+            \ControlFlowTok{if} \BuiltInTok{type}\NormalTok{(val) }\KeywordTok{is} \KeywordTok{not} \BuiltInTok{list}\NormalTok{:}
+\NormalTok{                parameters.append(field)}
+            \ControlFlowTok{else}\NormalTok{:}
+                \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, }\BuiltInTok{len}\NormalTok{(val)):}
+\NormalTok{                    parameters.append(field }\OperatorTok{+} \StringTok{'}\SpecialCharTok{%s}\StringTok{'}\OperatorTok{%}\NormalTok{ i}\OperatorTok{+}\DecValTok{1}\NormalTok{) }
+    
+\NormalTok{    add_parameters(parameters, database, connection)}
+    \ControlFlowTok{if} \StringTok{'buffer'} \KeywordTok{not} \KeywordTok{in}\NormalTok{ database:}
+\NormalTok{        database[}\StringTok{'buffer'}\NormalTok{] }\OperatorTok{=}\NormalTok{ \{\}}
+\NormalTok{    database[}\StringTok{'buffer'}\NormalTok{][message] }\OperatorTok{=}\NormalTok{ parameters}
+\KeywordTok{def}\NormalTok{ process_data(line, database):        }
+    \CommentTok{# add message type with parameters to buffer to be able }
+    \CommentTok{# to save to sqlite db later}
+\NormalTok{    message }\OperatorTok{=}\NormalTok{ line.get_type()}
+\NormalTok{    fieldnames }\OperatorTok{=}\NormalTok{ line._fieldnames}
+\NormalTok{    data }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{    add_timestamp(line._timestamp, database)}
+    \ControlFlowTok{for}\NormalTok{ field }\KeywordTok{in}\NormalTok{ fieldnames:}
+\NormalTok{        val }\OperatorTok{=} \BuiltInTok{getattr}\NormalTok{(line, field)}
+        \ControlFlowTok{if} \KeywordTok{not} \BuiltInTok{isinstance}\NormalTok{(val, }\BuiltInTok{str}\NormalTok{):}
+            \ControlFlowTok{if} \BuiltInTok{type}\NormalTok{(val) }\KeywordTok{is} \KeywordTok{not} \BuiltInTok{list}\NormalTok{:}
+\NormalTok{                data.append(}\StringTok{"}\SpecialCharTok{%.20g}\StringTok{"}\OperatorTok{%}\NormalTok{ val)}
+            \ControlFlowTok{else}\NormalTok{:}
+                \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{, }\BuiltInTok{len}\NormalTok{(val)):}
+\NormalTok{                    data.append(}\StringTok{"}\SpecialCharTok{%.20g}\StringTok{"}\OperatorTok{%}\NormalTok{ val[i])}
+    
+\NormalTok{    parameters_and_values }\OperatorTok{=} \BuiltInTok{zip}\NormalTok{(database[}\StringTok{'buffer'}\NormalTok{][message], data)}
+\NormalTok{    parameter }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    value }\OperatorTok{=} \DecValTok{1}
+    \ControlFlowTok{if} \StringTok{'values'} \KeywordTok{not} \KeywordTok{in}\NormalTok{ database[}\StringTok{'buffer'}\NormalTok{]:}
+\NormalTok{        database[}\StringTok{'buffer'}\NormalTok{][}\StringTok{'values'}\NormalTok{] }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{for}\NormalTok{ parameter_pair }\KeywordTok{in}\NormalTok{ parameters_and_values:}
+\NormalTok{        database[}\StringTok{'last value id'}\NormalTok{] }\OperatorTok{+=} \DecValTok{1}
+\NormalTok{        database[}\StringTok{'buffer'}\NormalTok{][}\StringTok{'values'}\NormalTok{].append((}
+\NormalTok{            database[}\StringTok{'last value id'}\NormalTok{],}
+\NormalTok{            database[}\StringTok{'last flight id'}\NormalTok{],}
+\NormalTok{            database[}\StringTok{'last timestamp id'}\NormalTok{],}
+\NormalTok{            database[}\StringTok{'messages'}\NormalTok{][message],}
+\NormalTok{            database[}\StringTok{'parameters'}\NormalTok{][parameter_pair[parameter]],}
+\NormalTok{            parameter_pair[value]}
+\NormalTok{        ))}
+\KeywordTok{def}\NormalTok{ load_database_to_ram(connection):    }
+    \CommentTok{""" load a database specified by connection into memory}
+\CommentTok{    :param connection: connection to database}
+\CommentTok{    :return: database}
+\CommentTok{    """}
+\NormalTok{    cursor }\OperatorTok{=}\NormalTok{ connection.cursor()}
+\NormalTok{    cursor.execute(}\StringTok{'SELECT * FROM parameter'}\NormalTok{)}
+\NormalTok{    parameters }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{map}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ (}\BuiltInTok{id}\NormalTok{, name): (name.encode(}\StringTok{'ascii'}\NormalTok{), }
+      \BuiltInTok{id}\NormalTok{), cursor.fetchall()))}
+\NormalTok{    cursor.execute(}\StringTok{'SELECT * FROM message'}\NormalTok{)}
+\NormalTok{    messages }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(}\BuiltInTok{map}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ (}\BuiltInTok{id}\NormalTok{, name): (name.encode(}\StringTok{'ascii'}\NormalTok{), }
+      \BuiltInTok{id}\NormalTok{), cursor.fetchall()))}
+\NormalTok{    cursor.execute(}\StringTok{'SELECT * FROM parameter ORDER BY id DESC LIMIT 1'}\NormalTok{)}
+\NormalTok{    last_parameter_id }\OperatorTok{=}\NormalTok{ (cursor.fetchall())[}\DecValTok{0}\NormalTok{][}\DecValTok{0}\NormalTok{]}
+\NormalTok{    cursor.execute(}\StringTok{'SELECT * FROM message ORDER BY id DESC LIMIT 1'}\NormalTok{)}
+\NormalTok{    last_message_id }\OperatorTok{=}\NormalTok{ (cursor.fetchall())[}\DecValTok{0}\NormalTok{][}\DecValTok{0}\NormalTok{]}
+\NormalTok{    cursor.execute(}\StringTok{'SELECT * FROM timestamp ORDER BY id DESC LIMIT 1'}\NormalTok{)}
+\NormalTok{    last_timestamp_id }\OperatorTok{=}\NormalTok{ (cursor.fetchall())[}\DecValTok{0}\NormalTok{][}\DecValTok{0}\NormalTok{]}
+\NormalTok{    cursor.execute(}\StringTok{'SELECT * FROM value ORDER BY id DESC LIMIT 1'}\NormalTok{)}
+\NormalTok{    last_value_id }\OperatorTok{=}\NormalTok{ (cursor.fetchall())[}\DecValTok{0}\NormalTok{][}\DecValTok{0}\NormalTok{]}
+\NormalTok{    cursor.execute(}\StringTok{'SELECT * FROM flight ORDER BY id DESC LIMIT 1'}\NormalTok{)}
+\NormalTok{    last_flight_id }\OperatorTok{=}\NormalTok{ (cursor.fetchall())[}\DecValTok{0}\NormalTok{][}\DecValTok{0}\NormalTok{]}
+\NormalTok{    database }\OperatorTok{=}\NormalTok{ \{}
+        \StringTok{'last value id'}\NormalTok{: last_value_id,}
+        \StringTok{'last flight id'}\NormalTok{: last_flight_id,}
+        \StringTok{'last message id'}\NormalTok{: last_message_id,}
+        \StringTok{'last timestamp id'}\NormalTok{: last_timestamp_id,}
+        \StringTok{'last parameter id'}\NormalTok{: last_parameter_id,}
+        \StringTok{'messages'}\NormalTok{: messages,}
+        \StringTok{'parameters'}\NormalTok{: parameters}
+\NormalTok{    \}}
+    \ControlFlowTok{return}\NormalTok{ database}
+\KeywordTok{def}\NormalTok{ create_database(connection):    }
+    \CommentTok{""" create a database specified by connection and leave a copy }
+\CommentTok{    into memory}
+\CommentTok{    :param connection: connection to database}
+\CommentTok{    :return: database}
+\CommentTok{    """}
+\NormalTok{    cursor }\OperatorTok{=}\NormalTok{ connection.cursor()}
+\NormalTok{    cursor.execute(}\StringTok{"""}
+\StringTok{      CREATE TABLE flight (}
+\StringTok{        id INTEGER NOT NULL PRIMARY KEY, }
+\StringTok{        path TEXT}
+\StringTok{        )}
+\StringTok{      """}\NormalTok{)}
+\NormalTok{    cursor.execute(}\StringTok{"""}
+\StringTok{      CREATE TABLE message (}
+\StringTok{        id INTEGER NOT NULL PRIMARY KEY, }
+\StringTok{        message TEXT}
+\StringTok{        )}
+\StringTok{      """}\NormalTok{)}
+\NormalTok{    cursor.execute(}\StringTok{"""}
+\StringTok{      CREATE TABLE timestamp (}
+\StringTok{        id INTEGER NOT NULL PRIMARY KEY, }
+\StringTok{        timestamp INTEGER}
+\StringTok{        )}
+\StringTok{      """}\NormalTok{)}
+\NormalTok{    cursor.execute(}\StringTok{"""}
+\StringTok{      CREATE TABLE parameter (}
+\StringTok{        id INTEGER NOT NULL PRIMARY KEY, }
+\StringTok{        parameter TEXT}
+\StringTok{        )}
+\StringTok{      """}\NormalTok{)}
+\NormalTok{    cursor.execute(}\StringTok{"""}
+\StringTok{    CREATE TABLE value (}
+\StringTok{        id INTEGER NOT NULL PRIMARY KEY,}
+\StringTok{        flight INTEGER NOT NULL,}
+\StringTok{        message INTEGER NOT NULL,}
+\StringTok{        timestamp INTEGER NOT NULL,}
+\StringTok{        parameter INTEGER NOT NULL,}
+\StringTok{        value REAL,}
+\StringTok{        FOREIGN KEY(flight) REFERENCES flight(id)}
+\StringTok{        FOREIGN KEY(message) REFERENCES message(id)}
+\StringTok{        FOREIGN KEY(timestamp) REFERENCES timestamp(id)}
+\StringTok{        FOREIGN KEY(parameter) REFERENCES parameter(id)}
+\StringTok{    )"""}\NormalTok{)}
+\NormalTok{    database }\OperatorTok{=}\NormalTok{ \{}
+        \StringTok{'last flight id'}\NormalTok{: }\DecValTok{0}\NormalTok{,}
+        \StringTok{'last message id'}\NormalTok{: }\DecValTok{0}\NormalTok{,}
+        \StringTok{'last timestamp id'}\NormalTok{: }\DecValTok{0}\NormalTok{,}
+        \StringTok{'last parameter id'}\NormalTok{: }\DecValTok{0}\NormalTok{,}
+        \StringTok{'last value id'}\NormalTok{: }\DecValTok{0}\NormalTok{,}
+        \StringTok{'messages'}\NormalTok{: \{\},}
+        \StringTok{'parameters'}\NormalTok{: \{\}}
+\NormalTok{    \}}
+    \ControlFlowTok{return}\NormalTok{ database}
+\KeywordTok{def}\NormalTok{ bulk_write_values(database, connection):}
+    \CommentTok{# write buffered values to database}
+\NormalTok{    cursor }\OperatorTok{=}\NormalTok{ connection.cursor()}
+\NormalTok{    sql }\OperatorTok{=}\NormalTok{ get_sql(}\StringTok{'value'}\NormalTok{,[}\StringTok{'id'}\NormalTok{, }\StringTok{'flight'}\NormalTok{, }\StringTok{'timestamp'}\NormalTok{, }\StringTok{'message'}\NormalTok{, }
+      \StringTok{'parameter'}\NormalTok{, }\StringTok{'value'}\NormalTok{])}
+\NormalTok{    cursor.executemany(sql, database[}\StringTok{'buffer'}\NormalTok{][}\StringTok{'values'}\NormalTok{])}
+\NormalTok{    database[}\StringTok{'buffer'}\NormalTok{][}\StringTok{'values'}\NormalTok{] }\OperatorTok{=}\NormalTok{ []}
+\KeywordTok{def}\NormalTok{ bulk_write_timestamps(database, connection):}
+\NormalTok{    cursor }\OperatorTok{=}\NormalTok{ connection.cursor()}
+\NormalTok{    sql }\OperatorTok{=}\NormalTok{ get_sql(}\StringTok{'timestamp'}\NormalTok{,[}\StringTok{'id'}\NormalTok{, }\StringTok{'timestamp'}\NormalTok{])}
+\NormalTok{    cursor.executemany(sql, database[}\StringTok{'buffer'}\NormalTok{][}\StringTok{'timestamps'}\NormalTok{])}
+\NormalTok{    database[}\StringTok{'buffer'}\NormalTok{][}\StringTok{'timestamps'}\NormalTok{] }\OperatorTok{=}\NormalTok{ []}
+\KeywordTok{def}\NormalTok{ add_flight(database, filename, connection):}
+\NormalTok{    database[}\StringTok{'last flight id'}\NormalTok{] }\OperatorTok{+=} \DecValTok{1}    
+\NormalTok{    cursor }\OperatorTok{=}\NormalTok{ connection.cursor()}
+\NormalTok{    sql }\OperatorTok{=} \StringTok{'INSERT INTO flight(id, path) VALUES(?,?)'}
+\NormalTok{    cursor.execute(sql, [database[}\StringTok{'last flight id'}\NormalTok{], scrub(filename)])}
+\KeywordTok{def}\NormalTok{ add_message(message, database, connection):}
+\NormalTok{    database[}\StringTok{'last message id'}\NormalTok{] }\OperatorTok{+=} \DecValTok{1}
+\NormalTok{    database[}\StringTok{'messages'}\NormalTok{][message] }\OperatorTok{=}\NormalTok{ database[}\StringTok{'last message id'}\NormalTok{]}
+\NormalTok{    sql }\OperatorTok{=}\NormalTok{ get_sql(}\StringTok{'message'}\NormalTok{, [}\StringTok{'id'}\NormalTok{, }\StringTok{'message'}\NormalTok{])}
+\NormalTok{    data }\OperatorTok{=}\NormalTok{ (database[}\StringTok{'messages'}\NormalTok{][message], message)}
+\NormalTok{    cursor }\OperatorTok{=}\NormalTok{ connection.cursor()}
+\NormalTok{    cursor.execute(sql, data)}
+\KeywordTok{def}\NormalTok{ add_timestamp(timestamp, database):}
+    \ControlFlowTok{if} \StringTok{'timestamps'} \KeywordTok{not} \KeywordTok{in}\NormalTok{ database[}\StringTok{'buffer'}\NormalTok{]:}
+\NormalTok{        database[}\StringTok{'buffer'}\NormalTok{][}\StringTok{'timestamps'}\NormalTok{] }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{    database[}\StringTok{'last timestamp id'}\NormalTok{] }\OperatorTok{+=} \DecValTok{1}
+\NormalTok{    database[}\StringTok{'buffer'}\NormalTok{][}\StringTok{'timestamps'}\NormalTok{].append((}
+\NormalTok{      database[}\StringTok{'last timestamp id'}\NormalTok{], timestamp))}
+\KeywordTok{def}\NormalTok{ add_parameters(parameters, database, connection):}
+    \BuiltInTok{buffer} \OperatorTok{=}\NormalTok{ []}
+\NormalTok{    params }\OperatorTok{=} \BuiltInTok{filter}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ p: p }\KeywordTok{not} \KeywordTok{in} 
+\NormalTok{      database[}\StringTok{'parameters'}\NormalTok{], parameters)}
+    \ControlFlowTok{for}\NormalTok{ parameter }\KeywordTok{in}\NormalTok{ params:}
+\NormalTok{        database[}\StringTok{'last parameter id'}\NormalTok{] }\OperatorTok{+=} \DecValTok{1}
+\NormalTok{        database[}\StringTok{'parameters'}\NormalTok{][parameter] }\OperatorTok{=}\NormalTok{ database[}\StringTok{'last parameter id'}\NormalTok{]}
+        \BuiltInTok{buffer}\NormalTok{.append((database[}\StringTok{'last parameter id'}\NormalTok{], parameter))}
+    
+\NormalTok{    sql }\OperatorTok{=}\NormalTok{ get_sql(}\StringTok{'parameter'}\NormalTok{, [}\StringTok{'id'}\NormalTok{, }\StringTok{'parameter'}\NormalTok{])}
+\NormalTok{    cursor }\OperatorTok{=}\NormalTok{ connection.cursor()}
+\NormalTok{    cursor.executemany(sql, }\BuiltInTok{buffer}\NormalTok{)}
+\NormalTok{    connection.commit()}
+\KeywordTok{def}\NormalTok{ get_sql(table_name, column_names):}
+\NormalTok{    questionmarks }\OperatorTok{=} \StringTok{','}\NormalTok{.join(}\BuiltInTok{map}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: }\StringTok{'?'}\NormalTok{, column_names))}
+\NormalTok{    column_names_string }\OperatorTok{=} \StringTok{','}\NormalTok{.join(column_names)}
+    \ControlFlowTok{return} \StringTok{'INSERT INTO }\SpecialCharTok{\{\}}\StringTok{(}\SpecialCharTok{\{\}}\StringTok{) VALUES(}\SpecialCharTok{\{\}}\StringTok{)'}\NormalTok{.}\BuiltInTok{format}\NormalTok{(scrub(table_name), }
+\NormalTok{      column_names_string, questionmarks)}
+\KeywordTok{def}\NormalTok{ create_connection(db_file):}
+    \CommentTok{""" create a database connection to the SQLite database}
+\CommentTok{        specified by db_file}
+\CommentTok{    :param db_file: database file}
+\CommentTok{    :return: Connection object or None}
+\CommentTok{    """}
+    \ControlFlowTok{try}\NormalTok{:}
+\NormalTok{        conn }\OperatorTok{=}\NormalTok{ sqlite3.}\ExtensionTok{connect}\NormalTok{(db_file)}
+        \ControlFlowTok{return}\NormalTok{ conn}
+    \ControlFlowTok{except} \PreprocessorTok{Exception} \ImportTok{as}\NormalTok{ e:}
+        \BuiltInTok{print}\NormalTok{(e)}
+    \ControlFlowTok{return} \VariableTok{None}
+\KeywordTok{def}\NormalTok{ scrub(table_name):}
+    \ControlFlowTok{return} \StringTok{''}\NormalTok{.join( }\BuiltInTok{chr} \ControlFlowTok{for} \BuiltInTok{chr} \KeywordTok{in}\NormalTok{ table_name }\ControlFlowTok{if} \BuiltInTok{chr}\NormalTok{.isalnum())}
+\KeywordTok{def}\NormalTok{ humanize_bytes(}\BuiltInTok{bytes}\NormalTok{, precision}\OperatorTok{=}\DecValTok{1}\NormalTok{):}
+    \CommentTok{"""Return a humanized string representation of a number of bytes.}
+\CommentTok{    Assumes `from __future__ import division`.}
+\CommentTok{    >>> humanize_bytes(1)}
+\CommentTok{    '1 byte'}
+\CommentTok{    >>> humanize_bytes(1024)}
+\CommentTok{    '1.0 kB'}
+\CommentTok{    >>> humanize_bytes(1024*123)}
+\CommentTok{    '123.0 kB'}
+\CommentTok{    >>> humanize_bytes(1024*12342)}
+\CommentTok{    '12.1 MB'}
+\CommentTok{    >>> humanize_bytes(1024*12342,2)}
+\CommentTok{    '12.05 MB'}
+\CommentTok{    >>> humanize_bytes(1024*1234,2)}
+\CommentTok{    '1.21 MB'}
+\CommentTok{    >>> humanize_bytes(1024*1234*1111,2)}
+\CommentTok{    '1.31 GB'}
+\CommentTok{    >>> humanize_bytes(1024*1234*1111,1)}
+\CommentTok{    '1.3 GB'}
+\CommentTok{    """}
+\NormalTok{    abbrevs }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{        (}\DecValTok{1}\OperatorTok{<<}\NormalTok{50L, }\StringTok{'PB'}\NormalTok{),}
+\NormalTok{        (}\DecValTok{1}\OperatorTok{<<}\NormalTok{40L, }\StringTok{'TB'}\NormalTok{),}
+\NormalTok{        (}\DecValTok{1}\OperatorTok{<<}\NormalTok{30L, }\StringTok{'GB'}\NormalTok{),}
+\NormalTok{        (}\DecValTok{1}\OperatorTok{<<}\NormalTok{20L, }\StringTok{'MB'}\NormalTok{),}
+\NormalTok{        (}\DecValTok{1}\OperatorTok{<<}\NormalTok{10L, }\StringTok{'kB'}\NormalTok{),}
+\NormalTok{        (}\DecValTok{1}\NormalTok{, }\StringTok{'bytes'}\NormalTok{)}
+\NormalTok{    )}
+    \ControlFlowTok{if} \BuiltInTok{bytes} \OperatorTok{==} \DecValTok{1}\NormalTok{:}
+        \ControlFlowTok{return} \StringTok{'1 byte'}
+    \ControlFlowTok{for}\NormalTok{ factor, suffix }\KeywordTok{in}\NormalTok{ abbrevs:}
+        \ControlFlowTok{if} \BuiltInTok{bytes} \OperatorTok{>=}\NormalTok{ factor:}
+            \ControlFlowTok{break}
+    \ControlFlowTok{return} \StringTok{'}\SpecialCharTok{%.*f}\StringTok{ }\SpecialCharTok{%s}\StringTok{'} \OperatorTok{%}\NormalTok{ (precision, }\BuiltInTok{bytes} \OperatorTok{/}\NormalTok{ factor, suffix)}
+\ControlFlowTok{if} \VariableTok{__name__} \OperatorTok{==} \StringTok{"__main__"}\NormalTok{:}
+\NormalTok{     main(sys.argv)}
+\end{Highlighting}
+\end{Shaded}
+\section{Demo appendix}\label{demo-appendix}
 
 This first appendix includes all of the R chunks of code that were
 hidden throughout the document (using the \texttt{include\ =\ FALSE}

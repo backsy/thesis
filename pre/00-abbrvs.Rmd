@@ -1,1 +1,28 @@
-Abbreviations of stuff and such. Kable it i guess.
+-------------------------------------------------
+*Abbreviation*      *Meaning*
+------------        -------------------------------
+UAV                 Unmanned Aerial Vehicle
+
+GPS                 Global Positioning System
+
+GLONASS             Global Navigation Satellite System
+
+IMU                 Inertial Measurement Unit
+
+GB                  GigaByte - 1000^3^ bytes
+
+kB                  kiloByte - 1000^1^ bytes
+
+MB                  MegaByte - 1000^2^ bytes
+
+GCS                 Ground Control Station
+
+CSV                 Comma-Sepparated Values
+
+JSON                JavaScript Object Notation
+
+SQL                 Structured Query Language
+
+DBMS                Database Management Systems
+-------------------------------------------------
+
