@@ -1,5 +1,5 @@
 ---
-author: 'Karl Uibo 3021434163'
+author: 'Karl Uibo 153620IVEM'
 date: 'May 2018'
 institution: 'tallinn university of technology'
 division: 'School of Information Technologies'
@@ -7,8 +7,8 @@ advisor: 'Supervisor: Olev Märtens'
 #altadvisor: 'Your Other Advisor'
 # Delete line 7 if you only have one advisor
 department: 'Thomas Johann Seebeck Department of Electronics'
-degree: 'PhD'
-title: 'wind estimation for fuel management'
+degree: 'Professor'
+title: 'analysis of flight data for weather dependant multiple execution autonomous missions'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 output: 

@@ -1,12 +1,80 @@
 @Manual{r,
-title = {R: A language and environment for statistical
-computing},
-author = {{R Development Core Team}},
-organization = {R Foundation for Statistical Computing},
-address = {Vienna, Austria},
-year = 2004,
-note = {3-900051-07-0},
-url = {http://www.R-project.org}
+  title = {R: A language and environment for statistical
+  computing},
+  author = {{R Development Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address = {Vienna, Austria},
+  year = 2004,
+  note = {3-900051-07-0},
+  url = {http://www.R-project.org}
+}
+
+@Article{jlite,
+  title = {The jsonlite Package: A Practical and Consistent Mapping Between JSON Data and R Objects},
+  author = {Jeroen Ooms},
+  journal = {arXiv:1403.2805 [stat.CO]},
+  year = {2014},
+  url = {https://arxiv.org/abs/1403.2805},
+}
+
+@Manual{1,
+  title = {RODBC: ODBC Database Access},
+  author = {Brian Ripley and Michael Lapsley},
+  year = {2017},
+  note = {R package version 1.3-15},
+  url = {https://CRAN.R-project.org/package=RODBC},
+}
+
+@Manual{3,
+  title = {RJDBC: Provides Access to Databases Through the JDBC Interface},
+  author = {Simon Urbanek},
+  year = {2018},
+  note = {R package version 0.2-7.1},
+  url = {https://CRAN.R-project.org/package=RJDBC},
+}
+
+@Manual{4,
+  title = {bigrquery: An Interface to Google's 'BigQuery' 'API'},
+  author = {Hadley Wickham},
+  year = {2018},
+  note = {R package version 1.0.0},
+  url = {https://CRAN.R-project.org/package=bigrquery},
+}
+
+@Manual{5,
+  title = {RSQLite: 'SQLite' Interface for R},
+  author = {Kirill Müller and Hadley Wickham and David A. James and Seth Falcon},
+  year = {2017},
+  note = {R package version 2.0},
+  url = {https://CRAN.R-project.org/package=RSQLite},
+}
+
+@Manual{6,
+  title = {DBI: R Database Interface},
+  author = {{R Special Interest Group on Databases (R-SIG-DB)} and Hadley Wickham and Kirill Müller},
+  year = {2018},
+  note = {R package version 0.8},
+  url = {https://CRAN.R-project.org/package=DBI},
+}
+
+@Article{tidy-data,
+  author = {Hadley Wickham},
+  issue = {10},
+  journal = {The Journal of Statistical Software},
+  selected = {TRUE},
+  title = {Tidy data},
+  url = {http://www.jstatsoft.org/v59/i10/},
+  volume = {59},
+  year = {2014},
+  bdsk-url-1 = {http://www.jstatsoft.org/v59/i10/},
+}
+
+@Manual{rjon,
+  title = {rjson: JSON for R},
+  author = {Alex Couture-Beil},
+  year = {2014},
+  note = {R package version 0.2.15},
+  url = {https://CRAN.R-project.org/package=rjson},
 }
 
 @article{wind,
@@ -18,50 +86,110 @@ url = {http://www.R-project.org}
   pages = {1183-1191},
   year = {2017},
   doi = {10.1175/JTECH-D-16-0177.1},
-
-  URL = { 
-        https://doi.org/10.1175/JTECH-D-16-0177.1
-    
-},
-  eprint = { 
-        https://doi.org/10.1175/JTECH-D-16-0177.1
-    
-}
-,
-    abstract = { AbstractUnmanned aerial vehicles are increasingly used to study atmospheric structure and dynamics. While much emphasis has been on the development of fixed-wing unmanned aircraft for atmospheric investigations, the use of multirotor aircraft is relatively unexplored, especially for capturing atmospheric winds. The purpose of this article is to demonstrate the efficacy of estimating wind speed and direction with 1) a direct approach using a sonic anemometer mounted on top of a hexacopter and 2) an indirect approach using attitude data from a quadcopter. The data are collected by the multirotor aircraft hovering 10 m above ground adjacent to one or more sonic anemometers. Wind speed and direction show good agreement with sonic anemometer measurements in the initial experiments. Typical errors in wind speed and direction are smaller than 0.5 and 30°, respectively. Multirotor aircraft provide a promising alternative to traditional platforms for vertical profiling in the atmospheric boundary layer, especially in conditions where a tethered balloon system is typically deployed. }
+  URL = { https://doi.org/10.1175/JTECH-D-16-0177.},
+  eprint = {https://doi.org/10.1175/JTECH-D-16-0177.1},
 }
 
 @article{indi,
-title = "Cascaded incremental nonlinear dynamic inversion for MAV disturbance rejection",
-journal = "Control Engineering Practice",
-volume = "73",
-pages = "79 - 90",
-year = "2018",
-issn = "0967-0661",
-doi = "https://doi.org/10.1016/j.conengprac.2018.01.003",
-url = "http://www.sciencedirect.com/science/article/pii/S0967066118300030",
-author = "E.J.J. Smeur and G.C.H.E. de Croon and Q. Chu",
-keywords = "Quadrocopter, Incremental control, Windtunnel free flight, Disturbance rejection, Wind gusts"
+  title = "Cascaded incremental nonlinear dynamic inversion for MAV disturbance rejection",
+  journal = "Control Engineering Practice",
+  volume = "73",
+  pages = "79 - 90",
+  year = "2018",
+  issn = "0967-0661",
+  doi = "https://doi.org/10.1016/j.conengprac.2018.01.003",
+  url = "http://www.sciencedirect.com/science/article/pii/S0967066118300030",
+  author = "E.J.J. Smeur and G.C.H.E. de Croon and Q. Chu",
+  keywords = "Quadrocopter, Incremental control, Windtunnel free flight, Disturbance rejection, Wind gusts"
 }
 
 @INPROCEEDINGS{pid, 
-author={Yun Yu and Shuo Yang and Mingxi Wang and Cheng Li and Zexiang Li}, 
-booktitle={2015 IEEE International Conference on Robotics and Automation (ICRA)}, 
-title={High performance full attitude control of a quadrotor on SO(3)}, 
-year={2015}, 
-volume={}, 
-number={}, 
-pages={1698-1703}, 
-keywords={Lie algebras;Lie groups;attitude control;autonomous aerial vehicles;cascade control;linear systems;nonlinear dynamical systems;three-term control;trajectory control;Lie algebra theory;Lie group;cascaded linear PID controllers;complex acrobatic unmanned aerial vehicle maneuvers;exponential coordinates parametrization;nonlinear dynamic model;quadrotor UAV attitude control algorithm;rotational trajectory planner;smith predictor;Attitude control;Delays;Heuristic algorithms;Robot kinematics;Rotors;Trajectory}, 
-doi={10.1109/ICRA.2015.7139416}, 
-ISSN={1050-4729}, 
-month={May},}
+  author={Yun Yu and Shuo Yang and Mingxi Wang and Cheng Li and Zexiang Li}, 
+  booktitle={2015 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={High performance full attitude control of a quadrotor on SO(3)}, 
+  year={2015}, 
+  volume={}, 
+  number={}, 
+  pages={1698-1703}, 
+  keywords={Lie algebras;Lie groups;attitude control;autonomous aerial vehicles;cascade control;linear systems;nonlinear dynamical systems;three-term control;trajectory control;Lie algebra theory;Lie group;cascaded linear PID controllers;complex acrobatic unmanned aerial vehicle maneuvers;exponential coordinates parametrization;nonlinear dynamic model;quadrotor UAV attitude control algorithm;rotational trajectory planner;smith predictor;Attitude control;Delays;Heuristic algorithms;Robot kinematics;Rotors;Trajectory}, 
+  doi={10.1109/ICRA.2015.7139416}, 
+  ISSN={1050-4729}, 
+  month={May}
+}
 
-@BOOK{angel2000,
-  title = {Interactive Computer Graphics : A Top-Down Approach with OpenGL},
-  publisher = {Addison Wesley Longman},
-  year = {2000},
-  author = {Edward Angel},
-  address = {Boston, MA},
-  isbn = {0-201-38597-X}
+@misc{pymav, 
+  title={Python implementation of MAVLink protocol}, 
+  url={https://github.com/ArduPilot/pymavlink}, 
+  journal={GitHub}, 
+  author={ArduPilot team}
+}
+
+@misc{json, 
+
+  title={JavaScript Object Notation}, 
+  url={https://WWW.json.org/}, 
+  journal={JSON},
+  author={Douglas Crockford}
+}
+
+@misc{sqlite, 
+  title={About SQLite}, 
+  url={https://www.sqlite.org/about.html}, 
+  journal={SQLite Home Page}
+}
+
+@misc{pydump, 
+  title={pymavlink}, 
+  url={https://github.com/ArduPilot/pymavlink/blob/master/tools/mavlogdump.py}, 
+  journal={GitHub}, 
+  author={ArduPilot team}
+}
+
+@misc{ardu, 
+  title={Ardupilot}, 
+  url={http://ardupilot.org/}, 
+  journal={Copter documentation},
+  author={ArduCopter team}
+}
+
+@misc{postgresql, 
+  title={The World's Most Advanced open source relational database}, 
+  url={https://www.postgresql.org/}, 
+  journal={PostgreSQL},
+  author={Open source}
+}
+
+
+@misc{mavlink, 
+  title={Marshalling / communication library for drones.}, 
+  url={https://github.com/mavlink/mavlink}, 
+  journal={GitHub}, 
+  author={ArduCopter team}
+}
+
+@misc{codd, 
+  title={Edgar F. Codd}, 
+  url={https://en.wikipedia.org/wiki/Edgar_F._Codd}, 
+  journal={Wikipedia}, 
+  publisher={Wikimedia Foundation}, 
+  year={2018}, 
+  month={May}
+}
+
+@misc{3fn, 
+  title={Third normal form}, 
+  url={https://en.wikipedia.org/wiki/Third_normal_form}, 
+  journal={Wikipedia}, 
+  publisher={Wikimedia Foundation}, 
+  year={2018}, 
+  month={Apr}
+}
+
+@misc{1fn, 
+  title={First normal form}, 
+  url={https://en.wikipedia.org/wiki/First_normal_form}, 
+  journal={Wikipedia}, 
+  publisher={Wikimedia Foundation}, 
+  year={2018}, 
+  month={Apr}
 }

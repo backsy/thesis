@@ -80,9 +80,9 @@ todo
 
 * ~~titel page~~
 
-* uniform bibliography 
+* ~~uniform bibliography~~ 
 
-* bibliography in general
+* ~~bibliography in general~~
 
 * Work with formating
 

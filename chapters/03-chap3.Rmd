@@ -4,7 +4,7 @@
 
 Eli Ltd collects the binary flight logs that are saved by arducopter firmware aboard the multirotor platform. The binary files contain _MAVLink_ protocol packets. _MAVLink_ stands for _Micro Air Vehicle Message Marshalling Library_. 
 
-> _MAVLink is a very lightweight, header-only message library for communication between drones and/or ground control stations. It consists primarily of message-set specifications for different systems ("dialects") defined in XML files, and Python tools that convert these into appropriate source code for supported languages._^[Mavlink github page: https://github.com/mavlink/mavlink]
+> _MAVLink is a very lightweight, header-only message library for communication between drones and/or ground control stations. It consists primarily of message-set specifications for different systems ("dialects") defined in XML files, and Python tools that convert these into appropriate source code for supported languages._^[@mavlink]
 
 Not all possible messages that the autopilot generates are sent to the GCS. It is configurable which packets are saved, which are sent to the GCS and which are dropped. In general the GCS receives some subset of all messages that is important for operating the multirotor. In the logs a bigger subset is recorded. For the logs present most important messages and communications are saved but extremely high resolution data <!-- should find the frequency --> is not saved. As such over a thousand logs have been collected. The total number of binary logs available is 1363 and amount to 57.2 GB of data. This would average 41966 KB per log. Among them are logs that are not actual flights but rather tests on the bench. These logs inflate the number of logs available. Some logs do contain the highest amounts of data and can be several hundred MB large and thus inflate the average. A normal flight can be expected to be between 4 to 100 MB's. An average 40+ minute flight is expected to be over 40 MB.
 
@@ -13,19 +13,18 @@ Not all possible messages that the autopilot generates are sent to the GCS. It i
 
 In this thesis _R_^[@r] programming language is used for data analysis. _R_ is a language and environment for statistical computing and graphics. As it is open source no licences are required to set it up and use. This brings statistical computing and data science to the hands of everyone interested in the topic and avoids expensive mathematics suites.
 
-The binary data in the log files is not readily accessible from _R_. As a result it is necessary to convert the data to some other format. The _pymavlink_ project^[Python implementation of MAVLink protocol. Web page: https://github.com/ArduPilot/pymavlink] has a few tools that do just that. First of the options is to convert the log into a CSV^[Comma separated values file is a text file where a comma is used to separate values.] file. _Mavlogdump.py_^[Github repository: https://github.com/ArduPilot/pymavlink/blob/master/tools/mavlogdump.py] is the tool available for conversion. With CSV files comes a caveat - you may only export one message type at a time. This is to be expected since the the CSV files separate table columns with commas and the log files have message types with different lengths of columns. Example lines of CSV file taken from a flight log containing NTUN packets.
+The binary data in the log files is not readily accessible from _R_. As a result it is necessary to convert the data to some other format. The _pymavlink_ project - a *python* implementation of MAVLink protocol^[@pymav] - has a few tools that do just that. First of the options is to convert the log into a CSV^[Comma separated values file is a text file where a comma is used to separate values.] file. _Mavlogdump.py_^[@pydump] is the tool available for conversion. With CSV files comes a caveat - you may only export one message type at a time. This is to be expected since the the CSV files separate table columns with commas and the log files have message types with different lengths of columns. Example lines of CSV file taken from a flight log containing NTUN packets.
 
 ```
-timestamp,TimeUS,DPosX,DPosY,PosX,PosY,DVelX,DVelY,VelX,VelY,DAccX,DAccY
-1521817093.27547407,688646373,-489.633148193,86.0853424072,-237.143630981...
-1521817093.37760210,688748501,-489.633148193,86.0853424072,-235.895751953...
-1521817093.47829199,688849191,-489.633148193,86.0853424072,-234.620544434...
-...
+timestamp,TimeUS,DPosX,DPosY,PosX,PosY,DVelX,DVelY,VelX,VelY,DAccX,...
+1521817093.27547407,688646373,-489.633148193,86.0853424072...
+1521817093.37760210,688748501,-489.633148193,86.0853424072...
+1521817093.47829199,688849191,-489.633148193,86.0853424072...
 ```
 
 In _R_ it is very simple to import CSV files and this at first seemed a viable candidate file type for storage. However since there are many different types of messages, each log would in turn be converted to as many CSV files. Potentially leaving us with tens of thousands of files. This means _R_ would have to import the relevant files one by one and processing them. With thousands of files to import the analysis time would be negatively impacted as the data import poses an overhead.
 
-Another option is to use JSON^[Web page: https://WWW.json.org]. JSON is a data-interchange format designed to be easily read and written by humans as well as to be easily parsed and generated by machines. There are two structures in JSON:
+Another option is to use JSON^[@json]. JSON is a data-interchange format designed to be easily read and written by humans as well as to be easily parsed and generated by machines. There are two structures in JSON:
 
 * A collection of name/value pairs.
 
@@ -33,7 +32,7 @@ Another option is to use JSON^[Web page: https://WWW.json.org]. JSON is a data-i
 
 Both are familiar to programmers using the _C_-family languages. Both can be seen in the following example:
 
-```{json eval=FALSE}
+```{r eval=FALSE}
 {"menu": {
   "id": "file",
   "value": "File",
@@ -49,7 +48,7 @@ Both are familiar to programmers using the _C_-family languages. Both can be see
 
 Two consecutive entries from the binary log converted to json format using _mavlogdump.py_ look like this:
 
-```{json eval=FALSE}
+```{r eval=FALSE}
 {"meta": {
     "timestamp": 1521817579.039407, 
     "type": "PIDP"
@@ -80,16 +79,16 @@ Two consecutive entries from the binary log converted to json format using _mavl
 }
 ```
 
-_R_ has libraries to deal with JSON data. Such as _jsonlite_ by Jeroen Ooms, Duncan Temple Lang and Lloyd Hilaiel^[https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf] and _rjson_ by Alex Couture-Beil^[https://cran.r-project.org/web/packages/rjson/rjson.pdf]. As with CSV, JSON files need to be imported one by one, analyzed and unloaded. This has considerable overhead. Further more an output file from a 47.6 MB log file becomes 649.8 MB. That is an increase of size of thirteen times! The library of logs that is 57.2 GB becomes 743.6 GB of JSON data as a result. At least there are an order of magnitude lower amount of files.
+_R_ has libraries to deal with JSON data. Such as _jsonlite_ ^[@jlite] and _rjson_^[@rjon]. As with CSV, JSON files need to be imported one by one, analyzed and unloaded. This has considerable overhead. Further more an output file from a 47.6 MB log file becomes 649.8 MB. That is an increase of size of thirteen times! The library of logs that is 57.2 GB becomes 743.6 GB of JSON data as a result. At least there are an order of magnitude lower amount of files.
 
-The final option to consider is _SQLite_^[https://WWW.sqlite.org/about.html]. _SQLite_ is a _SQL_ database engine that is self-contained and serverless. It is designed to be _SQL_ database, but without concerning itself with a server process and user management and other common _SQL_ attributes. As such its designed to be a competitor to both JSON and CSV. The benefit of _SQLite_ is that it can be used by various third party programs and programming languages. _Python_ and _Tcl_ have _SQLite_ built in. Raw data can be imported from CSV files and the data can be compressed to similar sizes to _Zip_ files. Since the database is a single file it can easily be written to a USB memory stick or with smaller databases emailed to a colleague directly. Given some understanding of _SQL_ _SQLite_ offers an easy to use database.
+The final option to consider is _SQLite_^[@sqlite]. _SQLite_ is a _SQL_ database engine that is self-contained and serverless. It is designed to be _SQL_ database, but without concerning itself with a server process and user management and other common _SQL_ attributes. As such its designed to be a competitor to both JSON and CSV. The benefit of _SQLite_ is that it can be used by various third party programs and programming languages. _Python_ and _Tcl_ have _SQLite_ built in. Raw data can be imported from CSV files and the data can be compressed to similar sizes to _Zip_ files. Since the database is a single file it can easily be written to a USB memory stick or with smaller databases emailed to a colleague directly. Given some understanding of _SQL_ _SQLite_ offers an easy to use database.
 
-_R_ language has adapters to connect to _SQL_ databases such as _RODBC_^[https://cran.r-project.org/web/packages/RODBC/index.html], _rsqlserver_^[https://github.com/agstudy/rsqlserver], _RJDBC_^[https://cran.r-project.org/web/packages/RJDBC/index.html], _bigrquery_^[https://github.com/r-dbi/bigrquery] and many others among which is _RSQLite_^[https://github.com/r-dbi/RSQLite]. _RSQLite_ embeds the _SQLite_ database engine in _R_, providing a _DBI_^[https://cran.r-project.org/web/packages/DBI/README.html]-compliant interface. _DBI_ is an _R_ package that defines a common interface between _R_ and database management systems (_DBMS_). With _RSQLite_ package it is possible to directly manipulate data in _SQLite_ database.
+_R_ language has adapters to connect to _SQL_ databases such as _RODBC_^[@1], _RJDBC_^[@3], _bigrquery_^[@4] and many others among which is _RSQLite_^[@5]. _RSQLite_ embeds the _SQLite_ database engine in _R_, providing a _DBI_^[@6]-compliant interface. _DBI_ is an _R_ package that defines a common interface between _R_ and database management systems (_DBMS_). With _RSQLite_ package it is possible to directly manipulate data in _SQLite_ database.
 
 
 ## Tidy data
 
-Tidy data is a set of principles that help organize data in data sets. This helps make data cleaning easier and faster by not having to start from scratch every time. Another benefit of tidy data is that it is easier to design data analysis tools which can assume that the data input is always tidy. Both benefits help the data analyser to focus on the underlying problem rather than managing data half the time. 
+Tidy data is a set of principles that help organize data in data sets. This helps make data cleaning easier and faster by not having to start from scratch every time. Another benefit of tidy data is that it is easier to design data analysis tools which can assume that the data input is always tidy. Both benefits help the data analyser to focus on the underlying problem rather than managing data half the time^[@tidy-data]. 
 
 -----------------------------------------------------------------------------
         &nbsp;           mpg    cyl   disp   hp    drat    wt     qsec    vs 
@@ -164,14 +163,13 @@ Jewish        19        19        25        25        30        95
 
 Table: Column headers as variables.
 
-Here we can see a table of data where the column header - the variable itself is a value. This can help make very dense and informative tables but for working with the data it is not tidy. If we wish to separate the data into segments of 5000 dollars then we can say that this table also has multiple variables in a single column. Rest of the problems we will not look at.^[Tidy data paper: http://vita.had.co.nz/papers/tidy-data.pdf, more relaxed essay: https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html]
-
+Here we can see a table of data where the column header - the variable itself is a value. This can help make very dense and informative tables but for working with the data it is not tidy. If we wish to separate the data into segments of 5000 dollars then we can say that this table also has multiple variables in a single column. Rest of the problems we will not look at.
 
 ## Database normalization
 
-_ArduPilot_^[http://ardupilot.org, https://github.com/ArduPilot] development team hosts an organization of projects on _GitHub_^[An online platform for version controlling software development] that contains several useful projects such as the _ardupilot_^[https://github.com/ArduPilot/ardupilot] autopilot firmware codebase for multirotors, planes, rovers and much more. Among the project is _pymavlink_^[https://github.com/ArduPilot/pymavlink] project which provides a _python_ _MAVLink_ interface and utilities. Among those utilities are tools mentioned in chapter [Choosing the output data type]. With these tools we determined that none of them fit our needs exactly but those tools can be used as a source of information for building our own tools.
+_ArduPilot_^[@ardu] development team hosts an organization of projects on _GitHub_^[An online platform for version controlling software development] that contains several useful projects such as the _ardupilot_ autopilot firmware codebase for multirotors, planes, rovers and much more. Among the project is _pymavlink_ project which provides a _python_ _MAVLink_ interface and utilities. Among those utilities are tools mentioned in chapter [Choosing the output data type]. With these tools we determined that none of them fit our needs exactly but those tools can be used as a source of information for building our own tools.
 
-The data storage format was decided to be _SQLite_ database. To increase the efficiency of working with the data the data set should be tidy. By taking that into account when designing the _SQLite_ database, time can be saved by not having to separately tidy up the data set before analysis. Further more Edgar F. Codd^[Computer scientist who invented relational database management systems https://en.wikipedia.org/wiki/Edgar_F._Codd] defined _normal_ _forms_ to permit querying and manipulation by a universal data language^[One such language is _SQL_]. The third normal form (3NF)^[https://en.wikipedia.org/wiki/Third_normal_form] is considered as being tidy data. Simply by designing the database using the normal forms, especially the third normal form allows us to reach tidy data.
+The data storage format was decided to be _SQLite_ database. To increase the efficiency of working with the data the data set should be tidy. By taking that into account when designing the _SQLite_ database, time can be saved by not having to separately tidy up the data set before analysis. Further more Edgar F. Codd^[@codd] defined _normal_ _forms_ to permit querying and manipulation by a universal data language^[One such language is _SQL_]. The third normal form (3NF)^[@3fn] is considered as being tidy data. Simply by designing the database using the normal forms, especially the third normal form allows us to reach tidy data.
 
 By instructing _mavlogdump.py_ to dump the logs from binary form to a readable text file we can see the general shape of the data in the binary logs.
 
@@ -233,7 +231,7 @@ AFF|0.0
 Table: (\#tab:pidr) Message PIDR.
 
 
-First normal form is a property of a relation where each attribute of the domain contains only indivisible values and the value of each attribute contains only a single value from that domain^[https://en.wikipedia.org/wiki/First_normal_form]. In table \@ref(tab:dump) we see that there are inner tables in the message. This is in violation of the requirement of atomic values. The inner tables need to be removed from the message and separated into another table. 
+First normal form is a property of a relation where each attribute of the domain contains only indivisible values and the value of each attribute contains only a single value from that domain^[@1fn]. In table \@ref(tab:dump) we see that there are inner tables in the message. This is in violation of the requirement of atomic values. The inner tables need to be removed from the message and separated into another table. 
 
 ```{r 1fn, fig.cap="Message and ATT relationship.", echo=FALSE}
 include_graphics(path = "./figure/1fn.PNG")
@@ -289,7 +287,7 @@ There is an overhead to writing into the _SQLite_ database. A single write entai
 
 In case where the script crashes or some error happens or new logs are to be added to the database the code first checks the existence of the database. If the database exists the supporting tables are read into memory to be tested against so that new messages and parameters get added to the database.
 
-While _SQLite_ is a good option for an on disk storage of the database, other databases are available and have some useful features. One of which is the ability to use window functions on the database. This means that it is possible to use filter kernels on the data while still in database. Such functions using _SQLite_ require loading the relevant segment of data (such as a single flight) into _R_. An attempt was made to port the working _python_ code to instead of _SQLite_ to use _PostgreSQL_^[Open source relational database. https://WWW.postgresql.org]. The code does work but is orders of magnitude slower. Heavy optimization is needed to streamline the process and as _SQLite_ interface is simpler in nature this idea was left as something to be done later given more time. Moving to a full featured relational database management system would allow easier porting of the analysis to a web based service later, but that is not relevant in the context of this thesis.
+While _SQLite_ is a good option for an on disk storage of the database, other databases are available and have some useful features. One of which is the ability to use window functions on the database. This means that it is possible to use filter kernels on the data while still in database. Such functions using _SQLite_ require loading the relevant segment of data (such as a single flight) into _R_. An attempt was made to port the working _python_ code to instead of _SQLite_ to use _PostgreSQL_^[@postgresql]. The code does work but is orders of magnitude slower. Heavy optimization is needed to streamline the process and as _SQLite_ interface is simpler in nature this idea was left as something to be done later given more time. Moving to a full featured relational database management system would allow easier porting of the analysis to a web based service later, but that is not relevant in the context of this thesis.
 
 The code for creating the database is written in _python_ and is added to the appendix. 
 

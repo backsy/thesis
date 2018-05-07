@@ -132,38 +132,51 @@
   }{\endoldtheindex}
 }
 
-% Stolen from book.cls and modified
-\let\RToldchapter\chapter
-\renewcommand{\chapter}{\if@openright\RTcleardoublepage
-		    \else\clearpage\fi
-		    \thispagestyle{empty}%
-		    \global\@topnum\z@
-		    \@afterindentfalse
-		    \secdef\@chapter\@schapter}
+% addition for not showing 'Chapter 1'
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries
+    \ifnum \c@secnumdepth >\m@ne
+      \thechapter\nobreakspace
+    \fi
+    #1\par\nobreak
+    \vskip 40\p@
+  }}
 
-% Stolen from book.cls PBC 5/12/05
-% Using this to actually show "Chapter 1" in TOC instead of "1"
-\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
-                       \if@mainmatter
-                         \refstepcounter{chapter}%
-                         \typeout{\@chapapp\space\thechapter.}%
-                         \addcontentsline{toc}{chapter}%
-                         {\@chapapp\space\thechapter:\space#1}%
-                       \else
-                         \addcontentsline{toc}{chapter}{#1}%
-                       \fi
-                    \else
-                      \addcontentsline{toc}{chapter}{#1}%
-                    \fi
-                    \chaptermark{#1}%
-                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
-                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
-                    \if@twocolumn
-                      \@topnewpage[\@makechapterhead{#2}]%
-                    \else
-                      \@makechapterhead{#2}%
-                      \@afterheading
-                    \fi}
+% % Stolen from book.cls and modified
+% \let\RToldchapter\chapter
+% \renewcommand{\chapter}{\if@openright\RTcleardoublepage
+% 		    \else\clearpage\fi
+% 		    \thispagestyle{empty}%
+% 		    \global\@topnum\z@
+% 		    \@afterindenttrue
+% 		    \secdef\@chapter\@schapter}
+
+% % Stolen from book.cls PBC 5/12/05
+% % Using this to actually show "Chapter 1" in TOC instead of "1"
+% \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+%                        \if@mainmatter
+%                          \refstepcounter{chapter}%
+%                          \typeout{\@chapapp\space\thechapter.}%
+%                          \addcontentsline{toc}{chapter}%
+%                          {\@chapapp\space\thechapter:\space#1}%
+%                        \else
+%                          \addcontentsline{toc}{chapter}{#1}%
+%                        \fi
+%                     \else
+%                       \addcontentsline{toc}{chapter}{#1}%
+%                     \fi
+%                     \chaptermark{#1}%
+%                     \addtocontents{lof}{\protect\addvspace{10\p@}}%
+%                     \addtocontents{lot}{\protect\addvspace{10\p@}}%
+%                     \if@twocolumn
+%                       \@topnewpage[\@makechapterhead{#2}]%
+%                     \else
+%                       \@makechapterhead{#2}%
+%                       \@afterheading
+%                     \fi}
 
 \newcommand{\RTcleardoublepage}{
 	\clearpage\if@twoside \ifodd\c@page\else
