@@ -1,1 +1,5 @@
-This thesis is written in and is pages long, including chapters, figures and tables.
+This thesis explores how to achieve consecutive autonomous flights without a pilots input. Previously the focus of research has been in optimizing the flight characteristics of a multirotor but we take a higher level approach to find the requirements needed to be able to achieve fully autonomous flight with use cases in the industry.
+
+We created _python_ code to import data from individual log files into a database. An algorithm for filtering the database to find necessary data to design a model of the flight behavior of an individual multirotor is created. An analysis of voltage graphs of the available flights were analyzed and a requirement for a smart controller in each battery to monitor the state of charge, state of health and to identify each battery is found.
+
+This thesis is written in English and is 35 pages long, including 4 chapters, 16 figures and 8 tables.

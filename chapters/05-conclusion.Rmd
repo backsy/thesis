@@ -1,3 +1,9 @@
 # Conclusion {-}
 
-Welp, thats it.
+In order to create automatic missions that can be executed multiple times without external input regardless of weather a model of the multirotor behavior and a smart battery controller is needed. Until now the main focus of research has been on improving the autopilot flight controller algorithms. 
+
+Multiple data storage types were assessed. _SQLite_ was chosen to be used as it is simple to use and acts like a real _SQL_ database and it is easy to share as it is in a single file. Compared to other options it takes less disk space.
+
+The data representation was analyzed and designed for ease of use in the analysis. The relevant code was created in _python_ programming language converting the binary logs into _SQLite_ database. This allows us to analyze several flights of data at the same time and make comparisons. Until now the tools allowed for analysis of a single log at a time. Further improvement suggestions were made.
+
+Using the created database initial data analysis is done. As a result we present the way to filter out the relevant data to train the model of multirotor behavior on. Furthermore the need for a smart battery controller is shown. An experiment to test the behavior model accuracy in calculating wind speed and direction is proposed.

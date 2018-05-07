@@ -23,29 +23,29 @@ chapter 1 State of the art
 
 chapter 2 Why are regular pilots needed
 
-* kaamera drooni tegelik eesmärk - video saamine, muu on sekundaarne
+* kaamera drooni tegelik eesm?rk - video saamine, muu on sekundaarne
 
 * guided ja rc juhtimine
 
-* tuule mõju lendamisel
+* tuule m?ju lendamisel
 
 * kiiruse valimine
 
-* aku tühjenemise jälgimine, koju lendamine
+* aku t?hjenemise j?lgimine, koju lendamine
 
 * lennu kauguse/missiooni kauguse hindamine
 
-* tuult tuleb jälgida, et valida sobiv lennu kiirus
+* tuult tuleb j?lgida, et valida sobiv lennu kiirus
 
-* aku tegelikku olukorda tuleb jälgida, et optimaalselt lennata
+* aku tegelikku olukorda tuleb j?lgida, et optimaalselt lennata
 
 * puudu on teadmine, kui pikka missiooni saab teha mis ilma oludes
 
-* kui palju mõjutab tuule kiirus lennu aega/kestvust/kaugust
+* kui palju m?jutab tuule kiirus lennu aega/kestvust/kaugust
 
 * automaatmissiooni tegemine
 
-* lahenduseks on andmeid koguda ja analüüsida lünki
+* lahenduseks on andmeid koguda ja anal??sida l?nki
 
 * rtl, fs
 
@@ -55,7 +55,7 @@ chapter 3 database
 
 * andmete kuju
 
-* faili tüüpide valik
+* faili t??pide valik
 
 * wide/long/tidy data
 
@@ -67,22 +67,30 @@ chapter 3 database
 
 chapter 4 analysis
 
-* aku graafikud ja nende analüüs
+* aku graafikud ja nende anal??s
 
-* lennu modede ja lendamise analüüs
+* lennu modede ja lendamise anal??s
 
-* tõstetud probleemide lahendamine
+* t?stetud probleemide lahendamine
 
 
 todo
 
-* bibliograpy
+* ~~spell checking on all chapters~~
+
+* ~~titel page~~
+
+* uniform bibliography 
+
+* bibliography in general
 
 * Work with formating
 
 * Chapter 4 formulas to be mathematically legit
 
 * Mission mode has fixed flight speed - mention that
+
+* Add code snipets for generating the graphs
 
 
 Outputs, value

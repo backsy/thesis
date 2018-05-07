@@ -1,14 +1,14 @@
 ---
-author: 'Karl Uibo'
+author: 'Karl Uibo 3021434163'
 date: 'May 2018'
-institution: 'Tallinn University of Technology'
-division: 'Information Technologies'
-advisor: 'Olev Märtens'
+institution: 'tallinn university of technology'
+division: 'School of Information Technologies'
+advisor: 'Supervisor: Olev Märtens'
 #altadvisor: 'Your Other Advisor'
 # Delete line 7 if you only have one advisor
 department: 'Thomas Johann Seebeck Department of Electronics'
-degree: 'Master of Arts'
-title: 'Wind estimation for fuel management'
+degree: 'PhD'
+title: 'wind estimation for fuel management'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 output: 
@@ -65,4 +65,9 @@ on chapters.
 
 # Introduction {.unnumbered}
 
-The following thesis looks at the flight logs of Eli Ltd. to assess the fuel economy and the information given to the user. To be written when rest of the paper is finished.
+Currently the autonomy of multirotor aircraft is limited to single flights. A mission can be made that traverses a given path and points its camera at points of interest. The current technology lets the pilot assign the speed of flight during the traversal of the mission. Eli Ltd has developed a technology that they call _nests_. With this technology the batteries of a multirotor can be recharged and swapped for charged ones. This creates the possibility to create missions that are automatic and require no input from a pilot. Due to the dynamic nature of weather the flight speeds of the mission need to be changed. By changing the speeds safety and higher operational ability is achieved. Current technology does not dynamically change the mission parameters to fit the weather conditions. 
+
+This thesis does not concern itself with use cases where high situational awareness is needed such as detecting objects in video, tracking objects in video, dynamically generating new missions given external stimulus. Instead use cases that use missions that follow a preplanned path are discussed. Such use cases are area surveillance missions for securing a perimeter of a secure site or autonomous patrol of a segment of a countries border.
+
+More concretely in this thesis the library of binary flight logs of Eli Ltd is taken and used to build a database for further analysis. In the first chapter we survey the state of the art. The second chapter discusses the intricacies of piloting an unmanned aerial multirotor vehicle. In the third chapter various file formats are analyzed and chosen from to be used as storage for the database. Furthermore the analysis prerequisites are discussed and the database schema is designed accordingly. The schema is then used in the _python_ code created by the thesis author to translate the binary flight logs into a _SQLite_ database. In the following chapter initial analysis is conducted on the data. The goal of which is to find the relevant data to model the multirotor behavior in different conditions and requirements for the model to be used in practice.
+

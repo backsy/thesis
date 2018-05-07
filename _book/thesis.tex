@@ -111,14 +111,14 @@
   \newcommand{\NormalTok}[1]{#1}
 
 % To pass between YAML and LaTeX the dollar signs are added by CII
-\title{Wind estimation for fuel management}
-\author{Karl Uibo}
+\title{wind estimation for fuel management}
+\author{Karl Uibo 3021434163}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
 \date{May 2018}
-\division{Information Technologies}
-\advisor{Olev Märtens}
-\institution{Tallinn University of Technology}
-\degree{Master of Arts}
+\division{School of Information Technologies}
+\advisor{Supervisor: Olev Märtens}
+\institution{tallinn university of technology}
+\degree{PhD}
 %If you have two advisors for some reason, you can use the following
 % Uncommented out by CII
 % End of CII addition
@@ -165,17 +165,59 @@ else.
 
 ~
 
-Author:
+Author: Karl Uibo
+
+~
+
+07.05.2018
 }
 
 \Annotatsioon{
-Lõputöö on kirjutatud Inglise keeles ning sisaldab teksti xx leheküljel,
-xx peatükki, xx joonist, xx tabelit.
+Selles töös otsitakse lahendust probleemile, kuidas saavutada
+autonoomset multirootori lennu missiooni nii, et lendude vahel ei peaks
+ükski inimene sekkuma samal ajal maksimeerides lennuaega ja lennu
+pikust. Senini on põhiliselt uuritud autopiloodi juht-algoritmide
+efektiivsust ja on loodud ilmastiku ja sensori müra kindlamaid
+algoritme. Selles töös vaadeldakse laiemat pilti, kus selleks, et
+multirootorid saaksid olla tõeliselt autonoomsed ja võiksid pakuda
+senini liialt kulukateks osutunud funktsionaalsusi. Selleks
+analüüsitakse erinevaid võimalusi binaarsetest lennulogidest ühtse
+andmestiku loomiseks. Vaadeldakse erinevaid faili tüüpe ning lõpuks
+valitakse \emph{SQLite} andmebaas. Luuakse andmete mudel hoidmaks infot
+logidest ja kirjutatakse kood \emph{python} keeles, mis loob nimetatud
+andmebaasi. Andmebaasis olevate andmete analüüsi tulemusel leitakse
+parameetrid, mille alusel on võimalik kogu andmebaasist välja
+filtreerida andmed, mille abil on võimalik luua multirootori käitumise
+mudel erinevatel lennu kiirustel õhu suhtes. Leitakse ka vajadus,
+lendude pinge graafikuid analüüsides, et saavutada autonoomsus, mis
+arvestab ilma tingitud muutustega autonoomsete missioonide vahel, on
+tarvilik inteligentne kontroller, mis teaks autopiloodile anda infot aku
+täituvusest. Kontroller peaks mõõtma ja arvestama aku temperatuuriga ja
+jälgima aku degradatsiooni ajas ning kasutus kordadel. Lisaks peaks
+kontroller väljastama unikaalse identifikaatori, et andmeanalüüsi
+teostades oleks võimalik jälgida muutusi aku parameetrites.
+
+See töö on kirjutatud Inglise keeles, on 35 lehekülge pikk, sisaldab 4
+peatükki, 16 joonist ja 8 tabelit.
 }
 
 \Abstract{
-This thesis is written in and is pages long, including chapters, figures
-and tables.
+This thesis explores how to achieve consecutive autonomous flights
+without a pilots input. Previously the focus of research has been in
+optimizing the flight characteristics of a multirotor but we take a
+higher level approach to find the requirements needed to be able to
+achieve fully autonomous flight with use cases in the industry.
+
+We created \emph{python} code to import data from individual log files
+into a database. An algorithm for filtering the database to find
+necessary data to design a model of the flight behavior of an individual
+multirotor is created. An analysis of voltage graphs of the available
+flights were analyzed and a requirement for a smart controller in each
+battery to monitor the state of charge, state of health and to identify
+each battery is found.
+
+This thesis is written in English and is 35 pages long, including 4
+chapters, 16 figures and 8 tables.
 }
 
 \Abbrvs{
@@ -287,9 +329,6 @@ Return To Launch\strut
 
 % Everything below added by CII
   \maketitle
-
-\frontmatter % this stuff will be roman-numbered
-\pagestyle{empty} % this removes page numbers from the frontmatter
   \begin{originality}
     I hereby certify that I am the sole author of this thesis. All the used
     materials, references to the literature and the work of others have been
@@ -298,15 +337,57 @@ Return To Launch\strut
     
     ~
     
-    Author:
+    Author: Karl Uibo
+    
+    ~
+    
+    07.05.2018
   \end{originality}
   \begin{abstract}
-    This thesis is written in and is pages long, including chapters, figures
-    and tables.
+    This thesis explores how to achieve consecutive autonomous flights
+    without a pilots input. Previously the focus of research has been in
+    optimizing the flight characteristics of a multirotor but we take a
+    higher level approach to find the requirements needed to be able to
+    achieve fully autonomous flight with use cases in the industry.
+    
+    We created \emph{python} code to import data from individual log files
+    into a database. An algorithm for filtering the database to find
+    necessary data to design a model of the flight behavior of an individual
+    multirotor is created. An analysis of voltage graphs of the available
+    flights were analyzed and a requirement for a smart controller in each
+    battery to monitor the state of charge, state of health and to identify
+    each battery is found.
+    
+    This thesis is written in English and is 35 pages long, including 4
+    chapters, 16 figures and 8 tables.
   \end{abstract}
   \begin{annotatsioon}
-    Lõputöö on kirjutatud Inglise keeles ning sisaldab teksti xx leheküljel,
-    xx peatükki, xx joonist, xx tabelit.
+    Selles töös otsitakse lahendust probleemile, kuidas saavutada
+    autonoomset multirootori lennu missiooni nii, et lendude vahel ei peaks
+    ükski inimene sekkuma samal ajal maksimeerides lennuaega ja lennu
+    pikust. Senini on põhiliselt uuritud autopiloodi juht-algoritmide
+    efektiivsust ja on loodud ilmastiku ja sensori müra kindlamaid
+    algoritme. Selles töös vaadeldakse laiemat pilti, kus selleks, et
+    multirootorid saaksid olla tõeliselt autonoomsed ja võiksid pakuda
+    senini liialt kulukateks osutunud funktsionaalsusi. Selleks
+    analüüsitakse erinevaid võimalusi binaarsetest lennulogidest ühtse
+    andmestiku loomiseks. Vaadeldakse erinevaid faili tüüpe ning lõpuks
+    valitakse \emph{SQLite} andmebaas. Luuakse andmete mudel hoidmaks infot
+    logidest ja kirjutatakse kood \emph{python} keeles, mis loob nimetatud
+    andmebaasi. Andmebaasis olevate andmete analüüsi tulemusel leitakse
+    parameetrid, mille alusel on võimalik kogu andmebaasist välja
+    filtreerida andmed, mille abil on võimalik luua multirootori käitumise
+    mudel erinevatel lennu kiirustel õhu suhtes. Leitakse ka vajadus,
+    lendude pinge graafikuid analüüsides, et saavutada autonoomsus, mis
+    arvestab ilma tingitud muutustega autonoomsete missioonide vahel, on
+    tarvilik inteligentne kontroller, mis teaks autopiloodile anda infot aku
+    täituvusest. Kontroller peaks mõõtma ja arvestama aku temperatuuriga ja
+    jälgima aku degradatsiooni ajas ning kasutus kordadel. Lisaks peaks
+    kontroller väljastama unikaalse identifikaatori, et andmeanalüüsi
+    teostades oleks võimalik jälgida muutusi aku parameetrites.
+    
+    See töö on kirjutatud Inglise keeles, on 35 lehekülge pikk, sisaldab 4
+    peatükki, 16 joonist ja 8 tabelit.
   \end{annotatsioon}
   \begin{abbrvs}
     \begin{longtable}[]{@{}ll@{}}
@@ -405,61 +486,92 @@ Return To Launch\strut
 \chapter*{Introduction}\label{introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-The following thesis looks at the flight logs of Eli Ltd. to assess the
-fuel economy and the information given to the user. To be written when
-rest of the paper is finished.
+Currently the autonomy of multirotor aircraft is limited to single
+flights. A mission can be made that traverses a given path and points
+its camera at points of interest. The current technology lets the pilot
+assign the speed of flight during the traversal of the mission. Eli Ltd
+has developed a technology that they call \emph{nests}. With this
+technology the batteries of a multirotor can be recharged and swapped
+for charged ones. This creates the possibility to create missions that
+are automatic and require no input from a pilot. Due to the dynamic
+nature of weather the flight speeds of the mission need to be changed.
+By changing the speeds safety and higher operational ability is
+achieved. Current technology does not dynamically change the mission
+parameters to fit the weather conditions.
+
+This thesis does not concern itself with use cases where high
+situational awareness is needed such as detecting objects in video,
+tracking objects in video, dynamically generating new missions given
+external stimulus. Instead use cases that use missions that follow a
+preplanned path are discussed. Such use cases are area surveillance
+missions for securing a perimeter of a secure site or autonomous patrol
+of a segment of a countries border.
+
+More concretely in this thesis the library of binary flight logs of Eli
+Ltd is taken and used to build a database for further analysis. In the
+first chapter we survey the state of the art. The second chapter
+discusses the intricacies of piloting an unmanned aerial multirotor
+vehicle. In the third chapter various file formats are analyzed and
+chosen from to be used as storage for the database. Furthermore the
+analysis prerequisites are discussed and the database schema is designed
+accordingly. The schema is then used in the \emph{python} code created
+by the thesis author to translate the binary flight logs into a
+\emph{SQLite} database. In the following chapter initial analysis is
+conducted on the data. The goal of which is to find the relevant data to
+model the multirotor behavior in different conditions and requirements
+for the model to be used in practice.
 
 \chapter{State of the art}\label{state}
 
 A multirotor UAV may carry different payloads for different use cases
 but predominantly the payload is a video or photo camera. The video and
 photos can be used for 3D mapping, search and rescue operations,
-inspecting powerlines, surveilance, inspecting wind turbine structural
+inspecting power lines, surveillance, inspecting wind turbine structural
 integrity, counting deer in woods or simply capturing cinematic footage
 to name a few. However the act of piloting itself is secondary to the
-goal. The act of piloting is nessecary to gather data with the payload.
+goal. The act of piloting is necessary to gather data with the payload.
 A pilot needs to have certain skills and training to be able to safely
-operate an airial vehicle. The cost of hiring a pilot can be much higher
+operate an aerial vehicle. The cost of hiring a pilot can be much higher
 than the operational costs of the UAV and payload combined. Thus
 companies across the globe look to simplify the piloting.
 
 In movie industry camera drones are used with two people. One person to
 pilot the multirotor and one person to manipulate the camera. This has
-the overhead of hiring two people and the multirotor and the expencive
+the overhead of hiring two people and the multirotor and the expensive
 payload. For the high-end movie industry this is fine. Where this
 overhead becomes prohibitive is in the industrial applications. To
-inspect powerlines atleast one person is needed to do the piloting and
+inspect power lines at least one person is needed to do the piloting and
 directing of the camera. The video analysis can be done during the
 flight or later. To keep the needs of man power to a minimum the
-operator needs to be able to operate the multirotor aswell as the camera
-and know enough of the powerlines to analyse the video feed. Another
-option is to have two people - one to pilot and film and a second one to
-do the analysis. The operator however might not film the correct parts
-for the analyst to do his job. Thus introducing the risk that the
-collected data is unusable. In the case of powerlines not only a single
-pylon needs to be inspected, rather several hundred kilometers worth
-need to be assessed at a time. Having a single person drive to each
-location to fly a multirotor would take a very long time for a single
-person and as the person needs to be highly trained the process would
-become prohibitively expencive. This problem is smaller when it comes to
-tele-communications companies as they have single cell towers which
-allways need to be inspected one at a time. For the energy sector a
-multirotor is prohibitively expencive and not because of the device
+operator needs to be able to operate the multirotor as well as the
+camera and know enough of the power lines to analyse the video feed.
+Another option is to have two people - one to pilot and film and a
+second one to do the analysis. The operator however might not film the
+correct parts for the analyst to do his job. Thus introducing the risk
+that the collected data is unusable. In the case of power lines not only
+a single pylon needs to be inspected, rather several hundred kilometers
+worth need to be assessed at a time. Having a single person drive to
+each location to fly a multirotor would take a very long time for a
+single person and as the person needs to be highly trained the process
+would become prohibitively expensive. This problem is smaller when it
+comes to tele-communications companies as they have single cell towers
+which allays need to be inspected one at a time. For the energy sector a
+multirotor is prohibitively expensive and not because of the device
 costs but rather the manpower costs.
 
 The energy sector could use multirotors, but they have a more cost
 effective way of detecting faults. The method involves renting a full
-size helicopter with a pilot and fitting it with a expencive camera and
-camera operator to fly over the powerlines at the right angles to later
-analyse the photos or video taken. This has a higher chanche of missing
+size helicopter with a pilot and fitting it with a expensive camera and
+camera operator to fly over the power lines at the right angles to later
+analyse the photos or video taken. This has a higher chance of missing
 faults but compared to multirotors is cheaper alternative.
 
-Automating the missions to inspect powerlines or cell towers requires
-high intelligence on the part of the autopilot and will not be assesed
-in this thesis. Instead search and resque missions and surveilance
-missions are assesed. These missions have the potential to be simplified
-to the point where additional training on the part of the pilot is not
-needed.
+Automating the missions to inspect power lines or cell towers requires
+high intelligence on the part of the autopilot and will not be assessed
+in this thesis. Instead search and rescue missions and surveillance
+missions are assessed. These missions have the potential to be
+simplified to the point where additional training on the part of the
+pilot is not needed.
 \begin{figure}
 \centering
 \includegraphics{./figure/scanningMission.PNG}
@@ -475,10 +587,10 @@ condition. A naive simplification to piloting can be made by limiting
 the maximum disturbance (wind) allowed by forcibly landing when such
 disturbance is detected. This sets a hard limit to the conditions an
 unskilled pilot can fly in. By enforcing such a limit the risk of
-failure can be minimized and the producer of the multirotor would feel
-alot better about their product. A skilled pilot however would be able
-to fly and potentially save someones life in that situation. A better
-aproach is needed.
+failure can be minimized and the producer of the multirotor would feel a
+lot better about their product. A skilled pilot however would be able to
+fly and potentially save someones life in that situation. A better
+approach is needed.
 \begin{figure}
 \centering
 \includegraphics{./figure/twoDeer.PNG}
@@ -495,7 +607,7 @@ woods.\footnotemark{}}
 \end{figure}
 \footnotetext{Source: Eli Ltd photo repository.}
 
-Area surveilance requires an automated mission that allows for
+Area surveillance requires an automated mission that allows for
 specification of the camera direction and angle. A mission to survey the
 fences of a military compound would have to include waypoints that
 specify the locations the multirotor flies to and the locations or
@@ -549,7 +661,7 @@ positioning where releasing the controls results in the platform
 remaining stationary in air even in windy conditions. A similar mode
 exists in arducopter called \emph{loiter}. In this some simplification
 of piloting can be seen. The autopilot is there to remove a component of
-skills needed for succesful piloting. In these modes the pilot is in
+skills needed for successful piloting. In these modes the pilot is in
 control of the speed of flight and is in effect compensating for the
 effects of wind when flying in some direction. While staying still the
 GPS location is used to stay still.
@@ -574,7 +686,7 @@ at a few of them.
 \item
   Current draw from the battery increases.
 \item
-  Vibrations aboard the multirotor inrcease.
+  Vibrations aboard the multirotor increase.
 \end{enumerate}
 When the aircraft is stationary above ground the wind causes it to tilt
 into the wind. In the reference frame of air, the multirotor is flying
@@ -621,47 +733,47 @@ algorithms optimize for the stability of the flight reducing the need
 for the pilot to do it by hand but higher level algorithms are still at
 the level of naive implementations for features such as optimizing for
 flight time or distance or speed, optimizing for safe return to start.
-These features are of critical importance for achieving full autonomity
-in some scenarios.
+These features are of critical importance for achieving full autonomy in
+some scenarios.
 
-For safety both \emph{arducopter} and \emph{DJI} use failsafe modes to
+For safety both \emph{arducopter} and \emph{DJI} use fail-safe modes to
 guarantee that the multirotor has enough power left to reach the
-take-off location. A naive aproach that \emph{arducopter} employs is to
+take-off location. A naive approach that \emph{arducopter} employs is to
 look at the battery voltage and at a fixed point start flying back. This
-safety behaviour can be triggered in both manual control mode and
-automatic mission mode. This aproach has to take into account the worst
+safety behavior can be triggered in both manual control mode and
+automatic mission mode. This approach has to take into account the worst
 case scenario of flying against the wind a long distance to make sure
 the multirotor makes it back. This leave a portion of the available
-power in the battery as a buffer reserve. A smarter failsafe would also
+power in the battery as a buffer reserve. A smarter fail-safe would also
 take into account the distance from the starting location to scale the
-value where the failsafe is triggered. This helps reduce the buffer
+value where the fail-safe is triggered. This helps reduce the buffer
 energy requirement. To further reduce the energy left in the buffer the
-failsafe would also need to adjust for the weather conditions. If the
+fail-safe would also need to adjust for the weather conditions. If the
 starting location is down wind then much less energy is needed than when
-the return home trip is taken against the wind. To achive this type of
-smart failsafe functionality the autopilot needs to be aware of two
+the return home trip is taken against the wind. To achieve this type of
+smart fail-safe functionality the autopilot needs to be aware of two
 things:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  The wind parameteres - strength and direction.
+  The wind parameters - strength and direction.
 \item
   The battery state - how much energy is left in the battery.
 \end{enumerate}
-To find the wind parameters a fusion of an onboard wind sensor and
+To find the wind parameters a fusion of an on-board wind sensor and
 magnetometer could be used. An on board wind sensor has been used to
 measure winds in wind farms to model airflow\footnote{Palomaki, Rose,
   Bossche, Sherman, \& Wekker (2017)}. The multirotors that Eli Ltd
-produces do not have onboard wind sensors. As there is no difference
+produces do not have on-board wind sensors. As there is no difference
 between a multirotor flying at a fixed speed in windless conditions or
 staying stationary when the wind is equal to that of the previous
-example. Therefore a model of behaviour could be created given flight
+example. Therefore a model of behavior could be created given flight
 data where wind is minimal or zero. In the next chapter creating a
 database to use in modelling is discussed and the code to do so is
 created.
 
-Given a database of flight logs the behaviour of batteries can be
-analized. This is done later in this thesis.
+Given a database of flight logs the behavior of batteries can be
+analyzed. This is done later in this thesis.
 
 \chapter{Database generation}\label{dbs}
 
@@ -1479,7 +1591,7 @@ Id & Flight & Message & Timestamp & Parameter & Value\tabularnewline
 \end{longtable}
 In table \ref{tab:longtable} we added flight identificator but we would
 like to have more information on the flights. To reduce metadata
-repetition another table is needed. There is also quite alot of
+repetition another table is needed. There is also quite a lot of
 repetition in other values in the table. The message type and timestamp
 repeat for each parameter in the inner table. The parameters also repeat
 each time the message is repeated. Each of the repeating elements can be
@@ -1564,8 +1676,8 @@ added to the appendix.
 data}\label{initial-analysis-of-the-data}
 
 As mentioned in the second chapter for the multirotor there is no
-difference wether it is flying at a given direction at a set speed and
-staying stationary in winds oposite to the flying direction of the
+difference whether it is flying at a given direction at a set speed and
+staying stationary in winds opposite to the flying direction of the
 previous example and with the same speed as the multirotor was flying.
 The following equation can be written:
 
@@ -1574,9 +1686,9 @@ The following equation can be written:
 where \(w\) is the ground speed of the multirotor, \(v\) is the wind
 speed of the multirotor and \(u\) is the wind speed. If we increase the
 wind speed \(u\) the multirotor autopilot finds the angles and motor
-power that allow it to fulfill the desired groundspeed \(w\). When \(w\)
-stays constant and \(u\) increases \(v\) changes to account for the
-change in wind speed. The change in \(v\) is dependant on the flight
+power that allow it to fulfill the desired ground speed \(w\). When
+\(w\) stays constant and \(u\) increases \(v\) changes to account for
+the change in wind speed. The change in \(v\) is dependent on the flight
 direction and wind direction. When flying against the wind \(w = v - u\)
 as the multirotor has to compensate for the increased wind speed. When
 flying down wind the speeds add up - the multirotor has to do less work
@@ -1585,22 +1697,22 @@ multirotor behavior is needed. Another way of looking at it is to
 instead look for wind speed of the multirotor. This itself is the model
 of the multirotor flight. The user gives the desired ground speed \(w\),
 the wind is \(u\) and what we are after is the resultant behavior \(v\).
-To find the flight model \(v\) we can take the afore mentioned equation
+To find the flight model \(v\) we can take the aforementioned equation
 and substitute the wind speed \(u\) with 0.
 
 \[w = v\]
 
 This way the desired speed equals the wind speed. With this in mind it
-is nessecery to extract from the database the data of the flights where
+is necessary to extract from the database the data of the flights where
 wind speed is close to zero to create the model. The chapter
 \protect\hyperlink{extracting-windless-flight-data}{Extracting windless
 flight data} does just that.
 
 Another important factor to consider is the state of the battery. To
-acurately model the multirotor behavior in diverse flight conditions the
-information about how much energy is left is tantamount. In the chapter
-\protect\hyperlink{analysis-of-battery-performance}{Analysis of battery
-performance} the data available is analyzed.
+accurately model the multirotor behavior in diverse flight conditions
+the information about how much energy is left is tantamount. In the
+chapter \protect\hyperlink{analysis-of-battery-performance}{Analysis of
+battery performance} the data available is analyzed.
 
 \hypertarget{extracting-windless-flight-data}{\section{Extracting
 windless flight data}\label{extracting-windless-flight-data}}
@@ -1614,7 +1726,7 @@ the multirotor is able to achieve.
 
 A better option is to note that when wind speed is zero the multirotor
 moves at the desired ground speed. If the desired ground speed is also
-zero then the behaviour of the multirotor should be stable as well.
+zero then the behavior of the multirotor should be stable as well.
 Without wind the angles of the multirotor should fluctuate around zero
 degrees and by looking at the average angles when the multirotor is
 commanded to hold its position in \emph{loiter} or \emph{position}
@@ -1628,7 +1740,7 @@ flying to counteract the wind. Any sufficiently large angle constitutes
 wind. For training the model only the windless flights are needed, but
 since some wind is expected the level of cutoff where a flight is
 considered to have been in windless condition. Various levels of
-``windless'' data could be used as diffirent cutoff values result in
+``windless'' data could be used as different cutoff values result in
 different amounts of training data.
 \begin{figure}
 \centering
@@ -1659,10 +1771,10 @@ potentially stand still.
 \includegraphics{./figure/lng.PNG}
 \caption{\label{fig:lng}Longitude data points in timeseries of a flight.}
 \end{figure}
-Looking at the longitude timeseries graph of the same flight on figure
+Looking at the longitude time-series graph of the same flight on figure
 \ref{fig:lng} we can clearly see where the multirotor stands still in
-the longtitude axis. However this is not sufficent to tell where the
-multirotor is truely stationary as motion could be had on the latitude
+the longitude axis. However this is not sufficient to tell where the
+multirotor is truly stationary as motion could be had on the latitude
 axis.
 \begin{figure}
 \centering
@@ -1670,17 +1782,17 @@ axis.
 \caption{\label{fig:lnglat}Longitude and latitude on the same timeseries
 graph of a flight.}
 \end{figure}
-Figure \ref{fig:lnglat} has time on the x axis and latitud/longitude
+Figure \ref{fig:lnglat} has time on the x axis and latitude/longitude
 point value changes on the y axis. The figure is made by taking both
-latitud and longitude axes and merging them into a single one. Then the
+latitude and longitude axes and merging them into a single one. Then the
 data is shifted to very nearly zero so that both graphs can be seen.
 This helps us see where the multirotor is actually stationary. Where the
 value of both latitude and longitude stays unchanged for a period of
 time the multirotor is stationary. Graphically we can see where this is
-so but as a function of data we still need an aditional function to find
-the segments where the multirotor stays still. To find the segments
-various aproaches could be attempted. One of them would be to construct
-lines through points in the timeseries and looking for where the slope
+so but as a function of data we still need an additional function to
+find the segments where the multirotor stays still. To find the segments
+various approaches could be attempted. One of them would be to construct
+lines through points in the time-series and looking for where the slope
 of the line changes compared to the last one. Filtering would be needed
 to account for the noise present. After that line segments where the
 graph moves perpendicular to either latitude/longitude axis are taken
@@ -1689,21 +1801,21 @@ be compared to find the segments where both are perpendicular to the
 axis. This is to remove segments where motion is recorded as
 perpendicular to either axis. This can be seen on the end of the
 latitude longitude graphs on figure \ref{fig:lnglat}. There we can see
-motion on the longtitude graph but not on the latitude graph. Where both
-graphs are paralell to time the multirotor is truely stationary. However
-the aforementioned aproach is not the best on as it ignores corner cases
-such as when the multirotor has turned to face the direction of future
-motion and taken some angle to start moving but from inertia has not yet
-started moving. Luckily we have more parameters than latitude and
-longtitude coordinates in the logs. We also have information about what
-mode the multirotor was in.
+motion on the longitude graph but not on the latitude graph. Where both
+graphs are parallel to time the multirotor is truly stationary. However
+the aforementioned approach is not the best on as it ignores corner
+cases such as when the multirotor has turned to face the direction of
+future motion and taken some angle to start moving but from inertia has
+not yet started moving. Luckily we have more parameters than latitude
+and longitude coordinates in the logs. We also have information about
+what mode the multirotor was in.
 \begin{figure}
 \centering
 \includegraphics{./figure/longWithMode.PNG}
 \caption{\label{fig:lngmode}Longitude data points in timeseries of a flight
 augmented with mode information.}
 \end{figure}
-On figure \ref{fig:lngmode} the longitude timeseries graph is augmented
+On figure \ref{fig:lngmode} the longitude time-series graph is augmented
 with information about which mode the multirotor was in during the
 flight. The take off sequence starts with brief entry to
 \emph{stabilize} mode which we will ignore. After that \emph{auto} mode
@@ -1712,15 +1824,15 @@ Soon after \emph{loiter} mode is entered. From figure \ref{fig:lnglat}
 we can see that the multirotor remained stationary for the duration of
 \emph{loiter} mode. After entering \emph{guided} mode, which is also an
 automatic mission mode, the multirotor starts moving. In this flight
-each time the multirotor is statinary the mode is \emph{loiter},
+each time the multirotor is stationary the mode is \emph{loiter},
 excepting take off sequence and landing procedure. In the landing
 procedure the \emph{RTL} mode returns the multirotor to the launch
 location and lands. During the landing the multirotor remains
 stationary. Before fully landing the \emph{RTL} mode is interrupted by
 the pilot by issuing \emph{loiter} command. We can assume that here we
 had a skilled pilot who wanted to see how long the battery would last
-until being truely empty and thus estimating the overal health of the
-battery. After that an automatic landing failsafe is executed by the
+until being truly empty and thus estimating the overall health of the
+battery. After that an automatic landing fail-safe is executed by the
 autopilot only to be interrupted again with the \emph{loiter} command by
 the pilot. From this graph we can see that to find the windless flights
 we need to find all flight segments where:
@@ -1730,14 +1842,14 @@ we need to find all flight segments where:
   are stationary.
 \item
   The segment after launch where the initial mission is empty and both
-  latitude and longitude caardinates are stationary.
+  latitude and longitude coordinates are stationary.
 \end{itemize}
 We could also use mode \emph{land} to check for wind conditions but it
 needs to be taken into account that the latitude is changing and
 \emph{land} and \emph{loiter} are not comparable. Also in \emph{land}
 mode the multirotor can be manipulated manually so latitude and
 longitude coordinates need to be checked for changes. \emph{RTL} mode
-should be split in two parts since it internaly contains both
+should be split in two parts since it internally contains both
 \emph{guided} segment and \emph{land} segment. For the \emph{land} part
 in \emph{RTL} same considerations need to be made.
 
@@ -1748,17 +1860,18 @@ is capable of moving in any direction the orientation of the front is
 not important for our purposes. The parameter for that is yaw. Instead
 we average over the pitch and roll parameters.
 
-The previous analysis is suffisent to filter help filter out relevant
-information from the database. From there the relevant data may be
-separated into training and verification data to test the model. Further
+The previous analysis is sufficient to filter help filter out relevant
+flights from the database. From there the relevant data may be separated
+into training and verification data to test the model. Further
 decimation of data is needed as the data is collected at a high
-frequency. The exact details for the model creation are left for the
-model creator.
+frequency. The desired directions of flight need to be found from the
+data as well as the desired flight speed. The exact details for the
+model creation are left for the model creator.
 
 After the model is created the direction of the wind needs to be
 calculated. The direction of wind helps us optimize our battery use in
 the case of automated missions. Flying against the wind takes more power
-than flying by the wind. As we wentioned \(w = v + u\) which means that
+than flying by the wind. As we mentioned \(w = v + u\) which means that
 the angle difference between \(w\) and \(u\) have to be compensated by
 \(v\). Since all elements in the equation are vectors where the
 magnitude is the speed of motion and the angle is the angle. By
@@ -1769,7 +1882,7 @@ real measurements to assess the accuracy of the model. An experiment may
 be conducted by flying to multirotors with 10 to 100 meters apart from
 each other where one of the multirotors is the multirotor from which the
 model is built from. The other multirotor should carry an accurate wind
-measurment device such as the one mentioned in (Palomaki et al., 2017).
+measurement device such as the one mentioned in (Palomaki et al., 2017).
 Both multirotors should fly at the same height and at the same time to
 reduce variance of measurements in time. The missions should be
 identical except for the spatial displacement to avoid unwanted
@@ -1777,14 +1890,110 @@ collisions.
 
 \hypertarget{analysis-of-battery-performance}{\section{Analysis of
 battery performance}\label{analysis-of-battery-performance}}
+\begin{figure}
+\centering
+\includegraphics{./figure/akuGraafikutPekkis.PNG}
+\caption{\label{fig:pekk}Low-pass filtered battery voltage graphs.}
+\end{figure}
+An figure \ref{fig:pekk} we have 9 heavily filtered graphs of voltage
+during 9 flights. The smoothing is done by applying a moving average
+filter with width of 1000 values to smooth the otherwise noisy graphs.
+Here we can se a couple of problems. Firstly the beginnings are
+distorted until the filter averages up to a more realistic value. These
+parts need to be removed. Second problem is that since the logs start
+before launch command the graphs can be shifted in time and thus not
+align. This can be counter acted to shifting all the graphs by the first
+voltage measurement value.
+\begin{figure}
+\centering
+\includegraphics{./figure/akuGraafikudFixed.PNG}
+\caption{\label{fig:fixed}Improved low-pass filtered battery voltage
+graphs.}
+\end{figure}
+On figure \ref{fig:fixed} these problems have been rectified.
+\begin{figure}
+\centering
+\includegraphics{./figure/allbat.PNG}
+\caption{\label{fig:allbat}Improved low-pass filtered battery voltage graphs
+of the whole database.}
+\end{figure}
+Figure \ref{fig:allbat} displays all the voltage graphs of all the
+flights in the database. That is 1363 graphs. Here we can see that some
+shorter flights are not really flights at all and need to be filtered
+out from the database. We also see that there are at least two distinct
+battery types used. Ones that fly for 40 minutes maintaining higher
+voltage and ones that fly for longer while loosing voltage at a higher
+rate. On the bottom left we can see a few graphs that start off by
+dropping rapidly and then recovering a little. This is a sign of cold
+batteries. The multirotor uses 550 watts on average and thus heats the
+battery rapidly. Launching with a cold battery reduces the flight time
+considerably but warming due to consumption helps restore some of the
+capacity. This exemplifies the need for pre-heated batteries.
+\begin{figure}
+\centering
+\includegraphics{./figure/rmkRohelineAku.PNG}
+\caption{\label{fig:roheline}Improved low-pass filtered battery voltage
+graphs of selected flights.}
+\end{figure}
+Figure \ref{fig:roheline} displays the graphs of a single multirotor
+aircraft during a few days of time where counting wildlife in Estonian
+woods was carried out. The graphs show the improved battery that is
+capable of consistently flying for the guaranteed by Eli ltd 40 minutes
+in good weather but also going above that and reaching 50 minutes on
+most flights. On 4 graphs we can see the effects of not letting the
+battery cool off after use and before recharging and not fully charging
+the batteries.
+\begin{figure}
+\centering
+\includegraphics{./figure/rmkValgeAku.PNG}
+\caption{\label{fig:valge}Improved low-pass filtered battery voltage graphs
+of selected flights of another multirotor.}
+\end{figure}
+Figure \ref{fig:valge} displays the graphs of another multicopter that
+was also used in the aforementioned missions. Here we can see that
+during one flight the battery was allowed to empty more than usual. This
+risks breaking the batteries.
 
-Vaatan graafikuid ja utlen kuidas aku kaitub ja miks nii vaga on vaja
-kasutada akukontrollerit.
+From the graphs we can determine that battery estimation is very
+difficult without knowing the type of the battery, the internal
+temperature and the state of charge. Another important parameter is the
+state of health of a battery as they degrade over time. Any smart
+algorithm needs to take into account the wear and tear of the battery.
+As long as there is no smart controller inside the battery to uniquely
+identify it, give its state of charge and state of health any smart
+algorithm will need to take into account the variability of the battery
+output. A simplification can be made by expecting fully charged
+batteries for every flight and placing that cognitive load on the pilot.
+Each piece of missing information about the battery state requires a
+bigger buffer for the safety mechanism reducing overall flight time and
+distance.
 
 \chapter*{Conclusion}\label{conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-Welp, thats it.
+In order to create automatic missions that can be executed multiple
+times without external input regardless of weather a model of the
+multirotor behavior and a smart battery controller is needed. Until now
+the main focus of research has been on improving the autopilot flight
+controller algorithms.
+
+Multiple data storage types were assessed. \emph{SQLite} was chosen to
+be used as it is simple to use and acts like a real \emph{SQL} database
+and it is easy to share as it is in a single file. Compared to other
+options it takes less disk space.
+
+The data representation was analyzed and designed for ease of use in the
+analysis. The relevant code was created in \emph{python} programming
+language converting the binary logs into \emph{SQLite} database. This
+allows us to analyze several flights of data at the same time and make
+comparisons. Until now the tools allowed for analysis of a single log at
+a time. Further improvement suggestions were made.
+
+Using the created database initial data analysis is done. As a result we
+present the way to filter out the relevant data to train the model of
+multirotor behavior on. Furthermore the need for a smart battery
+controller is shown. An experiment to test the behavior model accuracy
+in calculating wind speed and direction is proposed.
 
 \appendix
 

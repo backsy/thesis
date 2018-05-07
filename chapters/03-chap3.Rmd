@@ -269,7 +269,7 @@ Id|Flight|Message|Timestamp|Parameter|Value
 
 : (\#tab:longtable) Long table.
 
-In table \@ref(tab:longtable) we added flight identificator but we would like to have more information on the flights. To reduce metadata repetition another table is needed. There is also quite alot of repetition in other values in the table. The message type and timestamp repeat for each parameter in the inner table. The parameters also repeat each time the message is repeated. Each of the repeating elements can be moved to a dedicated table.
+In table \@ref(tab:longtable) we added flight identificator but we would like to have more information on the flights. To reduce metadata repetition another table is needed. There is also quite a lot of repetition in other values in the table. The message type and timestamp repeat for each parameter in the inner table. The parameters also repeat each time the message is repeated. Each of the repeating elements can be moved to a dedicated table.
 
 ```{r database, fig.cap="Final database schema.", echo=FALSE}
 include_graphics(path = "./figure/databaseSchema.PNG")

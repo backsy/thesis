@@ -279,68 +279,46 @@
   \AtEndDocument{\pdfinfo{/Creator	(Reed College LaTeX Thesis Class 2001/12/04 SN)}}
 \fi
 
-% I hacked the title page to all be the same font size
-% as requested by the library, BTS 2005
+\fancypagestyle{alim}{
+  \fancyhf{}
+  \fancyfoot[C]{Tallinn 2018}
+ }
 
 \renewcommand{\maketitle}{%
-  {\pagestyle{empty}
-  \fontsize{12}{14}\selectfont
-  \begin{titlepage}
+  {
+%------------------------------TIITELLEHT---------------------------------
   \newpage
-  \let\footnotesize\small
-  \let\footnoterule\relax
-  \let \footnote \thanks
+  \begin{titlepage}
+  \thispagestyle{alim}
+  %\pagenumbering{gobble}
+  \renewcommand{\headrulewidth}{0pt} %Eemaldab päisest horisontaalse joone
+  \renewcommand{\footrulewidth}{0pt} %Eemaldab jalusest horisontaalse joone
+  \headheight = 57pt %Paneb paika päise laiuse (vastavalt kompilaatori soovitusele)
+  \footskip = 11pt %Jaluse ruum
+  \headsep = 0pt %Vähendab päise ja teksti vahelise kauguse nullini
 
-  \baselineskip = 1.4\baselineskip
-  \setbox0=\hbox{of the Requirements for the Degree}
+  \begin{center} %Tekst keskele
+  \textsc{
+    \begin{Large} %Tekst suurtähtedega ja suuremaks
+    \@institution\\
+    \end{Large} 
+  }
+  \@division\\
 
-  \begin{center}
-    \setcounter{page}{1}
-    \null\vfil
-    {\fontsize{12}{14}\selectfont \@title}
-    \vfil
-    \centerline{\hbox to \wd0 {\hbox{}\hrulefill\hbox{}}}
-    \vfil
-    A Thesis \\
-    Presented to \\
-    \@thedivisionof \ \@division \\
-    \@institution
-    \vfil
-    \centerline{\hbox to \wd0 {\hbox{}\hrulefill\hbox{}}}
-    \vfil
-    In Partial Fulfillment \\
-    of the Requirements for the Degree \\
-    \@degree
-    \vfil
-    \centerline{\hbox to \wd0 {\hbox{}\hrulefill\hbox{}}}
-    \bigskip
-    \centerline{}
-    \bigskip
-    {\fontsize{12}{14}\selectfont \lineskip .75em
-    \begin{tabular}[t]{c}%
-      \@author
-    \end{tabular}\par}
-    \vskip 1.5em
-    {\fontsize{12}{14}\selectfont \@date \par}
-  \end{center}\par
+  \vspace*{5 cm} %Tekitab lehe alguse ja teksti vahele tühja ala vastava laiusega
+
+  \@author\\[2cm]
+  \begin{LARGE}
+  \textsc{\@title\\[2cm]}
+  \end{LARGE}
+  Master's Thesis\\[2cm]
+  \end{center}
+  \begin{flushright} %Joondab teksti paremale
+  \@advisor\\
+  \@degree
+  \end{flushright}
+  \pagebreak %Lehe lõpp
   \end{titlepage}
-
-%% Approved for the division page
-  \cleardoublepage
-  {\fontsize{12}{14}
-  \setbox0=\hbox{Approved for the \@approvedforthe}
-  \thispagestyle{empty}
-  \null\vfil		% just below center of page
-  \par\vskip 6cm	% below center, not center
-  \centerline{\copy0}	% approved
-  \centerline{(\@department)} %major
-  \vskip 1cm		%space to sign
-  \centerline{\makebox[\wd0][c]{\hrulefill}
-	\if@altadvisor \makebox[.5in]{} \makebox[\wd0][c]{\hrulefill} \fi}
-  \centerline{\makebox[\wd0][c]{\@advisor}
-	\if@altadvisor \makebox[.5in]{} \makebox[\wd0][c]{\@altadvisor} \fi}
-  \par\vfil\null}
-  \cleardoublepage
   }
 }
 
